@@ -37,7 +37,7 @@
             <Menu mnemonicParsing="false" text="Salir">
                <items>
                   <MenuItem mnemonicParsing="false" text="Integrantes grupo 2" />
-                  <MenuItem mnemonicParsing="false" text="Salir" />
+                  <MenuItem mnemonicParsing="false" text="Salir " />
                </items>
             </Menu>
         </menus>
