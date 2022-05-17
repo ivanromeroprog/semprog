@@ -10,4 +10,9 @@ public class MainController {
     private void CloseApp() throws IOException {
         Platform.exit();
     }
+    
+    @FXML
+    private void switchToTest() throws IOException {
+        App.setRoot("testui");
+    }
 }

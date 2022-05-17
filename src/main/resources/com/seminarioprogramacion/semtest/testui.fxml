@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/18" fx:controller="com.seminarioprogramacion.semtest.TestuiController">
+   <children>
+      <VBox layoutX="14.0" layoutY="14.0" prefHeight="378.0" prefWidth="577.0">
+         <children>
+            <Button mnemonicParsing="false" onAction="#CloseApp" text="Salir" />
+            <Button mnemonicParsing="false" onAction="#switchToMain" text="Volver" />
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>
