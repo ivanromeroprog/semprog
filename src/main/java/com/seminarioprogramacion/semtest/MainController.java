@@ -13,6 +13,6 @@ public class MainController {
     
     @FXML
     private void switchToTest() throws IOException {
-        App.setRoot("testui");
+        App.setRoot("testui",400,600);
     }
 }

@@ -33,6 +33,6 @@ public class TestuiController implements Initializable {
     
     @FXML
     private void switchToMain() throws IOException {
-        App.setRoot("main");
+        App.setRoot("MainMenu");
     }
 }

@@ -5,13 +5,13 @@
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="400.0" minWidth="600.0" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.seminarioprogramacion.semtest.MainController">
    <children>
       <MenuBar>
         <menus>
           <Menu mnemonicParsing="false" text="Turnos">
             <items>
-                  <MenuItem mnemonicParsing="false" text="Gestión del Turno" />
+                  <MenuItem mnemonicParsing="false" onAction="#switchToTest" text="Gestión del Turno" />
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Prestaciones">
@@ -37,7 +37,7 @@
             <Menu mnemonicParsing="false" text="Salir">
                <items>
                   <MenuItem mnemonicParsing="false" text="Integrantes grupo 2" />
-                  <MenuItem mnemonicParsing="false" text="Salir " />
+                  <MenuItem mnemonicParsing="false" onAction="#CloseApp" text="Salir " />
                </items>
             </Menu>
         </menus>

@@ -1,17 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.HBox?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/18" fx:controller="com.seminarioprogramacion.semtest.TestuiController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.seminarioprogramacion.semtest.TestuiController">
    <children>
-      <VBox layoutX="14.0" layoutY="14.0" prefHeight="378.0" prefWidth="577.0">
+      <HBox layoutX="8.0" layoutY="324.0" prefHeight="34.0" prefWidth="585.0">
          <children>
-            <Button mnemonicParsing="false" onAction="#CloseApp" text="Salir" />
-            <Button mnemonicParsing="false" onAction="#switchToMain" text="Volver" />
+            <Button mnemonicParsing="false" onAction="#switchToMain" text="Volver">
+               <HBox.margin>
+                  <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
+               </HBox.margin></Button>
          </children>
-      </VBox>
+      </HBox>
    </children>
 </AnchorPane>
