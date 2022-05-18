@@ -14,12 +14,12 @@ import java.io.IOException;
 public class App extends Application {
 
     private static Scene scene;
-    private static Stage stage;
+    private static Stage primaryStage;
 
     @Override
     public void start(Stage stage) throws IOException {
         scene = new Scene(loadFXML("LoginWindow"));
-        this.stage = stage;
+        this.primaryStage = stage;
         stage.setScene(scene);
         stage.show();
     }
@@ -28,9 +28,9 @@ public class App extends Application {
         scene.setRoot(loadFXML(fxml));
     }
     
-    static void setRoot(String fxml,double h, double w) throws IOException {
-        stage.setHeight(h);
-                stage.setWidth(w);
+    static void setRoot(String fxml,double height, double witdh) throws IOException {
+        primaryStage.setHeight(height);
+        primaryStage.setWidth(witdh);
         scene.setRoot(loadFXML(fxml));
     }
 
@@ -40,7 +40,7 @@ public class App extends Application {
     }
 
     public static void main(String[] args) {
-        launch();
+        launch(args);
     }
 
 }

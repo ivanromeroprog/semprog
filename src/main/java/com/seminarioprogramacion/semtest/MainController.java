@@ -15,4 +15,9 @@ public class MainController {
     private void switchToTest() throws IOException {
         App.setRoot("testui",400,600);
     }
+    
+    @FXML
+    private void switchToMecanicos() throws IOException {
+        App.setRoot("Mecanicos",400,600);
+    }
 }
