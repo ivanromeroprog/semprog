@@ -7,6 +7,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import javafx.stage.Modality;
 
 /**
  * JavaFX App
@@ -14,29 +15,62 @@ import java.io.IOException;
 public class App extends Application {
 
     private static Scene scene;
-    private static Stage primaryStage;
+    private static Stage stage;
 
     @Override
     public void start(Stage stage) throws IOException {
         scene = new Scene(loadFXML("LoginWindow"));
-        this.primaryStage = stage;
+        this.stage = stage;
         stage.setScene(scene);
         stage.show();
     }
 
+    /*
+    No usar 
+    */
     static void setRoot(String fxml) throws IOException {
         scene.setRoot(loadFXML(fxml));
     }
-    
-    static void setRoot(String fxml,double height, double witdh) throws IOException {
-        primaryStage.setHeight(height);
-        primaryStage.setWidth(witdh);
+    /*
+    No usar 
+    */
+    static void setRoot(String fxml, double height, double witdh) throws IOException {
+        stage.setHeight(height);
+        stage.setWidth(witdh);
         scene.setRoot(loadFXML(fxml));
     }
 
+    /*
+    Carga el archivo FXML de vista
+    */
     private static Parent loadFXML(String fxml) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(fxml + ".fxml"));
         return fxmlLoader.load();
+    }
+    
+    /*
+    Crea una nueva ventana de la aplicación sin cerrar la anterior
+    */
+    public static Stage newWindow(String vista, Stage parentw) throws IOException {
+        Scene sn = new Scene(loadFXML(vista));
+        Stage st = new Stage();
+        st.setScene(sn);
+        st.initOwner(parentw);
+        st.initModality(Modality.APPLICATION_MODAL); 
+        st.showAndWait();
+        return st;
+    }
+
+    /*
+    Crea una nueva ventana modal (no se puede interactuar con el padre) sin cerrar la anterior
+    */
+    public static Stage newWindow(String vista) throws IOException {
+        Scene sn = new Scene(loadFXML(vista));
+        Stage st = new Stage();
+        st.setScene(sn);
+        st.show();
+
+        return st;
     }
 
     public static void main(String[] args) {
