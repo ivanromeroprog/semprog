@@ -16,7 +16,7 @@ public class LoginController {
         //Cerrar esta ventana
         ((Stage) btningreso.getScene().getWindow()).close();
         
-        App.newWindow("MainMenu");
+        App.newWindow("MainMenu","Sistema Supercharger");
     }
     
     

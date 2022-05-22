@@ -35,7 +35,16 @@ public class MainController {
         
         App.newWindow("Mecanicos_listado",((Stage) menup.getScene().getWindow()),"Mecanicos");
     }
-    
+        
+    @FXML
+    private void switchToTrabajos() throws IOException {
+        //App.setRoot("Mecanicos",400,600);
+         
+        //Cerrar esta ventana
+        //((Stage) menup.getScene().getWindow()).close();
+        
+        App.newWindow("Trabajos",((Stage) menup.getScene().getWindow()),"Trabajos del Día");
+    }
     @FXML
     private void switchToTurnos() throws IOException {
         //App.setRoot("Mecanicos",400,600);

@@ -9,8 +9,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="269.0" prefWidth="394.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="269.0" prefWidth="394.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.seminarioprogramacion.semtest.AsignarTurnoController">
    <children>
       <HBox alignment="CENTER" prefHeight="44.0" prefWidth="395.0">
          <children>
@@ -108,7 +107,7 @@
             </VBox>
             <VBox alignment="CENTER">
                <children>
-                  <Button mnemonicParsing="false" prefHeight="51.0" prefWidth="90.0" text="Buscar&#10;Fecha y Hora" textAlignment="CENTER">
+                  <Button mnemonicParsing="false" onAction="#switchToSeleccionarFecha" prefHeight="51.0" prefWidth="90.0" text="Buscar&#10;Fecha y Hora" textAlignment="CENTER">
                      <VBox.margin>
                         <Insets left="8.0" />
                      </VBox.margin>
@@ -119,12 +118,12 @@
       </HBox>
       <HBox alignment="CENTER" prefHeight="44.0" prefWidth="395.0">
          <children>
-            <Button mnemonicParsing="false" text="Guardar">
+            <Button fx:id="btnguardar" defaultButton="true" mnemonicParsing="false" onAction="#guardar" text="Guardar">
                <HBox.margin>
                   <Insets bottom="6.0" left="6.0" right="6.0" top="6.0" />
                </HBox.margin>
             </Button>
-            <Button mnemonicParsing="false" text="Cancelar">
+            <Button fx:id="btncancelar" cancelButton="true" mnemonicParsing="false" onAction="#cancelar" text="Cancelar">
                <HBox.margin>
                   <Insets bottom="6.0" left="6.0" right="6.0" top="6.0" />
                </HBox.margin>
