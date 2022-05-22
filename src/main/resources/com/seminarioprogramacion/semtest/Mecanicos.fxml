@@ -137,9 +137,8 @@
       </HBox>
       <FlowPane alignment="CENTER" prefHeight="26.0" prefWidth="284.0">
          <children>
-            <Button fx:id="btningreso1" onAction="#switchToMain" text="Nuevo" />
-            <Button fx:id="btningreso2" onAction="#switchToMain" text="Editar" />
-            <Button fx:id="btningreso" onAction="#switchToMain" text="Eliminar" textOverrun="WORD_ELLIPSIS" />
+            <Button fx:id="btnguardar" defaultButton="true" onAction="#guardar" text="Guardar" />
+            <Button fx:id="btncancelar" cancelButton="true" onAction="#cancelar" text="Cancelar" />
          </children>
       </FlowPane>
    </children>

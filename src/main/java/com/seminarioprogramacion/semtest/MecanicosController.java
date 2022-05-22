@@ -4,11 +4,13 @@
  */
 package com.seminarioprogramacion.semtest;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.stage.Stage;
 
 /**
  *
@@ -17,13 +19,9 @@ import javafx.scene.control.Button;
 public class MecanicosController {
 
     @FXML
-    private Button btningreso1;
+    private Button btnguardar;
     @FXML
-    private Button btningreso2;
-    @FXML
-    private Button btningreso;
-    @FXML
-    private Button btningreso3;
+    private Button btncancelar;
     
 
     public void initialize(URL url, ResourceBundle rb) {
@@ -31,7 +29,15 @@ public class MecanicosController {
     } 
 
     @FXML
-    private void switchToMain(ActionEvent event) {
+    private void cancelar() throws IOException {
+        //Cerrar esta ventana
+        ((Stage) btncancelar.getScene().getWindow()).close();
     }
     
+    
+    @FXML
+    private void guardar() throws IOException {
+        //Cerrar esta ventana
+        ((Stage) btnguardar.getScene().getWindow()).close();
+    }
 }

@@ -25,14 +25,15 @@ public class MainController {
         
         App.newWindow("testui",((Stage) menup.getScene().getWindow()));
     }
-
+    
     @FXML
-    private void switchToMecanicos() throws IOException {
+    private void switchToMecanicosListado() throws IOException {
         //App.setRoot("Mecanicos",400,600);
-        
+         
         //Cerrar esta ventana
         //((Stage) menup.getScene().getWindow()).close();
         
-        App.newWindow("Mecanicos",((Stage) menup.getScene().getWindow()));
+        App.newWindow("Mecanicos_listado",((Stage) menup.getScene().getWindow()));
     }
+
 }

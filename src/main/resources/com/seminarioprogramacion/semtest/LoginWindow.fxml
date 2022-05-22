@@ -21,7 +21,7 @@
                <HBox.margin>
                   <Insets top="5.0" />
                </HBox.margin></Label>
-            <TextField>
+            <TextField prefHeight="25.0" prefWidth="149.0">
                <HBox.margin>
                   <Insets left="5.0" />
                </HBox.margin></TextField>

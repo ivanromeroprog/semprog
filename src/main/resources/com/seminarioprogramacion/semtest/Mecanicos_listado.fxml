@@ -13,7 +13,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.seminarioprogramacion.semtest.MecanicosController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.seminarioprogramacion.semtest.Mecanicos_listadoController">
    <children>
       <VBox alignment="CENTER" prefHeight="388.0" prefWidth="675.0" spacing="20.0">
          <children>
@@ -41,7 +41,7 @@
             </HBox>
             <ScrollPane prefHeight="185.0" prefWidth="605.0">
               <content>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="179.0" prefWidth="618.0">
+                <AnchorPane fx:id="lista" minHeight="0.0" minWidth="0.0" prefHeight="179.0" prefWidth="618.0">
                      <children>
                         <TextField alignment="TOP_LEFT" layoutX="3.0" layoutY="2.0" prefHeight="25.0" prefWidth="114.0" />
                         <TextField layoutX="118.0" layoutY="2.0" prefHeight="25.0" prefWidth="114.0" />
@@ -57,9 +57,9 @@
             <HBox prefHeight="25.0" prefWidth="436.0" />
             <FlowPane alignment="CENTER" prefHeight="26.0" prefWidth="284.0">
                <children>
-                  <Button fx:id="btningreso1" onAction="#switchToMain" text="Nuevo" />
-                  <Button fx:id="btningreso2" onAction="#switchToMain" text="Editar" />
-                  <Button fx:id="btningreso" onAction="#switchToMain" text="Eliminar" textOverrun="WORD_ELLIPSIS" />
+                  <Button fx:id="btningreso1" onAction="#switchToMecanicos" text="Nuevo" />
+                  <Button fx:id="btningreso2" onAction="#switchToMecanicos" text="Editar" />
+                  <Button fx:id="btningreso" text="Eliminar" textOverrun="WORD_ELLIPSIS" />
                </children>
             </FlowPane>
          </children>
