@@ -60,6 +60,20 @@ public class App extends Application {
         st.showAndWait();
         return st;
     }
+    
+        /*
+    Crea una nueva ventana de la aplicación sin cerrar la anterior
+    */
+    public static Stage newWindow(String vista, Stage parentw, String titulo) throws IOException {
+        Scene sn = new Scene(loadFXML(vista));
+        Stage st = new Stage();
+        st.setScene(sn);
+        st.setTitle(titulo);
+        st.initOwner(parentw);
+        st.initModality(Modality.APPLICATION_MODAL); 
+        st.showAndWait();
+        return st;
+    }
 
     /*
     Crea una nueva ventana modal (no se puede interactuar con el padre) sin cerrar la anterior
@@ -73,6 +87,18 @@ public class App extends Application {
         return st;
     }
 
+    /*
+    Crea una nueva ventana modal (no se puede interactuar con el padre) sin cerrar la anterior
+    */
+    public static Stage newWindow(String vista, String titulo) throws IOException {
+        Scene sn = new Scene(loadFXML(vista));
+        Stage st = new Stage();
+        st.setScene(sn);
+        st.setTitle(titulo);
+        st.show();
+
+        return st;
+    }
     public static void main(String[] args) {
         launch(args);
     }

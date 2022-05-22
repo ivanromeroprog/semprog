@@ -34,9 +34,9 @@
                   <MenuItem mnemonicParsing="false" text="Infome mencual" />
                </items>
             </Menu>
-            <Menu mnemonicParsing="false" text="Salir">
+            <Menu mnemonicParsing="false" text="Sistema">
                <items>
-                  <MenuItem mnemonicParsing="false" text="Integrantes grupo 2" />
+                  <MenuItem mnemonicParsing="false" text="Acerca de..." />
                   <MenuItem mnemonicParsing="false" onAction="#CloseApp" text="Salir " />
                </items>
             </Menu>

@@ -33,7 +33,7 @@ public class MainController {
         //Cerrar esta ventana
         //((Stage) menup.getScene().getWindow()).close();
         
-        App.newWindow("Mecanicos_listado",((Stage) menup.getScene().getWindow()));
+        App.newWindow("Mecanicos_listado",((Stage) menup.getScene().getWindow()),"Mecanicos");
     }
     
     @FXML
@@ -43,7 +43,7 @@ public class MainController {
         //Cerrar esta ventana
         //((Stage) menup.getScene().getWindow()).close();
         
-        App.newWindow("Turnos",((Stage) menup.getScene().getWindow()));
+        App.newWindow("Turnos",((Stage) menup.getScene().getWindow()),"Turnos");
     }
 
 }
