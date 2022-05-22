@@ -35,5 +35,15 @@ public class MainController {
         
         App.newWindow("Mecanicos_listado",((Stage) menup.getScene().getWindow()));
     }
+    
+    @FXML
+    private void switchToTurnos() throws IOException {
+        //App.setRoot("Mecanicos",400,600);
+         
+        //Cerrar esta ventana
+        //((Stage) menup.getScene().getWindow()).close();
+        
+        App.newWindow("Turnos",((Stage) menup.getScene().getWindow()));
+    }
 
 }

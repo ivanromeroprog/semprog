@@ -11,7 +11,7 @@
         <menus>
           <Menu mnemonicParsing="false" text="Turnos">
             <items>
-                  <MenuItem mnemonicParsing="false" onAction="#switchToTest" text="Gestión del Turno" />
+                  <MenuItem mnemonicParsing="false" onAction="#switchToTurnos" text="Gestión del Turno" />
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Prestaciones">
