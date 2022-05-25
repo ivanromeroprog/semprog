@@ -64,7 +64,7 @@ public class SeleccionarFechaController implements Initializable {
                 else if(contadorhoras > 9 && contadorhoras < 12)
                     btn.setStyle("-fx-background-color: #ddf; -fx-border: 1px solid #ccc");
                 else
-                    btn.setStyle("-fx-background-color: #fff; -fx-border: 1px solid #ccc");
+                    btn.setStyle("-fx-background-color: #ccc; -fx-border: 1px solid #ccc");
                 
                 btn.setOnAction(e -> {
                     Button src = (Button)e.getSource();
