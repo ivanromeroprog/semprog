@@ -31,8 +31,6 @@
                             <TableColumn prefWidth="121.0" text="Nombre" />
                             <TableColumn prefWidth="117.0" text="Apellido" />
                               <TableColumn prefWidth="116.0" text="Especialidad" />
-                              <TableColumn prefWidth="109.0" text="Hora inicio" />
-                              <TableColumn prefWidth="125.0" text="Hora fin" />
                           </columns>
                         </TableView>
                         <CheckBox layoutX="595.0" layoutY="2.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="19.0" />
@@ -43,9 +41,18 @@
             <HBox prefHeight="25.0" prefWidth="436.0" />
             <FlowPane alignment="CENTER" prefHeight="26.0" prefWidth="284.0">
                <children>
-                  <Button fx:id="btningreso1" onAction="#switchToMecanicos" text="Nuevo" />
-                  <Button fx:id="btningreso2" onAction="#switchToMecanicos" text="Editar" />
-                  <Button fx:id="btningreso" text="Eliminar" textOverrun="WORD_ELLIPSIS" />
+                  <Button fx:id="btningreso1" onAction="#switchToMecanicos" text="Nuevo">
+                     <FlowPane.margin>
+                        <Insets left="15.0" right="15.0" />
+                     </FlowPane.margin></Button>
+                  <Button fx:id="btningreso2" onAction="#switchToMecanicos" text="Editar">
+                     <FlowPane.margin>
+                        <Insets left="15.0" right="15.0" />
+                     </FlowPane.margin></Button>
+                  <Button fx:id="btningreso" text="Eliminar" textOverrun="WORD_ELLIPSIS">
+                     <FlowPane.margin>
+                        <Insets left="15.0" right="15.0" />
+                     </FlowPane.margin></Button>
                </children>
             </FlowPane>
          </children>
