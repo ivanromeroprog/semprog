@@ -56,15 +56,15 @@ public class MainController {
         App.newWindow("Turnos",((Stage) menup.getScene().getWindow()),"Turnos");
     }
 
-//    @FXML
-//    private void switchToEspecialidad() throws IOException {
-//        
-//        App.newWindow("Especialidad",((Stage) menup.getScene().getWindow()),"Especialidad");
-//    }
-
     @FXML
     private void switchToGestionEspecialidad() throws IOException {
         
         App.newWindow("GestionEspecialidad",((Stage) menup.getScene().getWindow()),"Gestión de Especialidad");
+    }
+    
+    @FXML
+    private void switchToGestionAseguradora() throws IOException {
+        
+        App.newWindow("GestionAseguradora",((Stage) menup.getScene().getWindow()),"Gestión de Aseguradora");
     }
 }

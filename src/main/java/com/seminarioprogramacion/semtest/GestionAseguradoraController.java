@@ -11,7 +11,6 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
-import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.stage.Stage;
@@ -21,36 +20,37 @@ import javafx.stage.Stage;
  *
  * @author Nahue
  */
-public class GestionEspecialidadController implements Initializable {
+public class GestionAseguradoraController implements Initializable {
 
-    @FXML
-    private Button btnNuevo;
-    @FXML
-    private Button btnModificar;
     /**
      * Initializes the controller class.
+     * @param url
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }    
     
+     @FXML
+    private Button btnNuevo;
     @FXML
-    private void NuevoEspecialidad(ActionEvent event) throws IOException {
-         App.newWindow("Especialidad",((Stage) btnNuevo.getScene().getWindow()),"Nueva Especialidad");
+    private Button btnModificar;
+    
+    @FXML
+    private void NuevaAseguradora(ActionEvent event) throws IOException {
+         App.newWindow("Aseguradora",((Stage) btnNuevo.getScene().getWindow()),"Nueva Aseguradora");
 
     }
 
     @FXML
-    private void ModificarEspecialidad(ActionEvent event) throws IOException {
-        App.newWindow("Especialidad",((Stage) btnNuevo.getScene().getWindow()),"Modificar Especialidad");
+    private void ModificarAseguradora(ActionEvent event) throws IOException {
+        App.newWindow("Aseguradora",((Stage) btnNuevo.getScene().getWindow()),"Modificar Aseguradora");
     }
 
     @FXML
-    private void EliminarEspecialidad(ActionEvent event) {
-        String mensaje = "¿Está seguro que quiere eliminar ésta especialidad?";
-         Alert alert = new Alert(AlertType.CONFIRMATION, mensaje, ButtonType.YES, ButtonType.NO);
+    private void EliminarAseguradora(ActionEvent event) {
+        String mensaje = "¿Está seguro que quiere eliminar ésta Aseguradora?";
+         Alert alert = new Alert(Alert.AlertType.CONFIRMATION, mensaje, ButtonType.YES, ButtonType.NO);
         alert.showAndWait();
     }
-
 }
