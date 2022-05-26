@@ -73,12 +73,12 @@
                   <Insets bottom="6.0" left="6.0" right="6.0" top="6.0" />
                </HBox.margin>
             </Button>
-            <Button fx:id="btneliminarturno" mnemonicParsing="false" text="Eliminar Turno">
+            <Button fx:id="btneliminarturno" mnemonicParsing="false" onAction="#EliminarTurno" text="Eliminar Turno">
                <HBox.margin>
                   <Insets bottom="6.0" left="6.0" right="6.0" top="6.0" />
                </HBox.margin>
             </Button>
-            <Button fx:id="brnasistencia" mnemonicParsing="false" text="Registrar Asistencia">
+            <Button fx:id="brnasistencia" mnemonicParsing="false" onAction="#ConfirmarAsistencia" text="Registrar Asistencia">
                <HBox.margin>
                   <Insets bottom="6.0" left="6.0" right="6.0" top="6.0" />
                </HBox.margin>
