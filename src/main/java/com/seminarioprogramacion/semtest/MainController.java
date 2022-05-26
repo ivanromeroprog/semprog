@@ -33,7 +33,7 @@ public class MainController {
         //Cerrar esta ventana
         //((Stage) menup.getScene().getWindow()).close();
         
-        App.newWindow("Mecanicos_listado",((Stage) menup.getScene().getWindow()),"Mecánicos");
+        App.newWindow("Mecanicos_listado",((Stage) menup.getScene().getWindow()),"Gestión de Mecánicos");
     }
         
     @FXML
