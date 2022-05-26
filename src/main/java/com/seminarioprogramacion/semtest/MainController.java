@@ -67,4 +67,10 @@ public class MainController {
         
         App.newWindow("GestionAseguradora",((Stage) menup.getScene().getWindow()),"Gestión de Aseguradora");
     }
+    
+    @FXML
+    private void switchToGestionServicio() throws IOException {
+        
+        App.newWindow("GestionServicio",((Stage) menup.getScene().getWindow()),"Gestión de Servicio");
+    }
 }

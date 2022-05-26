@@ -23,11 +23,11 @@
           </Menu>
           <Menu mnemonicParsing="false" text="Configuración">
             <items>
-                  <MenuItem mnemonicParsing="false" text="Gestión de Aseguradoras" onAction="#switchToGestionAseguradora" />
+                  <MenuItem mnemonicParsing="false" onAction="#switchToGestionAseguradora" text="Gestión de Aseguradoras" />
                   <MenuItem mnemonicParsing="false" text="Titulares" />
                   <MenuItem mnemonicParsing="false" onAction="#switchToGestionEspecialidad" text="Gestión de Especialidad" />
                   <MenuItem mnemonicParsing="false" onAction="#switchToMecanicosListado" text="Mecánicos" />
-                  <MenuItem mnemonicParsing="false" text="Servicios" />
+                  <MenuItem mnemonicParsing="false" onAction="#switchToGestionServicio" text="Gestión de Servicios" />
             </items>
           </Menu>
             <Menu mnemonicParsing="false" text="Reportes">

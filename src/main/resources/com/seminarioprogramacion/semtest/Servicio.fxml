@@ -2,12 +2,15 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="554.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.seminarioprogramacion.semtest.AseguradoraController">
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="583.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.seminarioprogramacion.semtest.ServicioController">
    <children>
       <HBox alignment="CENTER" prefHeight="44.0" prefWidth="395.0">
          <children>
@@ -21,26 +24,26 @@
       </HBox>
       <HBox alignment="CENTER" prefHeight="44.0" prefWidth="395.0">
          <children>
-            <Label prefWidth="75.0" text="Razón Social">
+            <Label prefWidth="75.0" text="Descripción">
                <HBox.margin>
                   <Insets />
                </HBox.margin>
             </Label>
-            <TextField prefHeight="25.0" prefWidth="431.0" />
+            <TextArea prefHeight="60.0" prefWidth="431.0" />
          </children>
       </HBox>
-      <HBox alignment="CENTER_LEFT" prefHeight="44.0" prefWidth="395.0">
+      <HBox alignment="CENTER" prefHeight="44.0" prefWidth="395.0">
          <children>
-            <Label prefHeight="17.0" prefWidth="74.0" text="Cuit">
-               <HBox.margin>
-                  <Insets left="20.0" />
-               </HBox.margin>
+            <Label prefWidth="75.0" text="Especialidad">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
             </Label>
-            <TextField prefHeight="25.0" prefWidth="145.0">
-               <HBox.margin>
-                  <Insets left="4.0" />
-               </HBox.margin>
-            </TextField>
+            <ComboBox prefHeight="25.0" prefWidth="432.0">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </ComboBox>
          </children>
       </HBox>
       <HBox alignment="CENTER" prefHeight="44.0" prefWidth="395.0">
