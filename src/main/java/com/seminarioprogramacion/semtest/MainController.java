@@ -33,7 +33,7 @@ public class MainController {
         //Cerrar esta ventana
         //((Stage) menup.getScene().getWindow()).close();
         
-        App.newWindow("Mecanicos_listado",((Stage) menup.getScene().getWindow()),"Mecanicos");
+        App.newWindow("Mecanicos_listado",((Stage) menup.getScene().getWindow()),"Mecánicos");
     }
         
     @FXML
@@ -45,6 +45,7 @@ public class MainController {
         
         App.newWindow("Trabajos",((Stage) menup.getScene().getWindow()),"Trabajos del Día");
     }
+   
     @FXML
     private void switchToTurnos() throws IOException {
         //App.setRoot("Mecanicos",400,600);
@@ -55,4 +56,15 @@ public class MainController {
         App.newWindow("Turnos",((Stage) menup.getScene().getWindow()),"Turnos");
     }
 
+//    @FXML
+//    private void switchToEspecialidad() throws IOException {
+//        
+//        App.newWindow("Especialidad",((Stage) menup.getScene().getWindow()),"Especialidad");
+//    }
+
+    @FXML
+    private void switchToGestionEspecialidad() throws IOException {
+        
+        App.newWindow("GestionEspecialidad",((Stage) menup.getScene().getWindow()),"Gestión de Especialidad");
+    }
 }

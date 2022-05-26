@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="164.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.seminarioprogramacion.semtest.GestionEspecialidadController">
+<children>
+  <HBox prefHeight="100.0" prefWidth="100.0">
+     <children>
+        <TableView prefHeight="200.0" prefWidth="258.0" HBox.hgrow="ALWAYS">
+           <columns>
+              <TableColumn prefWidth="75.0" text="Nombre" />
+              <TableColumn prefWidth="75.0" text="Detalle" />
+           </columns>
+        </TableView>
+     </children>
+  </HBox>
+  <HBox prefHeight="37.0" prefWidth="290.0">
+     <children>
+        <Button fx:id="btnNuevo" onAction="#NuevoEspecialidad" prefHeight="25.0" prefWidth="62.0" text="Nuevo">
+        </Button>
+        <Button fx:id="btnEditar" onAction="#ModificarEspecialidad" prefHeight="25.0" prefWidth="71.0" text="Editar">
+
+        </Button>
+        <Button fx:id="btnEliminar" prefHeight="25.0" prefWidth="70.0" onAction="#EliminarEspecialidad" text="Eliminar" textOverrun="WORD_ELLIPSIS">
+          
+        </Button>
+     </children>
+  </HBox>
+</children>
+</VBox>

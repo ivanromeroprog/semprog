@@ -24,8 +24,8 @@
           <Menu mnemonicParsing="false" text="Configuración">
             <items>
                   <MenuItem mnemonicParsing="false" text="Aseguradoras" />
-              <MenuItem mnemonicParsing="false" text="Titulares" />
-                  <MenuItem mnemonicParsing="false" text="Especialidades" />
+                  <MenuItem mnemonicParsing="false" text="Titulares" />
+                  <MenuItem mnemonicParsing="false" onAction="#switchToGestionEspecialidad" text="Gestión de Especialidad" />
                   <MenuItem mnemonicParsing="false" onAction="#switchToMecanicosListado" text="Mecánicos" />
                   <MenuItem mnemonicParsing="false" text="Servicios" />
             </items>
