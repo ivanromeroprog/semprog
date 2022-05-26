@@ -5,12 +5,12 @@
 <?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
-<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
 <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.seminarioprogramacion.semtest.Mecanicos_listadoController">
@@ -22,34 +22,20 @@
                   <Font name="System Bold" size="12.0" />
                </font>
             </Label>
-            <HBox prefHeight="25.0" prefWidth="473.0">
-               <children>
-                  <Label alignment="CENTER" nodeOrientation="RIGHT_TO_LEFT" prefHeight="17.0" prefWidth="123.0" text="Nombre">
-                     <HBox.margin>
-                        <Insets top="5.0" />
-                     </HBox.margin>
-                  </Label>
-                  <Label alignment="CENTER" nodeOrientation="RIGHT_TO_LEFT" prefHeight="17.0" prefWidth="108.0" text="Apellido">
-                     <HBox.margin>
-                        <Insets top="5.0" />
-                     </HBox.margin>
-                  </Label>
-                  <Label alignment="CENTER" nodeOrientation="RIGHT_TO_LEFT" prefHeight="23.0" prefWidth="108.0" text="Especialidad" />
-                  <Label alignment="CENTER" nodeOrientation="RIGHT_TO_LEFT" prefHeight="22.0" prefWidth="124.0" text="Hora inicio" />
-                  <Label alignment="CENTER" nodeOrientation="RIGHT_TO_LEFT" prefHeight="22.0" prefWidth="101.0" text="Hora fin" />
-               </children>
-            </HBox>
             <ScrollPane prefHeight="185.0" prefWidth="605.0">
               <content>
                 <AnchorPane fx:id="lista" minHeight="0.0" minWidth="0.0" prefHeight="179.0" prefWidth="618.0">
                      <children>
-                        <TextField alignment="TOP_LEFT" layoutX="3.0" layoutY="2.0" prefHeight="25.0" prefWidth="114.0" />
-                        <TextField layoutX="118.0" layoutY="2.0" prefHeight="25.0" prefWidth="114.0" />
-                        <CheckBox layoutX="585.0" layoutY="6.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="19.0" />
-                        <Line endX="514.0" layoutX="101.0" layoutY="30.0" startX="-100.0" />
-                        <TextField layoutX="232.0" layoutY="2.0" prefHeight="25.0" prefWidth="114.0" />
-                        <TextField alignment="TOP_LEFT" layoutX="346.0" layoutY="2.0" prefHeight="25.0" prefWidth="114.0" />
-                        <TextField alignment="TOP_LEFT" layoutX="460.0" layoutY="2.0" prefHeight="25.0" prefWidth="108.0" />
+                        <TableView layoutY="-3.0" prefHeight="182.0" prefWidth="620.0">
+                          <columns>
+                            <TableColumn prefWidth="121.0" text="Nombre" />
+                            <TableColumn prefWidth="117.0" text="Apellido" />
+                              <TableColumn prefWidth="116.0" text="Especialidad" />
+                              <TableColumn prefWidth="109.0" text="Hora inicio" />
+                              <TableColumn prefWidth="125.0" text="Hora fin" />
+                          </columns>
+                        </TableView>
+                        <CheckBox layoutX="595.0" layoutY="2.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="19.0" />
                      </children>
                   </AnchorPane>
               </content>
