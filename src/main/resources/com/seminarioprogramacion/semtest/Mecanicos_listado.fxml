@@ -26,7 +26,7 @@
               <content>
                 <AnchorPane fx:id="lista" minHeight="0.0" minWidth="0.0" prefHeight="179.0" prefWidth="618.0">
                      <children>
-                        <TableView layoutY="-3.0" prefHeight="182.0" prefWidth="622.0">
+                        <TableView prefHeight="179.0" prefWidth="622.0">
                           <columns>
                             <TableColumn prefWidth="121.0" text="Nombre" />
                             <TableColumn prefWidth="117.0" text="Apellido" />
