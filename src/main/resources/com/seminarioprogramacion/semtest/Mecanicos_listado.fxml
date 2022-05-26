@@ -31,6 +31,8 @@
                             <TableColumn prefWidth="121.0" text="Nombre" />
                             <TableColumn prefWidth="117.0" text="Apellido" />
                               <TableColumn prefWidth="116.0" text="Especialidad" />
+                              <TableColumn prefWidth="116.0" text="Hora inicio" />
+                              <TableColumn prefWidth="116.0" text="Hora fin" />
                           </columns>
                         </TableView>
                         <CheckBox layoutX="595.0" layoutY="2.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="19.0" />
