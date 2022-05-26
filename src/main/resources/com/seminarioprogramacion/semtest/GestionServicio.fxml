@@ -24,21 +24,21 @@
             <Insets top="5.0" />
          </VBox.margin>
       </HBox>
-      <HBox>
+      <HBox alignment="CENTER">
          <children>
             <Button fx:id="btnNuevo" onAction="#NuevoServicio" prefHeight="25.0" prefWidth="62.0" text="Nuevo">
                <HBox.margin>
-                  <Insets left="30.0" right="30.0" />
+                  <Insets left="15.0" right="15.0" />
                </HBox.margin>
             </Button>
             <Button fx:id="btnEditar" onAction="#ModificarServicio" prefHeight="25.0" prefWidth="71.0" text="Editar">
                <HBox.margin>
-                  <Insets left="30.0" right="30.0" />
+                  <Insets left="15.0" right="15.0" />
                </HBox.margin>
             </Button>
             <Button fx:id="btnEliminar" onAction="#EliminarServicio" prefHeight="25.0" prefWidth="70.0" text="Eliminar" textOverrun="WORD_ELLIPSIS">
                <HBox.margin>
-                  <Insets left="30.0" />
+                  <Insets left="15.0" right="15.0" />
                </HBox.margin>
             </Button>
          </children>

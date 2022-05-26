@@ -23,7 +23,7 @@
             </TableView>
          </children>
       </HBox>
-      <HBox prefHeight="37.0" prefWidth="290.0">
+      <HBox alignment="CENTER" prefHeight="37.0" prefWidth="290.0">
          <children>
             <Button fx:id="btnNuevo" onAction="#NuevaAseguradora" prefHeight="25.0" prefWidth="62.0" text="Nuevo">
                <HBox.margin>
@@ -35,7 +35,7 @@
                </HBox.margin></Button>
             <Button fx:id="btnEliminar" onAction="#EliminarAseguradora" prefHeight="25.0" prefWidth="70.0" text="Eliminar" textOverrun="WORD_ELLIPSIS">
                <HBox.margin>
-                  <Insets left="15.0" />
+                  <Insets left="15.0" right="15.0" />
                </HBox.margin></Button>
          </children>
          <VBox.margin>
