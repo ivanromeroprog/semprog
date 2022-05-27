@@ -23,15 +23,17 @@ import javafx.stage.Stage;
 public class TurnosController implements Initializable {
 
     @FXML
-    private Button btnasignarturno;
+    private Button btnAsignarTurno;
     @FXML
-    private Button btneliminarturno;
+    private Button btnEliminarTurno;
     @FXML
-    private Button brnasistencia;
+    private Button brnAsistencia;
     @FXML
-    private Button btnfichamec;
+    private Button btnFichaMecanica;
     @FXML
-    private Button btncomprobante;
+    private Button btnImprimirComprobante;
+    @FXML
+    private Button btnImprimirFichaMecanica;
 
     /**
      * Initializes the controller class.
@@ -48,11 +50,11 @@ public class TurnosController implements Initializable {
         //Cerrar esta ventana
         //((Stage) menup.getScene().getWindow()).close();
         
-        App.newWindow("AsignarTurno",((Stage) btnasignarturno.getScene().getWindow()),"Asignar Turno");
+        App.newWindow("AsignarTurno",((Stage) btnAsignarTurno.getScene().getWindow()),"Asignar Turno");
     }
     
         @FXML
-    private void EliminarTurno(ActionEvent event) {
+        private void eliminarTurno(ActionEvent event) {
         String mensaje = "¿Está seguro que quiere eliminar este Turno?";
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION, mensaje, ButtonType.YES, ButtonType.NO);
         alert.showAndWait();
@@ -60,10 +62,23 @@ public class TurnosController implements Initializable {
     
         
         @FXML
-    private void ConfirmarAsistencia(ActionEvent event) {
+        private void confirmarAsistencia(ActionEvent event) {
         String mensaje = "¿El titular asistió al turno seleccionado?";
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION, mensaje, ButtonType.YES, ButtonType.NO, ButtonType.CANCEL);
+        alert.showAndWait();     
+    }
+        
+        @FXML
+        private void imprimirComprobante(ActionEvent event) throws IOException{
+        String mensaje = "¿Desea imprimir el comprobante?";
+        Alert alert = new Alert(Alert.AlertType.INFORMATION, mensaje, ButtonType.OK, ButtonType.CANCEL);
         alert.showAndWait();
     }
-    
+        
+         @FXML
+        private void imprimirFichaMecanica(ActionEvent event) throws IOException{
+        String mensaje = "¿Desea imprimir la ficha mecánica?";
+        Alert alert = new Alert(Alert.AlertType.INFORMATION, mensaje, ButtonType.OK, ButtonType.CANCEL);
+        alert.showAndWait();
+    }
 }

@@ -36,12 +36,12 @@
             </HBox>
             <HBox alignment="CENTER" GridPane.columnIndex="1">
                <children>
-                  <Button fx:id="btnimprimir" mnemonicParsing="false" onAction="#switchToAsignarTurno" text="Imprimir" />
+                  <Button fx:id="btnImprimir" onAction="#imprimir" mnemonicParsing="false"  text="Imprimir" />
                </children>
             </HBox>
             <HBox alignment="CENTER">
                <children>
-                  <Button fx:id="btnaprobar" mnemonicParsing="false" onAction="#switchToAsignarTurno" text="Aprobar Informe" />
+                  <Button fx:id="btnAprobarInforme" onAction="#aprobarInforme" mnemonicParsing="false"  text="Aprobar Informe" />
                </children>
             </HBox>
          </children>

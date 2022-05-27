@@ -68,27 +68,27 @@
       </HBox>
       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
          <children>
-            <Button fx:id="btnasignarturno" mnemonicParsing="false" onAction="#switchToAsignarTurno" text="Asignar Turno">
+            <Button fx:id="btnAsignarTurno" mnemonicParsing="false" onAction="#switchToAsignarTurno" text="Asignar Turno">
                <HBox.margin>
                   <Insets bottom="6.0" left="6.0" right="6.0" top="6.0" />
                </HBox.margin>
             </Button>
-            <Button fx:id="btneliminarturno" mnemonicParsing="false" onAction="#EliminarTurno" text="Eliminar Turno">
+            <Button fx:id="btnEliminarTurno" mnemonicParsing="false" onAction="#eliminarTurno" text="Eliminar Turno">
                <HBox.margin>
                   <Insets bottom="6.0" left="6.0" right="6.0" top="6.0" />
                </HBox.margin>
             </Button>
-            <Button fx:id="brnasistencia" mnemonicParsing="false" onAction="#ConfirmarAsistencia" text="Registrar Asistencia">
+            <Button fx:id="brnAsistencia" mnemonicParsing="false" onAction="#confirmarAsistencia" text="Registrar Asistencia">
                <HBox.margin>
                   <Insets bottom="6.0" left="6.0" right="6.0" top="6.0" />
                </HBox.margin>
             </Button>
-            <Button fx:id="btnfichamec" mnemonicParsing="false" text="Imprimir Ficha Mecánica">
+            <Button fx:id="btnFichaMecanica" onAction="#imprimirFichaMecanica"  mnemonicParsing="false" text="Imprimir Ficha Mecánica">
                <HBox.margin>
                   <Insets bottom="6.0" left="6.0" right="6.0" top="6.0" />
                </HBox.margin>
             </Button>
-            <Button fx:id="btncomprobante" mnemonicParsing="false" text="Imprimir Comprobante">
+            <Button fx:id="btnImprimirComprobante" onAction="#imprimirComprobante" mnemonicParsing="false" text="Imprimir Comprobante">
                <HBox.margin>
                   <Insets bottom="6.0" left="6.0" right="6.0" top="6.0" />
                </HBox.margin>
