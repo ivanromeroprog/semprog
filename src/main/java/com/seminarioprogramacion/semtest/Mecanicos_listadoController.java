@@ -45,7 +45,18 @@ public class Mecanicos_listadoController implements Initializable {
         //Cerrar esta ventana
         //((Stage) menup.getScene().getWindow()).close();
         
-        App.newWindow("Mecanicos",((Stage) lista.getScene().getWindow()));
+        App.newWindow("Mecanicos",((Stage) lista.getScene().getWindow()),"Nuevo Mecánico");
+    }
+    
+        
+    @FXML
+    private void switchToMecanicosEditar() throws IOException {
+        //App.setRoot("Mecanicos",400,600);
+        
+        //Cerrar esta ventana
+        //((Stage) menup.getScene().getWindow()).close();
+        
+        App.newWindow("Mecanicos",((Stage) lista.getScene().getWindow()),"Editar Mecánico");
     }
     
 }

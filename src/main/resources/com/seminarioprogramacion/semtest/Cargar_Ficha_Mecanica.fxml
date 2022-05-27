@@ -105,9 +105,13 @@
             <ToolBar prefHeight="40.0" prefWidth="200.0">
               <items>
                   <Label prefHeight="17.0" prefWidth="64.0" text="Insumos" />
-                <Button mnemonicParsing="false" text="-" />
-                  <Button mnemonicParsing="false" text="+" />
-                  <Button mnemonicParsing="false" text="/" />
+                  <Button mnemonicParsing="false" text="➖" />
+                  <Button mnemonicParsing="false" text="➕" />
+                  <Button mnemonicParsing="false" text="🖍">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Button>
               </items>
             </ToolBar>
             <TableView prefHeight="200.0" prefWidth="600.0">
@@ -124,9 +128,13 @@
             <ToolBar prefHeight="40.0" prefWidth="200.0">
                <items>
                   <Label prefHeight="17.0" prefWidth="64.0" text="Tareas" />
-                  <Button mnemonicParsing="false" text="-" />
-                  <Button mnemonicParsing="false" text="+" />
-                  <Button mnemonicParsing="false" text="/" />
+                  <Button mnemonicParsing="false" text="➖" />
+                  <Button mnemonicParsing="false" text="➕" />
+                  <Button mnemonicParsing="false" text="🖍">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Button>
                </items>
             </ToolBar>
             <TableView prefHeight="200.0" prefWidth="600.0">
@@ -143,9 +151,13 @@
             <ToolBar prefHeight="40.0" prefWidth="200.0">
                <items>
                   <Label prefHeight="17.0" prefWidth="64.0" text="Repuestos" />
-                  <Button mnemonicParsing="false" text="-" />
-                  <Button mnemonicParsing="false" text="+" />
-                  <Button mnemonicParsing="false" text="/" />
+                  <Button mnemonicParsing="false" text="➖" />
+                  <Button mnemonicParsing="false" text="➕" />
+                  <Button mnemonicParsing="false" text="🖍">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Button>
                </items>
             </ToolBar>
             <TableView prefHeight="200.0" prefWidth="200.0">

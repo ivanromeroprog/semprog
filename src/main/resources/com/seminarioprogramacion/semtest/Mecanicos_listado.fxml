@@ -43,7 +43,7 @@
                      <FlowPane.margin>
                         <Insets left="15.0" right="15.0" />
                      </FlowPane.margin></Button>
-                  <Button fx:id="btningreso2" onAction="#switchToMecanicos" text="Editar">
+                  <Button fx:id="btningreso2" onAction="#switchToMecanicosEditar" text="Editar">
                      <FlowPane.margin>
                         <Insets left="15.0" right="15.0" />
                      </FlowPane.margin></Button>

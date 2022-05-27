@@ -33,7 +33,7 @@ public class MainController {
         //Cerrar esta ventana
         //((Stage) menup.getScene().getWindow()).close();
         
-        App.newWindow("Mecanicos_listado",((Stage) menup.getScene().getWindow()),"Gestión de Mecánicos");
+        App.newWindow("Mecanicos_listado",((Stage) menup.getScene().getWindow()),"Gestionar Mecánicos");
     }
         
     @FXML
@@ -59,19 +59,19 @@ public class MainController {
     @FXML
     private void switchToGestionEspecialidad() throws IOException {
         
-        App.newWindow("GestionEspecialidad",((Stage) menup.getScene().getWindow()),"Gestión de Especialidad");
+        App.newWindow("GestionEspecialidad",((Stage) menup.getScene().getWindow()),"Gestionar Especialidades");
     }
     
     @FXML
     private void switchToGestionAseguradora() throws IOException {
         
-        App.newWindow("GestionAseguradora",((Stage) menup.getScene().getWindow()),"Gestión de Aseguradora");
+        App.newWindow("GestionAseguradora",((Stage) menup.getScene().getWindow()),"Gestionar Aseguradoras");
     }
     
     @FXML
     private void switchToGestionServicio() throws IOException {
         
-        App.newWindow("GestionServicio",((Stage) menup.getScene().getWindow()),"Gestión de Servicio");
+        App.newWindow("GestionServicio",((Stage) menup.getScene().getWindow()),"Gestionar Servicios");
     }
             
     @FXML
