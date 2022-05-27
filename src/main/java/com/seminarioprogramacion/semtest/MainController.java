@@ -73,4 +73,10 @@ public class MainController {
         
         App.newWindow("GestionServicio",((Stage) menup.getScene().getWindow()),"Gestión de Servicio");
     }
+            
+    @FXML
+    private void switchToPrestacionesListado() throws IOException {   
+        
+        App.newWindow("Prestaciones_Listado",((Stage) menup.getScene().getWindow()),"Listado de Prestaciones");
+    }
 }

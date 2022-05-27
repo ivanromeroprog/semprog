@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.seminarioprogramacion.semtest.Cargar_Ficha_MecanicaController">
    <children>
       <VBox prefHeight="200.0" prefWidth="100.0">
          <children>
@@ -172,12 +172,12 @@
                   <Insets left="10.0" top="15.0" />
                </padding>
             </Label>
-            <Button alignment="CENTER_RIGHT" defaultButton="true" mnemonicParsing="false" text="Guardar">
+            <Button fx:id="btnGuardar" alignment="CENTER_RIGHT" defaultButton="true" mnemonicParsing="false" onAction="#guardar" text="Guardar">
                <HBox.margin>
                   <Insets bottom="10.0" left="320.0" right="10.0" top="70.0" />
                </HBox.margin>
             </Button>
-            <Button alignment="CENTER_RIGHT" cancelButton="true" mnemonicParsing="false" text="Cancelar">
+            <Button fx:id="btnCancelar" alignment="CENTER_RIGHT" cancelButton="true" mnemonicParsing="false" onAction="#cancelar" text="Cancelar">
                <HBox.margin>
                   <Insets bottom="10.0" right="10.0" top="70.0" />
                </HBox.margin>

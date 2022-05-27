@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="894.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.seminarioprogramacion.semtest.TurnosController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="894.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.seminarioprogramacion.semtest.PrestacionesController">
    <children>
       <HBox alignment="CENTER" prefHeight="30.0" prefWidth="731.0">
          <children>
@@ -58,25 +58,34 @@
          <children>
             <TableView prefHeight="320.0" prefWidth="601.0" HBox.hgrow="ALWAYS">
                <columns>
-                  <TableColumn prefWidth="104.0" text="Ficha Cargada" />
+                  <TableColumn text="Fecha " />
+                  <TableColumn text="Horario" />
+                  <TableColumn text="Titular" />
+                  <TableColumn text="Vehículo" />
+                  <TableColumn text="Servicio" />
+                  <TableColumn text="Mecánico" />
+                  <TableColumn prefWidth="110.0" text="Conformidad" />
+                  <TableColumn prefWidth="120.0" text="Trabajo Aprobado" />
+                  <TableColumn prefWidth="90.0" text="Costo Total" />
+                  <TableColumn prefWidth="100.0" text="Ficha Cargada" />
                </columns>
             </TableView>
          </children>
       </HBox>
       <HBox prefHeight="291.0" prefWidth="894.0">
          <children>
-            <Button fx:id="btnasignarturno" mnemonicParsing="false" onAction="#switchToAsignarTurno" text="Cargar Ficha Mecánica">
+            <Button fx:id="btnCargarFichaMecanica" mnemonicParsing="false" onAction="#switchToCargarFichaMecanica" text="Cargar Ficha Mecánica">
                <HBox.margin>
                   <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
                </HBox.margin>
             </Button>
-            <Button fx:id="btncomprobante" alignment="CENTER" mnemonicParsing="false" prefHeight="25.0" prefWidth="209.0" text="Imprimir Constancia Conformidad">
+            <Button fx:id="btnImprimirConstanciaConformidad" onAction="#imprimirConstanciaConformidad" alignment="CENTER" mnemonicParsing="false" prefHeight="25.0" prefWidth="209.0" text="Imprimir Constancia Conformidad">
                <HBox.margin>
                   <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
                </HBox.margin></Button>
             <Pane prefHeight="129.0" prefWidth="353.0" style="-fx-border-color: aabbcc; -fx-background-color: E1E0E0;">
                <children>
-                  <Button layoutX="196.0" layoutY="96.0" mnemonicParsing="false" text="Registrar Conformidad" />
+                  <Button fx:id="btnRegistrarConformidad" onAction="#registrarConformidad" layoutX="196.0" layoutY="96.0" mnemonicParsing="false" text="Registrar Conformidad" />
                   <Label layoutX="8.0" layoutY="17.0" prefHeight="17.0" prefWidth="66.0" text="Conforme:" />
                   <RadioButton layoutX="74.0" layoutY="17.0" mnemonicParsing="false" text="Si" />
                   <RadioButton layoutX="113.0" layoutY="17.0" mnemonicParsing="false" text="No" />
