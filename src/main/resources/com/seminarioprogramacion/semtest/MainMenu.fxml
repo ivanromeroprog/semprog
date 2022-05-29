@@ -36,6 +36,7 @@
             </Menu>
             <Menu mnemonicParsing="false" text="Sistema">
                <items>
+                  <MenuItem mnemonicParsing="false" onAction="#acercaDe" text="Acerca de..." />
                   <MenuItem mnemonicParsing="false" onAction="#CloseApp" text="Salir " />
                </items>
             </Menu>
