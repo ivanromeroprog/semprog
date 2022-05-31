@@ -13,7 +13,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
-import javafx.scene.layout.AnchorPane;
+import javafx.scene.control.TableView;
 import javafx.stage.Stage;
 
 /**
@@ -21,7 +21,7 @@ import javafx.stage.Stage;
  *
  * @author ikukl
  */
-public class Mecanicos_listadoController implements Initializable {
+public class Titulares_listadoController implements Initializable {
 
     @FXML
     private Button btningreso1;
@@ -29,7 +29,8 @@ public class Mecanicos_listadoController implements Initializable {
     private Button btningreso2;
     @FXML
     private Button btningreso;
-    private AnchorPane lista;
+    @FXML
+    private TableView<?> lista;
 
     /**
      * Initializes the controller class.
@@ -37,32 +38,33 @@ public class Mecanicos_listadoController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }   
-    
+    }    
+
     @FXML
-    private void switchToMecanicos() throws IOException {
-        //App.setRoot("Mecanicos",400,600);
+    private void switchToTitulares() throws IOException {
+        //App.setRoot("Titulares",400,600);
         
         //Cerrar esta ventana
         //((Stage) menup.getScene().getWindow()).close();
         
-        App.newWindow("Mecanicos",((Stage) lista.getScene().getWindow()),"Nuevo Mecánico");
+        App.newWindow("Titulares",((Stage) lista.getScene().getWindow()),"Nuevo Mecánico");
     }
     
         
     @FXML
-    private void switchToMecanicosEditar() throws IOException {
-        //App.setRoot("Mecanicos",400,600);
+    private void switchToTitularesEditar() throws IOException {
+        //App.setRoot("Titulares",400,600);
         
         //Cerrar esta ventana
         //((Stage) menup.getScene().getWindow()).close();
         
-        App.newWindow("Mecanicos",((Stage) lista.getScene().getWindow()),"Editar Mecánico");
+        App.newWindow("Titulares",((Stage) lista.getScene().getWindow()),"Editar Mecánico");
     }
     
-            @FXML
+        
+    @FXML
     private void eliminar(ActionEvent event) {
-        String mensaje = "¿Está seguro que quiere eliminar este mecanico?";
+        String mensaje = "¿Está seguro que quiere eliminar este titular?";
          Alert alert = new Alert(Alert.AlertType.CONFIRMATION, mensaje, ButtonType.YES, ButtonType.NO);
         alert.showAndWait();
     }
