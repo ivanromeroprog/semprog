@@ -21,7 +21,7 @@ import javafx.stage.Stage;
  *
  * @author ikukl
  */
-public class Titulares_listadoController implements Initializable {
+public class Vehiculos_listadoController implements Initializable {
 
     @FXML
     private Button btningreso1;
@@ -41,30 +41,30 @@ public class Titulares_listadoController implements Initializable {
     }    
 
     @FXML
-    private void switchToTitulares() throws IOException {
-        //App.setRoot("Titulares",400,600);
+    private void switchToVehiculos() throws IOException {
+        //App.setRoot("Vehiculos",400,600);
         
         //Cerrar esta ventana
         //((Stage) menup.getScene().getWindow()).close();
         
-        App.newWindow("Titulares",((Stage) lista.getScene().getWindow()),"Nuevo Titular");
+        App.newWindow("Vehiculos",((Stage) lista.getScene().getWindow()),"Nuevo Vehículo");
     }
     
         
     @FXML
-    private void switchToTitularesEditar() throws IOException {
-        //App.setRoot("Titulares",400,600);
+    private void switchToVehiculosEditar() throws IOException {
+        //App.setRoot("Vehiculos",400,600);
         
         //Cerrar esta ventana
         //((Stage) menup.getScene().getWindow()).close();
         
-        App.newWindow("Titulares",((Stage) lista.getScene().getWindow()),"Editar Titular");
+        App.newWindow("Vehiculos",((Stage) lista.getScene().getWindow()),"Editar Vehículo");
     }
     
         
     @FXML
     private void eliminar(ActionEvent event) {
-        String mensaje = "¿Está seguro que quiere eliminar este titular?";
+        String mensaje = "¿Está seguro que quiere eliminar este Vehículo?";
          Alert alert = new Alert(Alert.AlertType.CONFIRMATION, mensaje, ButtonType.YES, ButtonType.NO);
         alert.showAndWait();
     }

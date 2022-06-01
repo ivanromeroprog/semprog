@@ -24,7 +24,7 @@
             <items>
                   <MenuItem mnemonicParsing="false" onAction="#switchToGestionAseguradora" text="Aseguradoras" />
                   <MenuItem mnemonicParsing="false" onAction="#switchToTitularesListado" text="Titulares" />
-                  <MenuItem mnemonicParsing="false" text="Vehículos" />
+                  <MenuItem mnemonicParsing="false" onAction="#switchToVehiculosListado" text="Vehículos" />
                   <MenuItem mnemonicParsing="false" onAction="#switchToGestionEspecialidad" text="Especialidad" />
                   <MenuItem mnemonicParsing="false" onAction="#switchToMecanicosListado" text="Mecánicos" />
                   <MenuItem mnemonicParsing="false" onAction="#switchToGestionServicio" text="Servicios" />
