@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.seminarioprogramacion.semtest.Titulares_listadoController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="164.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.seminarioprogramacion.semtest.Titulares_listadoController">
    <children>
       <VBox alignment="CENTER" prefHeight="299.0" prefWidth="639.0" spacing="20.0">
          <children>
@@ -20,7 +20,7 @@
                   <TableColumn prefWidth="108.0" text="Teléfono" />
               </columns>
             </TableView>
-            <FlowPane alignment="CENTER" prefHeight="26.0" prefWidth="284.0">
+            <FlowPane alignment="CENTER" prefHeight="37.0" prefWidth="290.0">
                <children>
                   <Button fx:id="btningreso1" onAction="#switchToTitulares" text="Nuevo">
                      <FlowPane.margin>

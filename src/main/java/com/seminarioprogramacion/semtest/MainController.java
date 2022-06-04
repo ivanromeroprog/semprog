@@ -13,7 +13,7 @@ public class MainController {
 
     @FXML
     private MenuBar menup;
-
+    
     @FXML
     private void CloseApp() throws IOException {
         Platform.exit();
@@ -22,19 +22,17 @@ public class MainController {
     @FXML
     private void switchToTest() throws IOException {
         //App.setRoot("testui",400,600);
-
         //Cerrar esta ventana
         //((Stage) menup.getScene().getWindow()).close();
-        App.newWindow("testui", ((Stage) menup.getScene().getWindow()));
+        App.newWindow("testui", (Stage) menup.getScene().getWindow());
     }
 
     @FXML
     private void switchToMecanicosListado() throws IOException {
         //App.setRoot("Mecanicos",400,600);
-
         //Cerrar esta ventana
         //((Stage) menup.getScene().getWindow()).close();
-        App.newWindow("Mecanicos_listado", ((Stage) menup.getScene().getWindow()), "Gestionar Mecánicos");
+        App.newWindow("Mecanicos_listado", (Stage) menup.getScene().getWindow(), "Gestionar Mecánicos");
     }
 
     @FXML
@@ -82,13 +80,13 @@ public class MainController {
     @FXML
     private void switchToTitularesListado() throws IOException {
 
-        App.newWindow("Titulares_listado", ((Stage) menup.getScene().getWindow()), "Listado de Titulares");
+        App.newWindow("Titulares_listado", ((Stage) menup.getScene().getWindow()), "Gestionar Titulares");
     }
  
     @FXML
     private void switchToVehiculosListado() throws IOException {
 
-        App.newWindow("Vehiculos_listado", ((Stage) menup.getScene().getWindow()), "Listado de Vehiculos");
+        App.newWindow("Vehiculos_listado", ((Stage) menup.getScene().getWindow()), "Gestionar Vehiculos");
     }   
     
     @FXML

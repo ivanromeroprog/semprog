@@ -21,8 +21,11 @@ public class App extends Application {
     public void start(Stage stage) throws IOException {
         scene = new Scene(loadFXML("LoginWindow"));
         this.stage = stage;
+        stage.setTitle("Sistema Supercharger");
         stage.setScene(scene);
+        stage.setResizable(false);
         stage.show();
+        
     }
 
     /*
