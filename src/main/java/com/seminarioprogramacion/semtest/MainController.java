@@ -90,6 +90,12 @@ public class MainController {
 
         App.newWindow("Vehiculos_listado", ((Stage) menup.getScene().getWindow()), "Listado de Vehiculos");
     }   
+    
+    @FXML
+    private void switchToReporteMensual() throws IOException {
+
+        App.newWindow("ReporteMensual", ((Stage) menup.getScene().getWindow()), "Generar Informe Mensual");
+    } 
     @FXML
     private void acercaDe() throws IOException {
         Alert a = new Alert(AlertType.INFORMATION,"Romero, Iván Yamil - VINF08663\n" +

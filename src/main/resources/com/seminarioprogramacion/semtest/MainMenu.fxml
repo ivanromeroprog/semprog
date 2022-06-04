@@ -32,7 +32,7 @@
           </Menu>
             <Menu mnemonicParsing="false" text="Reportes">
                <items>
-                  <MenuItem mnemonicParsing="false" text="Infome mensual" />
+                  <MenuItem mnemonicParsing="false" onAction="#switchToReporteMensual" text="Infome mensual" />
                </items>
             </Menu>
             <Menu mnemonicParsing="false" text="Sistema">
