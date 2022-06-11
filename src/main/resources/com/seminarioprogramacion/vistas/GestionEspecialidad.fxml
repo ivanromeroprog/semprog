@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="164.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.seminarioprogramacion.controlador.GestionEspecialidadController">
+<children>
+  <HBox prefHeight="100.0" prefWidth="100.0">
+     <children>
+        <TableView prefHeight="200.0" prefWidth="258.0" HBox.hgrow="ALWAYS">
+           <columns>
+              <TableColumn prefWidth="75.0" text="Nombre" />
+              <TableColumn prefWidth="75.0" text="Detalle" />
+           </columns>
+        </TableView>
+     </children>
+  </HBox>
+  <HBox alignment="CENTER" prefHeight="37.0" prefWidth="290.0">
+     <children>
+        <Button fx:id="btnNuevo" onAction="#NuevoEspecialidad" prefHeight="25.0" prefWidth="62.0" text="Nuevo">
+               <HBox.margin>
+                  <Insets left="15.0" right="15.0" />
+               </HBox.margin></Button>
+        <Button fx:id="btnEditar" onAction="#ModificarEspecialidad" prefHeight="25.0" prefWidth="71.0" text="Editar">
+               <HBox.margin>
+                  <Insets left="15.0" right="15.0" />
+               </HBox.margin></Button>
+        <Button fx:id="btnEliminar" onAction="#EliminarEspecialidad" prefHeight="25.0" prefWidth="70.0" text="Eliminar" textOverrun="WORD_ELLIPSIS">
+               <HBox.margin>
+                  <Insets left="15.0" right="15.0" />
+               </HBox.margin></Button>
+     </children>
+  </HBox>
+</children>
+</VBox>

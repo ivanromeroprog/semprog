@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="400.0" minWidth="600.0" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.seminarioprogramacion.controlador.MainController">
+   <children>
+      <MenuBar fx:id="menup">
+        <menus>
+          <Menu mnemonicParsing="false" text="Turnos">
+            <items>
+                  <MenuItem mnemonicParsing="false" onAction="#switchToTurnos" text="Gestión de Turnos" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Prestaciones">
+            <items>
+                  <MenuItem mnemonicParsing="false" onAction="#switchToPrestacionesListado" text="Listado de prestaciones" />
+                  <MenuItem mnemonicParsing="false" onAction="#switchToTrabajos" text="Listado de trabajos del día" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Gestión">
+            <items>
+                  <MenuItem mnemonicParsing="false" onAction="#switchToGestionAseguradora" text="Aseguradoras" />
+                  <MenuItem mnemonicParsing="false" onAction="#switchToTitularesListado" text="Titulares" />
+                  <MenuItem mnemonicParsing="false" onAction="#switchToVehiculosListado" text="Vehículos" />
+                  <MenuItem mnemonicParsing="false" onAction="#switchToGestionEspecialidad" text="Especialidad" />
+                  <MenuItem mnemonicParsing="false" onAction="#switchToMecanicosListado" text="Mecánicos" />
+                  <MenuItem mnemonicParsing="false" onAction="#switchToGestionServicio" text="Servicios" />
+            </items>
+          </Menu>
+            <Menu mnemonicParsing="false" text="Reportes">
+               <items>
+                  <MenuItem mnemonicParsing="false" onAction="#switchToReporteMensual" text="Infome mensual" />
+               </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Sistema">
+               <items>
+                  <MenuItem mnemonicParsing="false" onAction="#acercaDe" text="Acerca de..." />
+                  <MenuItem mnemonicParsing="false" onAction="#CloseApp" text="Salir " />
+               </items>
+            </Menu>
+        </menus>
+      </MenuBar>
+   </children>
+</VBox>
