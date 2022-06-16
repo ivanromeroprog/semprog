@@ -4,9 +4,12 @@
  */
 package com.seminarioprogramacion.controlador;
 
+import com.seminarioprogramacion.dto.TitularDTO;
 import com.seminarioprogramacion.main.App;
+import com.seminarioprogramacion.modelo.Titular;
 import java.io.IOException;
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -38,7 +41,12 @@ public class Titulares_listadoController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        Titular titular = new Titular();
+        List<TitularDTO> lista = titular.listar();
+        for(TitularDTO tit: lista){
+            System.out.print(tit.getNombre());
+            System.out.println(tit.getApellido());
+        }
     }    
 
     @FXML
