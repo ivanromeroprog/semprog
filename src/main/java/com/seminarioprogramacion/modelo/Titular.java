@@ -37,8 +37,8 @@ public class Titular extends Modelo{
     }
 
     public List<TitularDTO> listar() {
-        List<TitularDTO> listadoTitulars = titularDao.listar();
-        return listadoTitulars;
+        List<TitularDTO> listadoTitulares = titularDao.listar();
+        return listadoTitulares;
     }
 
     public boolean insertar(String nombre, String apellido, String tipo_dic, int nro_doc, String telefono) {

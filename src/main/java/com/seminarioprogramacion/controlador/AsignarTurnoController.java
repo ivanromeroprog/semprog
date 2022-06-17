@@ -4,13 +4,19 @@
  */
 package com.seminarioprogramacion.controlador;
 
+import com.seminarioprogramacion.dto.TitularDTO;
+import com.seminarioprogramacion.dto.ServicioDTO;
 import com.seminarioprogramacion.main.App;
+import com.seminarioprogramacion.modelo.Titular;
+import com.seminarioprogramacion.modelo.Servicio;
 import java.io.IOException;
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.stage.Stage;
 
 /**
@@ -21,6 +27,12 @@ import javafx.stage.Stage;
 public class AsignarTurnoController implements Initializable {
 
     @FXML
+    private ComboBox combobox_titulares;
+    
+    @FXML
+    private ComboBox combobox_servicios;    
+    
+    @FXML
     private Button btnguardar;
     @FXML
     private Button btncancelar;
@@ -30,7 +42,16 @@ public class AsignarTurnoController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        
+        //Para la lista de titulares
+        Titular titular = new Titular(); //Modelo
+        List<TitularDTO> titulares = titular.listar(); //Lista 
+        combobox_titulares.getItems().addAll(titulares); //Llena combobox
+        
+        //Para la lista de servicios
+        Servicio servicio = new Servicio(); //Modelo
+        List<ServicioDTO> servicios = servicio.listar(); //Lista                
+        combobox_servicios.getItems().addAll(servicios); //Llena combobox
     }    
     @FXML
     private void cancelar() throws IOException {

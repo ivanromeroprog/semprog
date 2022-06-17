@@ -73,5 +73,8 @@ public class TitularDTO {
         this.telefono = telefono;
     }
     
-    
+    @Override
+    public String toString() {
+        return this.nombre + " " + this.apellido + " - " + this.nro_doc;
+    }    
 }

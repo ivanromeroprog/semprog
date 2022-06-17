@@ -19,9 +19,9 @@ import org.sqlite.JDBC;
  *
  * @author agustin
  */
-public class ConexionSql {
+public class ConexionSql { //Singleton
     private String URL = "jdbc:sqlite:";
-    private Connection connection = null;
+    private Connection connection = null; //instancia de una conexion SQL (Java)
     private static ConexionSql instancia = null;
     
     

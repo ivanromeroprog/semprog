@@ -15,5 +15,16 @@ public class FabricaDAOSQL extends FabricaDAO {
     public TitularDAO getTitularDao() {
         return new TitularDAOSQL();
     }
+    
+    @Override
+    public EspecialidadDAO getEspecialidadDao() {
+        return new EspecialidadDAOSQL();
+    }
+    
+    @Override
+    public ServicioDAO getServicioDao() {
+        return new ServicioDAOSQL();
+    }
+
 
 }

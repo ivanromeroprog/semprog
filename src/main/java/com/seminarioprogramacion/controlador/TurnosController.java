@@ -4,9 +4,12 @@
  */
 package com.seminarioprogramacion.controlador;
 
+import com.seminarioprogramacion.dto.EspecialidadDTO;
 import com.seminarioprogramacion.main.App;
+import com.seminarioprogramacion.modelo.Especialidad;
 import java.io.IOException;
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -14,6 +17,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.ComboBox;
 import javafx.stage.Stage;
 
 /**
@@ -35,13 +39,24 @@ public class TurnosController implements Initializable {
     private Button btnImprimirComprobante;
     @FXML
     private Button btnImprimirFichaMecanica;
+    @FXML
+    private ComboBox combobox_especialidades;
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        //Especialidad
+        Especialidad especialidad = new Especialidad();
+        List<EspecialidadDTO> especialidades = especialidad.listar();
+        combobox_especialidades.getItems().addAll(especialidades);         
+             
+        
+        //Mecanicos
+        //Modelo
+        //Lista
+        //combobox
     }   
     
     @FXML
