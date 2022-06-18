@@ -4,6 +4,7 @@
  */
 package com.seminarioprogramacion.dao;
 
+import com.seminarioprogramacion.dto.EspecialidadDTO;
 import com.seminarioprogramacion.dto.ServicioDTO;
 import java.util.Date;
 import java.util.List;
@@ -17,6 +18,8 @@ public interface ServicioDAO {
      ServicioDTO buscar(String nombre);
      
      ServicioDTO buscar(int id_servicio);
+     
+     List<ServicioDTO> listar(EspecialidadDTO especialidad);
      
      List<ServicioDTO> listar();
      

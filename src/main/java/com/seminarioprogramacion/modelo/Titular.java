@@ -41,11 +41,11 @@ public class Titular extends Modelo{
         return listadoTitulares;
     }
 
-    public boolean insertar(String nombre, String apellido, String tipo_dic, int nro_doc, String telefono) {
+    public boolean insertar(String nombre, String apellido, String tipo_dic, String nro_doc, String telefono) {
         return titularDao.insertar(nombre, apellido, tipo_dic, nro_doc, telefono);
     }
 
-    public boolean modificar(int id_titular, String nombre, String apellido, String tipo_dic, int nro_doc, String telefono) {
+    public boolean modificar(int id_titular, String nombre, String apellido, String tipo_dic, String nro_doc, String telefono) {
         return titularDao.modificar(id_titular, nombre, apellido, tipo_dic, nro_doc, telefono);
     }
 

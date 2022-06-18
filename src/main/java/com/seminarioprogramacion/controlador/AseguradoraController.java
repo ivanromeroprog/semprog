@@ -14,7 +14,7 @@ import javafx.stage.Stage;
 
 public class AseguradoraController implements Initializable {
 
-        @FXML
+    @FXML
     private Button btnguardar;
     @FXML
     private Button btncancelar;

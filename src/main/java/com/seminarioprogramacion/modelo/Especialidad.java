@@ -6,8 +6,8 @@ package com.seminarioprogramacion.modelo;
 
 import com.seminarioprogramacion.dao.FabricaDAO;
 import com.seminarioprogramacion.dao.EspecialidadDAO;
+import com.seminarioprogramacion.dao.ServicioDAO;
 import com.seminarioprogramacion.dto.EspecialidadDTO;
-import java.util.Date;
 import java.util.List;
 
 /**
@@ -18,10 +18,12 @@ public class Especialidad extends Modelo{
      
     private final FabricaDAO fabricaDao;
     private final EspecialidadDAO especialidadDao;
+    private final ServicioDAO servicioDao;
 
     public Especialidad() {
         fabricaDao = FabricaDAO.getFactory("FabricaDAOSQL");
         especialidadDao = fabricaDao.getEspecialidadDao();
+        servicioDao = fabricaDao.getServicioDao();
     }
 
     public EspecialidadDTO buscar(String nombre) {
@@ -31,6 +33,8 @@ public class Especialidad extends Modelo{
     
     public EspecialidadDTO buscar(int id_especialidad) {
         EspecialidadDTO especialidad = especialidadDao.buscar(id_especialidad);
+        //Establecer lista de servicios de la especialidad al cargar solo una
+        especialidad.setServicios(servicioDao.listar(especialidad));
         return especialidad;
     }
 

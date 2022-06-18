@@ -6,9 +6,11 @@ package com.seminarioprogramacion.controlador;
 
 import com.seminarioprogramacion.dto.TitularDTO;
 import com.seminarioprogramacion.dto.ServicioDTO;
+import com.seminarioprogramacion.dto.VehiculoDTO;
 import com.seminarioprogramacion.main.App;
 import com.seminarioprogramacion.modelo.Titular;
 import com.seminarioprogramacion.modelo.Servicio;
+import com.seminarioprogramacion.modelo.Vehiculo;
 import java.io.IOException;
 import java.net.URL;
 import java.util.List;
@@ -36,6 +38,10 @@ public class AsignarTurnoController implements Initializable {
     private Button btnguardar;
     @FXML
     private Button btncancelar;
+    @FXML
+    private ComboBox combobox_vehiculo;
+    @FXML
+    private ComboBox combobox_mecanico;
 
     /**
      * Initializes the controller class.
@@ -52,6 +58,14 @@ public class AsignarTurnoController implements Initializable {
         Servicio servicio = new Servicio(); //Modelo
         List<ServicioDTO> servicios = servicio.listar(); //Lista                
         combobox_servicios.getItems().addAll(servicios); //Llena combobox
+         
+        //Para la lista de titulares
+        Vehiculo vehiculo = new Vehiculo(); //Modelo
+        List<VehiculoDTO> vehiculos = vehiculo.listar(); //Lista 
+        combobox_vehiculo.getItems().addAll(vehiculos); //Llena combobox
+        
+        //TODO: Vehiculos por titulares
+        //TODO: Filtrar mecanicos por Servicio > Especialidad
     }    
     @FXML
     private void cancelar() throws IOException {

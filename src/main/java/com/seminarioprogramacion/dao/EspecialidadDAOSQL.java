@@ -95,6 +95,9 @@ public class EspecialidadDAOSQL implements EspecialidadDAO {
                 descripcion_db = rs.getString("descripcion");
 
                 especialidad = new EspecialidadDTO(id_especialidad_db, nombre_db, descripcion_db);
+                
+                //Asignar Servicios de la especialidad
+                
             }
 
         } catch (SQLException e) {
@@ -110,6 +113,7 @@ public class EspecialidadDAOSQL implements EspecialidadDAO {
         return especialidad;
     }
 
+    
     @Override
     public List<EspecialidadDTO> listar() {
         Connection con = null;
@@ -169,7 +173,7 @@ public class EspecialidadDAOSQL implements EspecialidadDAO {
 
     @Override
     public void cerrarConexion() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        conexion.desconectar();
     }
 
 }
