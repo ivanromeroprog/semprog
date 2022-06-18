@@ -4,6 +4,7 @@
  */
 package com.seminarioprogramacion.dao;
 
+import com.seminarioprogramacion.dto.TitularDTO;
 import com.seminarioprogramacion.dto.VehiculoDTO;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -142,6 +143,19 @@ public class VehiculoDAOSQL implements VehiculoDAO {
 
     @Override
     public List<VehiculoDTO> listar() {
+        return _listar(0);
+    }
+    
+    @Override
+    public List<VehiculoDTO> listar(TitularDTO titular) {
+        return _listar(titular.getId_titular());
+    }
+    
+    /*
+    Metodo privado de soporte
+    para no repetir código
+    */
+    private List<VehiculoDTO> _listar(int id_titular){
         Connection con = null;
         PreparedStatement sentencia = null;
         ResultSet rs = null;
@@ -151,8 +165,19 @@ public class VehiculoDAOSQL implements VehiculoDAO {
         try {
             con = conexion.getConnection();
             String sql = "select * "
-                    + "from Vehiculo order by id_vehiculo DESC";
+                    + "from Vehiculo";
+            
+            if(id_titular > 0){
+                sql += " where Vehiculo.id_titular = ? ";
+            }
+            
+            sql += " order by id_vehiculo DESC";
+            
             sentencia = con.prepareStatement(sql);
+                        
+            if(id_titular > 0){
+                sentencia.setInt(1, id_titular); 
+            }
 
             rs = sentencia.executeQuery();
 
