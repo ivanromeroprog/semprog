@@ -26,5 +26,10 @@ public class FabricaDAOSQL extends FabricaDAO {
         return new ServicioDAOSQL();
     }
 
+    @Override
+    public MecanicoDAO getMecanicoDao() {
+       return new MecanicoDAOSQL();
+    }
+
 
 }

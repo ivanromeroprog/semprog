@@ -5,8 +5,10 @@
 package com.seminarioprogramacion.controlador;
 
 import com.seminarioprogramacion.dto.EspecialidadDTO;
+import com.seminarioprogramacion.dto.MecanicoDTO;
 import com.seminarioprogramacion.main.App;
 import com.seminarioprogramacion.modelo.Especialidad;
+import com.seminarioprogramacion.modelo.Mecanico;
 import java.io.IOException;
 import java.net.URL;
 import java.util.List;
@@ -41,6 +43,8 @@ public class TurnosController implements Initializable {
     private Button btnImprimirFichaMecanica;
     @FXML
     private ComboBox combobox_especialidades;
+    @FXML
+    private ComboBox combobox_mecanicos;
 
     /**
      * Initializes the controller class.
@@ -52,8 +56,10 @@ public class TurnosController implements Initializable {
         List<EspecialidadDTO> especialidades = especialidad.listar();
         combobox_especialidades.getItems().addAll(especialidades);         
              
-        
         //Mecanicos
+         Mecanico mecanico = new Mecanico();
+        List<MecanicoDTO> mecanicos = mecanico.listar();
+        combobox_mecanicos.getItems().addAll(mecanicos); 
         //Modelo
         //Lista
         //combobox

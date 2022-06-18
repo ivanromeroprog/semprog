@@ -29,7 +29,7 @@
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                </HBox.margin>
             </Label>
-            <ComboBox layoutX="153.0" layoutY="16.0" prefWidth="150.0">
+            <ComboBox fx:id="combobox_mecanicos" layoutX="153.0" layoutY="16.0" prefWidth="150.0">
                <HBox.margin>
                   <Insets bottom="6.0" right="6.0" top="6.0" />
                </HBox.margin>

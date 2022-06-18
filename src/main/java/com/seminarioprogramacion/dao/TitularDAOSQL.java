@@ -59,7 +59,8 @@ public class TitularDAOSQL implements TitularDAO {
                 id_titular = rs.getInt("id_titular");
                 nro_doc = rs.getInt("nro_doc");
 
-                titular = new TitularDTO(id_titular, nombre_db, apellido_db, tipo_doc, nro_doc, telefono);
+                titular = new TitularDTO(id_titular, nombre_db,
+                        apellido_db, tipo_doc, nro_doc, telefono);
             }
 
         } catch (SQLException e) {
