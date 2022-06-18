@@ -5,7 +5,6 @@
 package com.seminarioprogramacion.dao;
 
 import com.seminarioprogramacion.dto.EspecialidadDTO;
-import java.util.Date;
 import java.util.List;
 
 /**

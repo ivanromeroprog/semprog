@@ -4,6 +4,8 @@
  */
 package com.seminarioprogramacion.dto;
 
+import java.util.List;
+
 /**
  *
  * @author Esther
@@ -12,11 +14,20 @@ public class EspecialidadDTO {
     private int id_especialidad;
     private String nombre;
     private String descripcion;
+    private List<ServicioDTO> servicios;
 
     public EspecialidadDTO(int id_especialidad, String nombre, String descripcion) {
         this.id_especialidad = id_especialidad;
         this.nombre = nombre;
         this.descripcion = descripcion;
+    }
+
+    public List<ServicioDTO> getServicios() {
+        return servicios;
+    }
+
+    public void setServicios(List<ServicioDTO> servicios) {
+        this.servicios = servicios;
     }
 
     public int getId_especialidad() {

@@ -20,9 +20,9 @@ public interface TitularDAO {
      
      List<TitularDTO> listar();
      
-     boolean insertar(String nombre, String apellido, String tipo_dic, int nro_doc, String telefono);
+     boolean insertar(String nombre, String apellido, String tipo_dic, String nro_doc, String telefono);
      
-     boolean modificar(int id_titular, String nombre, String apellido, String tipo_dic, int nro_doc, String telefono);
+     boolean modificar(int id_titular, String nombre, String apellido, String tipo_dic, String nro_doc, String telefono);
      
      boolean borrar(int id_titular);
      

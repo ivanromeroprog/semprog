@@ -7,7 +7,6 @@ package com.seminarioprogramacion.modelo;
 import com.seminarioprogramacion.dao.FabricaDAO;
 import com.seminarioprogramacion.dao.ServicioDAO;
 import com.seminarioprogramacion.dto.ServicioDTO;
-import java.util.Date;
 import java.util.List;
 
 /**

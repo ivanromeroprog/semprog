@@ -12,6 +12,11 @@ package com.seminarioprogramacion.dao;
 public class FabricaDAOSQL extends FabricaDAO {
 
     @Override
+    public VehiculoDAO getVehiculoDao() {
+        return new VehiculoDAOSQL();
+    }
+
+    @Override
     public TitularDAO getTitularDao() {
         return new TitularDAOSQL();
     }

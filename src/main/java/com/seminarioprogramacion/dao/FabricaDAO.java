@@ -16,6 +16,7 @@ public abstract class FabricaDAO {
     public abstract TitularDAO getTitularDao();
     public abstract EspecialidadDAO getEspecialidadDao();
     public abstract ServicioDAO getServicioDao();
+    public abstract VehiculoDAO getVehiculoDao();
     public abstract MecanicoDAO getMecanicoDao();
 
     public static FabricaDAO getFactory(String nombreClase){

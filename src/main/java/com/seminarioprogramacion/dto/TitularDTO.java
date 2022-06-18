@@ -13,10 +13,18 @@ public class TitularDTO {
     private String nombre;
     private String apellido;
     private String tipo_dic;
-    private int nro_doc;
+    private String nro_doc;
     private String telefono;
 
-    public TitularDTO(int id_titular, String nombre, String apellido, String tipo_dic, int nro_doc, String telefono) {
+    public TitularDTO(String nombre, String apellido, String tipo_dic, String nro_doc, String telefono) {
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.tipo_dic = tipo_dic;
+        this.nro_doc = nro_doc;
+        this.telefono = telefono;
+    }
+
+    public TitularDTO(int id_titular, String nombre, String apellido, String tipo_dic, String nro_doc, String telefono) {
         this.id_titular = id_titular;
         this.nombre = nombre;
         this.apellido = apellido;
@@ -57,11 +65,11 @@ public class TitularDTO {
         this.tipo_dic = tipo_dic;
     }
 
-    public int getNro_doc() {
+    public String getNro_doc() {
         return nro_doc;
     }
 
-    public void setNro_doc(int nro_doc) {
+    public void setNro_doc(String nro_doc) {
         this.nro_doc = nro_doc;
     }
 

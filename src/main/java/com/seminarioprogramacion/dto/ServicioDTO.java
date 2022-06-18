@@ -14,8 +14,17 @@ public class ServicioDTO {
     private String nombre;
     private String descripcion;
     private int tiempo;
+    EspecialidadDTO especialidad;
+
+    public ServicioDTO(int id_servicio, String nombre, String descripcion, int tiempo, EspecialidadDTO especialidad) {
+        this.id_servicio = id_servicio;
+        this.nombre = nombre;
+        this.descripcion = descripcion;
+        this.tiempo = tiempo;
+        this.especialidad = especialidad;
+    }
     
-    public ServicioDTO(int id_servicio, int id_especialidad, String nombre, String descripcion, int tiempo) {
+    public ServicioDTO(int id_servicio, int especialidad, String nombre, String descripcion, int tiempo) {
         this.id_servicio = id_servicio;
         this.id_especialidad = id_especialidad;
         this.nombre = nombre;
@@ -63,6 +72,15 @@ public class ServicioDTO {
     public void setTiempo(int tiempo) {
         this.tiempo = tiempo;
     }
+
+    public EspecialidadDTO getEspecialidad() {
+        return especialidad;
+    }
+
+    public void setEspecialidad(EspecialidadDTO especialidad) {
+        this.especialidad = especialidad;
+    }
+      
     
     @Override
     public String toString() {

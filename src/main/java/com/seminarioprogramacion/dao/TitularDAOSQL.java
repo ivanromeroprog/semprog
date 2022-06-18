@@ -49,7 +49,7 @@ public class TitularDAOSQL implements TitularDAO {
             String tipo_doc;
             String telefono;
             int id_titular;
-            int nro_doc;
+            String nro_doc;
 
             while (rs.next()) {
                 nombre_db = rs.getString("nombre");
@@ -57,7 +57,7 @@ public class TitularDAOSQL implements TitularDAO {
                 tipo_doc = rs.getString("tipo_doc");
                 telefono = rs.getString("telefono");
                 id_titular = rs.getInt("id_titular");
-                nro_doc = rs.getInt("nro_doc");
+                nro_doc = rs.getString("nro_doc");
 
                 titular = new TitularDTO(id_titular, nombre_db,
                         apellido_db, tipo_doc, nro_doc, telefono);
@@ -97,7 +97,7 @@ public class TitularDAOSQL implements TitularDAO {
             String tipo_doc;
             String telefono;
             int id_titular_db;
-            int nro_doc;
+            String nro_doc;
 
             while (rs.next()) {
                 nombre_db = rs.getString("nombre");
@@ -105,7 +105,7 @@ public class TitularDAOSQL implements TitularDAO {
                 tipo_doc = rs.getString("tipo_doc");
                 telefono = rs.getString("telefono");
                 id_titular_db = rs.getInt("id_titular");
-                nro_doc = rs.getInt("nro_doc");
+                nro_doc = rs.getString("nro_doc");
 
                 titular = new TitularDTO(id_titular_db, nombre_db, apellido_db, tipo_doc, nro_doc, telefono);
             }
@@ -144,7 +144,7 @@ public class TitularDAOSQL implements TitularDAO {
             String tipo_doc;
             String telefono;
             int id_titular;
-            int nro_doc;
+            String nro_doc;
 
             while (rs.next()) {
                 nombre = rs.getString("nombre");
@@ -152,7 +152,7 @@ public class TitularDAOSQL implements TitularDAO {
                 tipo_doc = rs.getString("tipo_doc");
                 telefono = rs.getString("telefono");
                 id_titular = rs.getInt("id_titular");
-                nro_doc = rs.getInt("nro_doc");
+                nro_doc = rs.getString("nro_doc");
 
                 titular = new TitularDTO(id_titular, nombre, apellido, tipo_doc, nro_doc, telefono);
                 lista.add(titular);
@@ -172,12 +172,12 @@ public class TitularDAOSQL implements TitularDAO {
     }
 
     @Override
-    public boolean insertar(String nombre, String apellido, String tipo_dic, int nro_doc, String telefono) {
+    public boolean insertar(String nombre, String apellido, String tipo_dic, String nro_doc, String telefono) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @Override
-    public boolean modificar(int id_titular, String nombre, String apellido, String tipo_dic, int nro_doc, String telefono) {
+    public boolean modificar(int id_titular, String nombre, String apellido, String tipo_dic, String nro_doc, String telefono) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
@@ -188,7 +188,6 @@ public class TitularDAOSQL implements TitularDAO {
 
     @Override
     public void cerrarConexion() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        conexion.desconectar();
     }
-
 }
