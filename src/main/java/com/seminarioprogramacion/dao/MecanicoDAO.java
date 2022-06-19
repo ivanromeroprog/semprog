@@ -1,6 +1,8 @@
 package com.seminarioprogramacion.dao;
 
+import com.seminarioprogramacion.dto.EspecialidadDTO;
 import com.seminarioprogramacion.dto.MecanicoDTO;
+import com.seminarioprogramacion.dto.ServicioDTO;
 import java.util.List;
 
 /**
@@ -13,6 +15,8 @@ public interface MecanicoDAO {
      
      List<MecanicoDTO> listar();
      
+     public List<MecanicoDTO> listar(EspecialidadDTO especialidad);
+     
      boolean Insertar(int idEspecilidad, String legajo, String nombre
                     , String apellido, String tipoDoc, String nroDoc
                     , double cargaHoraria);
@@ -24,4 +28,6 @@ public interface MecanicoDAO {
      boolean Borrar(int idMecanico);
 
      public void cerrarConexion();
+
+
 }

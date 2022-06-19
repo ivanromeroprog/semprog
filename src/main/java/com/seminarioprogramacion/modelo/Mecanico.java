@@ -1,7 +1,9 @@
 package com.seminarioprogramacion.modelo;
 import com.seminarioprogramacion.dao.FabricaDAO;
 import com.seminarioprogramacion.dao.MecanicoDAO;
+import com.seminarioprogramacion.dto.EspecialidadDTO;
 import com.seminarioprogramacion.dto.MecanicoDTO;
+import com.seminarioprogramacion.dto.ServicioDTO;
 import java.util.List;
 
 /**
@@ -27,6 +29,10 @@ public class Mecanico extends Modelo{
         return mecanicoDao.listar();
     }
 
+    public List<MecanicoDTO> listar(EspecialidadDTO especialidad) {
+        return mecanicoDao.listar(especialidad);
+    }
+    
     public boolean Insertar(int idEspecialidad, String legajo, String nombre
                     , String apellido, String tipoDoc, String nroDoc
                     , double cargaHoraria) {
@@ -51,4 +57,5 @@ public class Mecanico extends Modelo{
     protected void finalize() throws Throwable {
         mecanicoDao.cerrarConexion();
     }
+
 }

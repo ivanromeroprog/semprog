@@ -6,6 +6,7 @@ package com.seminarioprogramacion.modelo;
 
 import com.seminarioprogramacion.dao.FabricaDAO;
 import com.seminarioprogramacion.dao.VehiculoDAO;
+import com.seminarioprogramacion.dto.TitularDTO;
 import com.seminarioprogramacion.dto.VehiculoDTO;
 import java.util.List;
 
@@ -38,6 +39,11 @@ public class Vehiculo extends Modelo{
         return listadoVehiculoes;
     }
 
+    public List<VehiculoDTO> listar(TitularDTO titular) {
+        List<VehiculoDTO> listadoVehiculoes = vehiculoDao.listar(titular);
+        return listadoVehiculoes;
+    }
+    
     public boolean insertar(int id_titular, int id_aseguradora, String patente, String marca, String modelo, String nro_poliza) {
         return vehiculoDao.insertar(id_titular, id_aseguradora, patente, marca, modelo, nro_poliza);
     }

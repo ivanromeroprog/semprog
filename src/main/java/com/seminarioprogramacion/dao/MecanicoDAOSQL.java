@@ -1,5 +1,6 @@
 package com.seminarioprogramacion.dao;
 
+import com.seminarioprogramacion.dto.EspecialidadDTO;
 import com.seminarioprogramacion.dto.MecanicoDTO;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -21,8 +22,7 @@ public class MecanicoDAOSQL implements MecanicoDAO {
     }
 
     @Override
-    public MecanicoDTO Buscar(int idMecanico,
-            int idEspecialidad) {
+    public MecanicoDTO Buscar(int idMecanico, int idEspecialidad) {
         PreparedStatement sentencia = null;
         ResultSet rs = null;
         MecanicoDTO mecanico = null;
@@ -64,17 +64,38 @@ public class MecanicoDAOSQL implements MecanicoDAO {
         }
         return mecanico;
     }
-
+    
+    @Override
+    public List<MecanicoDTO> listar(EspecialidadDTO especialidad) {
+        return _listar(especialidad.getId_especialidad());
+    }
+    
     @Override
     public List<MecanicoDTO> listar() {
+        return _listar(0);
+    }
+    
+    //Metodo privado de soporte para no repetir código
+    private List<MecanicoDTO> _listar(int id_especialidad) {
         PreparedStatement sentencia = null;
         ResultSet rs = null;
         List<MecanicoDTO> lista = new ArrayList<>();
 
         try {
             Connection con = conexion.getConnection();
-            String sql = "select * from Mecanico order by id_mecanico DESC";
+            
+            String sql = "select * from Mecanico";
+            if(id_especialidad > 0){
+                sql+= " WHERE id_especialidad = ? ";
+            }
+            sql+= " order by id_mecanico DESC";
+            
             sentencia = con.prepareStatement(sql);
+            
+            if(id_especialidad > 0){
+                sentencia.setInt(1, id_especialidad);
+            }
+            
             rs = sentencia.executeQuery();
 
             while (rs.next()) {
@@ -119,5 +140,7 @@ public class MecanicoDAOSQL implements MecanicoDAO {
     public void cerrarConexion() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
+
+
 
 }

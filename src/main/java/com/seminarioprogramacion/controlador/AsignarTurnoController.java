@@ -60,18 +60,7 @@ public class AsignarTurnoController implements Initializable {
         Servicio servicio = new Servicio(); //Modelo
         List<ServicioDTO> servicios = servicio.listar(); //Lista                
         combobox_servicios.getItems().addAll(servicios); //Llena combobox
-         
-        //Para la lista de titulares
-        Vehiculo vehiculo = new Vehiculo(); //Modelo
-        List<VehiculoDTO> vehiculos = vehiculo.listar(); //Lista 
-        combobox_vehiculo.getItems().addAll(vehiculos); //Llena combobox
-        
-        Mecanico mecanico = new Mecanico(); //Modelo
-        List<MecanicoDTO> mecanicos = mecanico.listar(); //Lista 
-        combobox_mecanico.getItems().addAll(mecanicos); //Llena combobox
-        
-        //TODO: Vehiculos por titulares
-        //TODO: Filtrar mecanicos por Servicio > Especialidad
+
     }    
     @FXML
     private void cancelar() throws IOException {
@@ -86,14 +75,38 @@ public class AsignarTurnoController implements Initializable {
         ((Stage) btnguardar.getScene().getWindow()).close();
     }
     
-        @FXML
+    @FXML
     private void switchToSeleccionarFecha() throws IOException {
-        //App.setRoot("testui",400,600);
+      
+        //TODO: Buscar la forma de pasar datos a la nueva ventana abierta y recibir datos de ella
+        MecanicoDTO mecanico = (MecanicoDTO) combobox_mecanico.getSelectionModel().getSelectedItem();
+        if(mecanico != null){
+            System.out.println(mecanico.toString());
+
+            Stage st = App.newWindow("SeleccionarFecha",((Stage) btnguardar.getScene().getWindow()),"Seleccionar Fecha y Hora");
+        }
+    }
+    
+    @FXML
+    private void combobox_titulares_change() throws IOException {
+        TitularDTO titular = (TitularDTO) combobox_titulares.getSelectionModel().getSelectedItem();
+        combobox_vehiculo.getItems().clear();
         
-        //Cerrar esta ventana
-        //((Stage) menup.getScene().getWindow()).close();
+        //Para la lista de titulares
+        Vehiculo vehiculo = new Vehiculo(); //Modelo
+        List<VehiculoDTO> vehiculos = vehiculo.listar(titular); //Lista 
+        combobox_vehiculo.getItems().addAll(vehiculos); //Llena combobox
+    }
+    
+    @FXML
+    private void combobox_servicios_change() throws IOException {
+        ServicioDTO servicio = (ServicioDTO) combobox_servicios.getSelectionModel().getSelectedItem();
+        combobox_mecanico.getItems().clear();
         
-        App.newWindow("SeleccionarFecha",((Stage) btnguardar.getScene().getWindow()),"Seleccionar Fecha y Hora");
+        //Para la lista de titulares
+        Mecanico mecanico = new Mecanico(); //Modelo
+        List<MecanicoDTO> mecanicos = mecanico.listar(servicio.getEspecialidad()); //Listar mecanicos por servicio > especialidad 
+        combobox_mecanico.getItems().addAll(mecanicos); //Llena combobox       
     }
     
     

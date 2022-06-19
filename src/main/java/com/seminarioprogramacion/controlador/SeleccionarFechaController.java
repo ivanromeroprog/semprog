@@ -14,6 +14,7 @@ import javafx.scene.control.Button;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
 
 /**
  * FXML Controller class
@@ -60,11 +61,14 @@ public class SeleccionarFechaController implements Initializable {
                 
                 //TODO: solo para pantallas
                 if(contadorhoras == 9 || contadorhoras == 12)
-                    btn.setStyle("-fx-background-color: #fdd; -fx-border: 1px solid #ccc");
+                    btn.setStyle("-fx-background-color: #fdd;");
                 else if(contadorhoras > 9 && contadorhoras < 12)
-                    btn.setStyle("-fx-background-color: #ddf; -fx-border: 1px solid #ccc");
+                    btn.setStyle("-fx-background-color: #ddf;");
                 else
-                    btn.setStyle("-fx-background-color: #ccc; -fx-border: 1px solid #ccc");
+                {
+                    btn.setStyle("-fx-background-color: #ccc;");
+                    btn.setTextFill(Color.DARKGREY);
+                }
                 
                 btn.setOnAction(e -> {
                     Button src = (Button)e.getSource();

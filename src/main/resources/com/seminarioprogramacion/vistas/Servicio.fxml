@@ -9,7 +9,6 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-
 <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="583.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.seminarioprogramacion.controlador.ServicioController">
    <children>
       <HBox alignment="CENTER" prefHeight="44.0" prefWidth="395.0">
@@ -44,6 +43,16 @@
                   <Insets />
                </opaqueInsets>
             </ComboBox>
+         </children>
+      </HBox>
+      <HBox alignment="CENTER" prefHeight="44.0" prefWidth="395.0">
+         <children>
+            <Label prefHeight="17.0" prefWidth="204.0" text="Tiempo para completar (en minutos)">
+               <HBox.margin>
+                  <Insets />
+               </HBox.margin>
+            </Label>
+            <TextField prefHeight="25.0" prefWidth="305.0" />
          </children>
       </HBox>
       <HBox alignment="CENTER" prefHeight="44.0" prefWidth="395.0">
