@@ -18,6 +18,7 @@ import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
@@ -81,9 +82,29 @@ public class AsignarTurnoController implements Initializable {
         //TODO: Buscar la forma de pasar datos a la nueva ventana abierta y recibir datos de ella
         MecanicoDTO mecanico = (MecanicoDTO) combobox_mecanico.getSelectionModel().getSelectedItem();
         if(mecanico != null){
-            System.out.println(mecanico.toString());
+            //System.out.println(mecanico.toString());
 
-            Stage st = App.newWindow("SeleccionarFecha",((Stage) btnguardar.getScene().getWindow()),"Seleccionar Fecha y Hora");
+            //Cargar vista en FXMLLoader
+            FXMLLoader ldr = App.getFXMLLoader("SeleccionarFecha");
+            
+            //Crear la ventana modal sin mostrarla
+            Stage st = App.newWindow(ldr,
+                    ((Stage) btnguardar.getScene().getWindow()),
+                    "Seleccionar Fecha y Hora",
+                    false);
+            
+            //Acceder al controlador de la ventana modal para establecer el mecanico
+            SeleccionarFechaController seleccionarFechaController = ldr.getController();
+            seleccionarFechaController.setMecanico(mecanico);
+            
+            //Mostrar la Ventana modal
+            st.showAndWait();
+            
+            //Accerder al controlador luego de cerrarse la ventana para obtener los datos
+            /*
+            MecanicoDTO m = seleccionarFechaController.getMecanico();
+            System.out.println(m.toString());
+            */
         }
     }
     

@@ -41,59 +41,20 @@ public class App extends Application {
     Carga el archivo FXML de vista
      */
     private static Parent loadFXML(String fxml) throws IOException {
-        URL vari = App.class.getResource("/com/seminarioprogramacion/vistas/" + fxml + ".fxml");
-        //URL vari = getClass().getResource(fxml + ".fxml");
-        System.out.print(vari);
-        FXMLLoader fxmlLoader = new FXMLLoader(vari);
+        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("/com/seminarioprogramacion/vistas/" + fxml + ".fxml"));
         return fxmlLoader.load();
     }
 
     /*
-    Crea una nueva ventana de la aplicación sin cerrar la anterior - sin mostrarla
+    Devuelve un cargador de archivo FXML de vista
      */
-    public static Stage newWindow(String vista, Stage parentw, boolean mostrar) throws IOException {
-        Scene sn = new Scene(loadFXML(vista));
-        Stage st = new Stage();
-        st.setScene(sn);
-        st.initOwner(parentw);
-        st.initModality(Modality.APPLICATION_MODAL);
-        if(mostrar){
-            st.showAndWait();
-        }
-        return st;
-    }
-    
-    /*
-    Crea una nueva ventana de la aplicación sin cerrar la anterior
-     */
-    public static Stage newWindow(String vista, Stage parentw) throws IOException {
-        Scene sn = new Scene(loadFXML(vista));
-        Stage st = new Stage();
-        st.setScene(sn);
-        st.initOwner(parentw);
-        st.initModality(Modality.APPLICATION_MODAL);
-        st.showAndWait();
-        return st;
+    public static FXMLLoader getFXMLLoader(String fxml) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("/com/seminarioprogramacion/vistas/" + fxml + ".fxml"));
+        return fxmlLoader;
     }
 
     /*
-    Crea una nueva ventana de la aplicación sin cerrar la anterior - sin mostrarla
-     */
-    public static Stage newWindow(String vista, Stage parentw, String titulo, boolean mostrar) throws IOException {
-        Scene sn = new Scene(loadFXML(vista));
-        Stage st = new Stage();
-        st.setScene(sn);
-        st.setTitle(titulo);
-        st.initOwner(parentw);
-        st.initModality(Modality.APPLICATION_MODAL);
-        if(mostrar){
-            st.showAndWait();
-        }
-        return st;
-    }
-
-    /*
-    Crea una nueva ventana de la aplicación sin cerrar la anterior
+    Crea una nueva ventana modal (no se puede interactuar con el padre) sin cerrar la anterior
      */
     public static Stage newWindow(String vista, Stage parentw, String titulo) throws IOException {
         Scene sn = new Scene(loadFXML(vista));
@@ -101,28 +62,50 @@ public class App extends Application {
         st.setScene(sn);
         st.setTitle(titulo);
         st.initOwner(parentw);
+        
         st.initModality(Modality.APPLICATION_MODAL);
         st.showAndWait();
         return st;
     }
-    
+
+    public static Stage newWindow(FXMLLoader vista, Stage parentw, String titulo) throws IOException {
+        Scene sn = new Scene(vista.load());
+        Stage st = new Stage();
+        st.setScene(sn);
+        st.setTitle(titulo);
+        st.initOwner(parentw);
+        st.initModality(Modality.APPLICATION_MODAL);
+        st.showAndWait();
+        return st;
+    }
+
+    public static Stage newWindow(FXMLLoader vista, Stage parentw, String titulo, boolean mostrar) throws IOException {
+        Scene sn = new Scene(vista.load());
+        Stage st = new Stage();
+        st.setScene(sn);
+        st.setTitle(titulo);
+        st.initOwner(parentw);
+        st.initModality(Modality.APPLICATION_MODAL);
+        if(mostrar){
+        st.showAndWait();
+        }
+        return st;
+    }
     /*
-    Crea una nueva ventana modal (no se puede interactuar con el padre) sin cerrar la anterior
+    Crea una nueva ventana de la aplicación sin cerrar la anterior
      */
-    public static Stage newWindow(String vista) throws IOException {
+    public static Stage newWindow(String vista, String titulo) throws IOException {
         Scene sn = new Scene(loadFXML(vista));
         Stage st = new Stage();
         st.setScene(sn);
+        st.setTitle(titulo);
         st.show();
 
         return st;
     }
 
-    /*
-    Crea una nueva ventana modal (no se puede interactuar con el padre) sin cerrar la anterior
-     */
-    public static Stage newWindow(String vista, String titulo) throws IOException {
-        Scene sn = new Scene(loadFXML(vista));
+    public static Stage newWindow(FXMLLoader vista, String titulo) throws IOException {
+        Scene sn = new Scene(vista.load());
         Stage st = new Stage();
         st.setScene(sn);
         st.setTitle(titulo);
@@ -152,5 +135,39 @@ public class App extends Application {
         scene.setRoot(loadFXML(fxml));
     }
     
+     */
+ /*
+    Crea una nueva ventana de la aplicación sin cerrar la anterior - sin mostrarla
+    
+    public static Stage newWindow(String vista, Stage parentw, String titulo, boolean mostrar) throws IOException {
+        Scene sn = new Scene(loadFXML(vista));
+        Stage st = new Stage();
+        st.setScene(sn);
+        st.setTitle(titulo);
+        st.initOwner(parentw);
+        st.initModality(Modality.APPLICATION_MODAL);
+        if(mostrar){
+            st.showAndWait();
+        }
+        return st;
+    }
+     */
+ /*
+    Crea una nueva ventana modal (no se puede interactuar con el padre) sin cerrar la anterior
+     */
+ /*
+    Crea una nueva ventana de la aplicación sin cerrar la anterior - sin mostrarla
+     
+    public static Stage newWindow(String vista, Stage parentw, boolean mostrar) throws IOException {
+        Scene sn = new Scene(loadFXML(vista));
+        Stage st = new Stage();
+        st.setScene(sn);
+        st.initOwner(parentw);
+        st.initModality(Modality.APPLICATION_MODAL);
+        if(mostrar){
+            st.showAndWait();
+        }
+        return st;
+    }
      */
 }

@@ -4,6 +4,7 @@
  */
 package com.seminarioprogramacion.controlador;
 
+import com.seminarioprogramacion.dto.MecanicoDTO;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -15,6 +16,7 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -26,6 +28,10 @@ public class SeleccionarFechaController implements Initializable {
     @FXML
     private VBox vb;
 
+            private MecanicoDTO mecanico;
+           /* private Stage parentStage;
+            private Stage stage;*/
+    
     /**
      * Initializes the controller class.
      */
@@ -34,6 +40,7 @@ public class SeleccionarFechaController implements Initializable {
         HBox hb;
         int contadorhoras = 0;
         int contadorminutos = 0;
+       
         
         //Button btnArray[][] = new Button[24][4];
         
@@ -81,5 +88,24 @@ public class SeleccionarFechaController implements Initializable {
             }
         }
     }
+
+    public MecanicoDTO getMecanico() {
+        return mecanico;
+    }
+
+    public void setMecanico(MecanicoDTO mecanico) {
+        this.mecanico = mecanico;
+        System.out.println("Establecido el mecanico para ventana -Seleccionar Fecha y Hora-: " + this.mecanico.toString());
+        /*
+        this.stage = (Stage) vb.getScene().getWindow();
+        this.parentStage = (Stage) stage.getOwner();
+        */
+
+        /*
+        System.out.println(this.stage);
+        System.out.println(this.parentStage);
+        */
+    }
+
 
 }
