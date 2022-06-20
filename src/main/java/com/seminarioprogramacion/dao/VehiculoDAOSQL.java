@@ -87,6 +87,8 @@ public class VehiculoDAOSQL implements VehiculoDAO {
                 sentencia.close();
             } catch (SQLException ex) {
                 System.err.println(ex);
+            } catch (NullPointerException ex){
+                System.err.println(ex);
             }
         }
         return vehiculo;
@@ -135,6 +137,8 @@ public class VehiculoDAOSQL implements VehiculoDAO {
                 rs.close();
                 sentencia.close();
             } catch (SQLException ex) {
+                System.err.println(ex);
+            } catch (NullPointerException ex){
                 System.err.println(ex);
             }
         }
@@ -209,6 +213,8 @@ public class VehiculoDAOSQL implements VehiculoDAO {
                 rs.close();
                 sentencia.close();
             } catch (SQLException ex) {
+                System.err.println(ex);
+            } catch (NullPointerException ex){
                 System.err.println(ex);
             }
         }

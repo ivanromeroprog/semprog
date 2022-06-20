@@ -4,19 +4,24 @@
  */
 package com.seminarioprogramacion.controlador;
 
+import com.seminarioprogramacion.dto.HorarioDTO;
 import com.seminarioprogramacion.dto.MecanicoDTO;
+import com.seminarioprogramacion.modelo.Horario;
 import java.io.IOException;
 import java.net.URL;
+import java.time.LocalDate;
+import java.util.List;
 import java.util.ResourceBundle;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
-import javafx.scene.input.KeyEvent;
+import javafx.scene.control.DatePicker;
+import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
-import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -31,6 +36,18 @@ public class SeleccionarFechaController implements Initializable {
             private MecanicoDTO mecanico;
            /* private Stage parentStage;
             private Stage stage;*/
+    @FXML
+    private Label lblmecanico;
+    @FXML
+    private Button btnprev;
+    @FXML
+    private Button btnnext;
+    @FXML
+    private DatePicker dpfecha;
+    @FXML
+    private Button btnaceptar;
+    @FXML
+    private Button btncancelar;
     
     /**
      * Initializes the controller class.
@@ -40,6 +57,8 @@ public class SeleccionarFechaController implements Initializable {
         HBox hb;
         int contadorhoras = 0;
         int contadorminutos = 0;
+
+        dpfecha.setValue(LocalDate.now());
        
         
         //Button btnArray[][] = new Button[24][4];
@@ -89,6 +108,17 @@ public class SeleccionarFechaController implements Initializable {
         }
     }
 
+    @FXML
+    private void btnprev_click(ActionEvent event) throws IOException {
+        LocalDate dv = dpfecha.getValue();
+        dpfecha.setValue(dv.minusDays(1));
+    }
+    @FXML
+    private void btnnext_click(ActionEvent event) throws IOException {
+        LocalDate dv = dpfecha.getValue();
+        dpfecha.setValue(dv.plusDays(1));
+    }
+        
     public MecanicoDTO getMecanico() {
         return mecanico;
     }
@@ -96,6 +126,17 @@ public class SeleccionarFechaController implements Initializable {
     public void setMecanico(MecanicoDTO mecanico) {
         this.mecanico = mecanico;
         System.out.println("Establecido el mecanico para ventana -Seleccionar Fecha y Hora-: " + this.mecanico.toString());
+        lblmecanico.setText(mecanico.toString());
+        
+        //Modelo de Horario
+        Horario horario = new Horario();
+        this.mecanico.setHorarios(horario.listar(mecanico));
+        List<HorarioDTO> listahorario = this.mecanico.getHorarios();
+        
+        for(HorarioDTO h: listahorario){
+            System.out.println(h.toString());
+        }
+        
         /*
         this.stage = (Stage) vb.getScene().getWindow();
         this.parentStage = (Stage) stage.getOwner();

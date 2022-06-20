@@ -1,5 +1,6 @@
 package com.seminarioprogramacion.modelo;
 import com.seminarioprogramacion.dao.FabricaDAO;
+import com.seminarioprogramacion.dao.HorarioDAO;
 import com.seminarioprogramacion.dao.MecanicoDAO;
 import com.seminarioprogramacion.dto.EspecialidadDTO;
 import com.seminarioprogramacion.dto.MecanicoDTO;
@@ -14,15 +15,22 @@ public class Mecanico extends Modelo{
     
     private final FabricaDAO fabricaDao;
     private final MecanicoDAO mecanicoDao;
+    private final HorarioDAO horarioDao;
 
     public Mecanico() {
         fabricaDao = FabricaDAO.getFactory("FabricaDAOSQL");
         mecanicoDao = fabricaDao.getMecanicoDao();
+        horarioDao = fabricaDao.getHorarioDao();
     }
     
     public MecanicoDTO Buscar(int idMecanico
                             , int idEspecialidad) {
-        return mecanicoDao.Buscar(idMecanico, idEspecialidad);
+        
+        //Establecer lista de horarios del mecanico al cargar solo uno
+        MecanicoDTO mecanico = mecanicoDao.Buscar(idMecanico, idEspecialidad);
+        mecanico.setHorarios(horarioDao.listar(mecanico));
+        
+        return mecanico;
     }
 
     public List<MecanicoDTO> listar() {

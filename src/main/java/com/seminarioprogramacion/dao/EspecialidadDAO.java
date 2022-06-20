@@ -8,7 +8,7 @@ import com.seminarioprogramacion.dto.EspecialidadDTO;
 import java.util.List;
 
 /**
- *
+ *    
  * @author Esther
  */
 public interface EspecialidadDAO {

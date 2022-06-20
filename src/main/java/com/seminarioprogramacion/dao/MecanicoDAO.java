@@ -10,7 +10,7 @@ import java.util.List;
  * @author Nahue
  */
 public interface MecanicoDAO {
-     
+      
      MecanicoDTO Buscar(int idMecanico, int idEspecialidad);
      
      List<MecanicoDTO> listar();

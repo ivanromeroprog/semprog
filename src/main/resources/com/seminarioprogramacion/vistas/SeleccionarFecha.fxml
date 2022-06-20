@@ -11,14 +11,15 @@
    <children>
       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
          <children>
-            <Label text="Seleccione fecha y horario para reservar el turno con el mecánico: [NOMBRRREMECANICO]" />
+            <Label text="Seleccione fecha y horario para reservar el turno con el mecánico:" />
+            <Label fx:id="lblmecanico" />
          </children>
       </HBox>
       <HBox alignment="CENTER" prefHeight="41.0" prefWidth="600.0">
          <children>
-            <Button fx:id="btnprev" mnemonicParsing="false" text="&lt;" />
-            <DatePicker />
-            <Button fx:id="btnnext" mnemonicParsing="false" text="&gt;" />
+            <Button fx:id="btnprev" mnemonicParsing="false" onAction="#btnprev_click" text="&lt;" />
+            <DatePicker fx:id="dpfecha" />
+            <Button fx:id="btnnext" mnemonicParsing="false" onAction="#btnnext_click" text="&gt;" />
          </children>
       </HBox>
       <VBox fx:id="vb" alignment="CENTER" prefHeight="441.0" prefWidth="600.0" />
@@ -39,12 +40,12 @@
                   <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
                </padding>
             </Label>
-            <Button mnemonicParsing="false" text="Aceptar">
+            <Button fx:id="btnaceptar" defaultButton="true" mnemonicParsing="false" text="Aceptar">
                <HBox.margin>
                   <Insets bottom="6.0" left="6.0" right="6.0" top="6.0" />
                </HBox.margin>
             </Button>
-            <Button mnemonicParsing="false" text="Cancelar">
+            <Button fx:id="btncancelar" cancelButton="true" mnemonicParsing="false" text="Cancelar">
                <HBox.margin>
                   <Insets bottom="6.0" left="6.0" right="6.0" top="6.0" />
                </HBox.margin>

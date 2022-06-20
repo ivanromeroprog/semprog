@@ -36,5 +36,10 @@ public class FabricaDAOSQL extends FabricaDAO {
        return new MecanicoDAOSQL();
     }
 
+    @Override
+    public HorarioDAO getHorarioDao() {
+        return new HorarioDAOSQL();
+    }
+
 
 }

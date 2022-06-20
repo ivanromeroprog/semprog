@@ -60,6 +60,8 @@ public class MecanicoDAOSQL implements MecanicoDAO {
                 sentencia.close();
             } catch (SQLException ex) {
                 System.err.println(ex);
+            } catch (NullPointerException ex){
+                System.err.println(ex);
             }
         }
         return mecanico;
@@ -115,6 +117,8 @@ public class MecanicoDAOSQL implements MecanicoDAO {
                 rs.close();
                 sentencia.close();
             } catch (SQLException ex) {
+                System.err.println(ex);
+            } catch (NullPointerException ex){
                 System.err.println(ex);
             }
         }

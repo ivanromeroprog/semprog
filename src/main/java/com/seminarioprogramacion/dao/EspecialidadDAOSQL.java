@@ -64,6 +64,8 @@ public class EspecialidadDAOSQL implements EspecialidadDAO {
                 sentencia.close();
             } catch (SQLException ex) {
                 System.err.println(ex);
+            } catch (NullPointerException ex){
+                System.err.println(ex);
             }
         }
         return especialidad;
@@ -108,6 +110,8 @@ public class EspecialidadDAOSQL implements EspecialidadDAO {
                 sentencia.close();
             } catch (SQLException ex) {
                 System.err.println(ex);
+            } catch (NullPointerException ex){
+                System.err.println(ex);
             }
         }
         return especialidad;
@@ -150,6 +154,8 @@ public class EspecialidadDAOSQL implements EspecialidadDAO {
                 rs.close();
                 sentencia.close();
             } catch (SQLException ex) {
+                System.err.println(ex);
+            } catch (NullPointerException ex){
                 System.err.println(ex);
             }
         }

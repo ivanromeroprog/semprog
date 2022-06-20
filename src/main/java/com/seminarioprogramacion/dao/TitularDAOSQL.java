@@ -71,6 +71,8 @@ public class TitularDAOSQL implements TitularDAO {
                 sentencia.close();
             } catch (SQLException ex) {
                 System.err.println(ex);
+            } catch (NullPointerException ex){
+                System.err.println(ex);
             }
         }
         return titular;
@@ -117,6 +119,8 @@ public class TitularDAOSQL implements TitularDAO {
                 rs.close();
                 sentencia.close();
             } catch (SQLException ex) {
+                System.err.println(ex);
+            } catch (NullPointerException ex){
                 System.err.println(ex);
             }
         }
@@ -165,6 +169,8 @@ public class TitularDAOSQL implements TitularDAO {
                 rs.close();
                 sentencia.close();
             } catch (SQLException ex) {
+                System.err.println(ex);
+            } catch (NullPointerException ex){
                 System.err.println(ex);
             }
         }

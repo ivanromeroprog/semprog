@@ -1,5 +1,7 @@
 package com.seminarioprogramacion.dto;
 
+import java.util.List;
+
 /**
  *
  * @author Nahue
@@ -13,6 +15,7 @@ public class MecanicoDTO {
     private String tipoDic;
     private int nroDoc;
     private double cargaHoraria;
+    List<HorarioDTO> horarios;
 
     public MecanicoDTO(int idMecanico, int idEspecialidad, String legajo
             , String nombre, String apellido, String tipoDic, int nroDoc
@@ -95,5 +98,14 @@ public class MecanicoDTO {
     public String toString() {
         return this.nombre+" "+this.apellido;
     } 
+
+    public List<HorarioDTO> getHorarios() {
+        return horarios;
+    }
+
+    public void setHorarios(List<HorarioDTO> horarios) {
+        this.horarios = horarios;
+    }
+
     
 }

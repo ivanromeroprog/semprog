@@ -69,6 +69,8 @@ public class ServicioDAOSQL implements ServicioDAO {
                 sentencia.close();
             } catch (SQLException ex) {
                 System.err.println(ex);
+            } catch (NullPointerException ex){
+                System.err.println(ex);
             }
         }
         return servicio;
@@ -114,11 +116,14 @@ public class ServicioDAOSQL implements ServicioDAO {
                 sentencia.close();
             } catch (SQLException ex) {
                 System.err.println(ex);
+            } catch (NullPointerException ex){
+                System.err.println(ex);
             }
         }
         return servicio;
     }
 
+    //TODO: refactorizar codigo para incroporar los dos metodos de listar en uno _listar
     @Override
     public List<ServicioDTO> listar(EspecialidadDTO especialidad) {
 
@@ -167,6 +172,8 @@ public class ServicioDAOSQL implements ServicioDAO {
                 rs.close();
                 sentencia.close();
             } catch (SQLException ex) {
+                System.err.println(ex);
+            } catch (NullPointerException ex){
                 System.err.println(ex);
             }
         }
@@ -229,6 +236,8 @@ public class ServicioDAOSQL implements ServicioDAO {
                 rs.close();
                 sentencia.close();
             } catch (SQLException ex) {
+                System.err.println(ex);
+            } catch (NullPointerException ex){
                 System.err.println(ex);
             }
         }

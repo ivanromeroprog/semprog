@@ -18,7 +18,8 @@ public abstract class FabricaDAO {
     public abstract ServicioDAO getServicioDao();
     public abstract VehiculoDAO getVehiculoDao();
     public abstract MecanicoDAO getMecanicoDao();
-
+    public abstract HorarioDAO getHorarioDao();
+    
     public static FabricaDAO getFactory(String nombreClase){
         try {            
             return (FabricaDAO) Class.forName(FabricaDAO.class.getPackage().getName() + "." + nombreClase).getDeclaredConstructor().newInstance();
