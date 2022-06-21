@@ -19,6 +19,7 @@ public abstract class FabricaDAO {
     public abstract VehiculoDAO getVehiculoDao();
     public abstract MecanicoDAO getMecanicoDao();
     public abstract HorarioDAO getHorarioDao();
+    public abstract TurnoDAO getTurnoDao();
     
     public static FabricaDAO getFactory(String nombreClase){
         try {            

@@ -6,9 +6,11 @@ package com.seminarioprogramacion.controlador;
 
 import com.seminarioprogramacion.dto.EspecialidadDTO;
 import com.seminarioprogramacion.dto.MecanicoDTO;
+import com.seminarioprogramacion.dto.TurnoDTO;
 import com.seminarioprogramacion.main.App;
 import com.seminarioprogramacion.modelo.Especialidad;
 import com.seminarioprogramacion.modelo.Mecanico;
+import com.seminarioprogramacion.modelo.Turno;
 import java.io.IOException;
 import java.net.URL;
 import java.util.List;
@@ -21,6 +23,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.ComboBox;
 import javafx.stage.Stage;
+
+import javafx.scene.control.TableView;
 
 /**
  * FXML Controller class
@@ -45,6 +49,9 @@ public class TurnosController implements Initializable {
     private ComboBox combobox_especialidades;
     @FXML
     private ComboBox combobox_mecanicos;
+     @FXML
+    private TableView<?> lista;
+
 
     /**
      * Initializes the controller class.
@@ -63,6 +70,23 @@ public class TurnosController implements Initializable {
         //Modelo
         //Lista
         //combobox
+        
+        //codigo para probar turno en consola
+        Turno turno = new Turno();
+        List<TurnoDTO> lista1 = turno.listar(); //traigo todos
+        for(TurnoDTO turno1: lista1){
+            System.out.print(turno1.getDia_atencion());
+            System.out.println(turno1.getHora_atencion());
+            System.out.println(turno1.getAsistencia());
+        }
+        
+        //codigo para probar turno por mecanico en consola
+        List<TurnoDTO> lista2 = turno.listarPorMecanico(2); //id 2
+        for(TurnoDTO turno2: lista2){
+            System.out.print(turno2.getDia_atencion());
+            System.out.println(turno2.getHora_atencion());
+            System.out.println(turno2.getAsistencia());
+        }        
     }   
     
     @FXML

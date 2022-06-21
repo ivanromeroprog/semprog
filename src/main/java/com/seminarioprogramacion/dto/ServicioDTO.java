@@ -24,7 +24,7 @@ public class ServicioDTO {
         this.especialidad = especialidad;
     }
     
-    public ServicioDTO(int id_servicio, int especialidad, String nombre, String descripcion, int tiempo) {
+    public ServicioDTO(int id_servicio, int id_especialidad, String nombre, String descripcion, int tiempo) {
         this.id_servicio = id_servicio;
         this.id_especialidad = id_especialidad;
         this.nombre = nombre;

@@ -37,7 +37,7 @@
                   <Insets />
                </opaqueInsets>
             </Label>
-            <ComboBox fx:id="combobox_vehiculo" prefWidth="225.0">
+            <ComboBox fx:id="combobox_vehiculos" prefWidth="225.0">
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>
@@ -70,7 +70,7 @@
                   <Insets />
                </opaqueInsets>
             </Label>
-            <ComboBox fx:id="combobox_mecanico" prefWidth="275.0">
+            <ComboBox fx:id="combobox_mecanicos" prefWidth="275.0">
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>
