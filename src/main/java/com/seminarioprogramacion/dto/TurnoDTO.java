@@ -23,6 +23,9 @@ public class TurnoDTO {
     private int id_vehiculo;
     private int id_servicio;
     private int id_mecanico;
+    private VehiculoDTO vehiculo;
+    private ServicioDTO servicio;
+    private TitularDTO titular;
 
     public TurnoDTO(int id_turno, Date dia_atencion, LocalTime hora_atencion, Boolean asistencia, int id_vehiculo, int id_servicio, int id_mecanico) {
         this.id_turno = id_turno;
@@ -32,6 +35,30 @@ public class TurnoDTO {
         this.id_vehiculo = id_vehiculo;
         this.id_servicio = id_servicio;
         this.id_mecanico = id_mecanico;
+    }
+
+    public VehiculoDTO getVehiculo() {
+        return vehiculo;
+    }
+
+    public void setVehiculo(VehiculoDTO vehiculo) {
+        this.vehiculo = vehiculo;
+    }
+
+    public ServicioDTO getServicio() {
+        return servicio;
+    }
+
+    public void setServicio(ServicioDTO servicio) {
+        this.servicio = servicio;
+    }
+
+    public TitularDTO getTitular() {
+        return titular;
+    }
+
+    public void setTitular(TitularDTO titular) {
+        this.titular = titular;
     }
 
     
@@ -74,6 +101,7 @@ public class TurnoDTO {
     public void setId_vehiculo(int id_vehiculo) {
         this.id_vehiculo = id_vehiculo;
     }
+
     
     public int getId_servicio() {
         return id_servicio;
@@ -91,10 +119,10 @@ public class TurnoDTO {
         this.id_mecanico = id_mecanico;
     }
 
-      
-//    @Override
-//    public String toString() {
-//        return this.nombre;
-//    }    
+    @Override
+    public String toString() {
+        return dia_atencion + ", " + hora_atencion;
+    }  
+ 
 }
 

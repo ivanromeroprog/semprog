@@ -4,6 +4,7 @@
  */
 package com.seminarioprogramacion.dao;
 
+import com.seminarioprogramacion.dto.MecanicoDTO;
 import com.seminarioprogramacion.dto.TurnoDTO;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -88,60 +89,17 @@ public class TurnoDAOSQL implements TurnoDAO {
     
     @Override
     public List<TurnoDTO> listar() {
-        Connection con = null;
-        PreparedStatement sentencia = null;
-        ResultSet rs = null;
-        TurnoDTO turno = null;
-        List<TurnoDTO> lista = new ArrayList<>();
-        
-        try {
-            con = conexion.getConnection(); //instancia de una conexion SQL (Java)
-            String sql = "select * "
-                    + "from Turno order by id_turno DESC";
-            sentencia = con.prepareStatement(sql);
-
-            rs = sentencia.executeQuery();  //resultados de la consulta SQL
-            
-            
-            //inicializo variables, para luego asignar valores de la DB
-            int id_turno_db;
-            Date dia_atencion_db;
-            LocalTime hora_atencion_db;                       
-            Boolean asistencia_db;
-            int id_vehiculo_db;
-            int id_servicio_db;
-            int id_mecanico_db;
-
-            while (rs.next()) {
-                id_turno_db = rs.getInt("id_turno"); //asigno valores                
-                dia_atencion_db = new SimpleDateFormat("yyyy-MM-dd").parse(rs.getString("dia_atencion"));
-                hora_atencion_db = LocalTime.parse(rs.getString("hora_atencion"));
-                asistencia_db = rs.getBoolean("asistencia");
-                id_vehiculo_db = rs.getInt("id_vehiculo");
-                id_servicio_db = rs.getInt("id_servicio");
-                id_mecanico_db = rs.getInt("id_mecanico");
-                
-                turno = new TurnoDTO(id_turno_db, dia_atencion_db, hora_atencion_db, asistencia_db, id_vehiculo_db, id_servicio_db, id_mecanico_db);
-                lista.add(turno);
-            }
-
-        } catch (SQLException | ParseException e) {
-            System.err.println(e);
-        } finally {
-            try {
-                rs.close();
-                sentencia.close();
-            } catch (SQLException ex) {
-                System.err.println(ex);
-            } catch (NullPointerException ex){
-                System.err.println(ex);
-            }
-        }
-        return lista;
+        return _listar(0);
     }
 
     @Override
-    public List<TurnoDTO> listarPorMecanico(int id_mecanico) {
+    public List<TurnoDTO> listar(MecanicoDTO mecanico) {
+        return _listar(mecanico.getIdMecanico());
+    }
+    
+    //Metodo de soporte para no repetir código
+    //TODO cargar datos de objetos servicio, etc.
+    private List<TurnoDTO> _listar(int id_mecanico){
         Connection con = null;
         PreparedStatement sentencia = null;
         ResultSet rs = null;
@@ -199,6 +157,7 @@ public class TurnoDAOSQL implements TurnoDAO {
             }
         }
         return lista;
+
     }
     
     @Override

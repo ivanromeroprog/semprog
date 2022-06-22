@@ -6,6 +6,7 @@ package com.seminarioprogramacion.modelo;
 
 import com.seminarioprogramacion.dao.FabricaDAO;
 import com.seminarioprogramacion.dao.TurnoDAO;
+import com.seminarioprogramacion.dto.MecanicoDTO;
 import com.seminarioprogramacion.dto.TurnoDTO;
 import java.util.Date;
 import java.time.LocalTime;
@@ -35,8 +36,8 @@ public class Turno extends Modelo{
         return listadoTurnos;
     }
     
-    public List<TurnoDTO> listarPorMecanico(int id_mecanico) {
-        List<TurnoDTO> listadoTurnos = turnoDao.listarPorMecanico(id_mecanico);
+    public List<TurnoDTO> listar(MecanicoDTO mecanico) {
+        List<TurnoDTO> listadoTurnos = turnoDao.listar(mecanico);
         return listadoTurnos;
     }
 

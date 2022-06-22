@@ -194,21 +194,15 @@ public class SeleccionarFechaController implements Initializable {
                 mininicio = h.getHora_inicio().getMinute();
                 horafin = h.getHora_fin().getHour();
                 minfin = h.getHora_fin().getMinute();
-
-                //System.out.println("ivan " + h.getDia() + " - " + diasemana);
                 break;
             }
         }
 
-        //System.out.println(horainicio + "- " + mininicio);
         int contadorhoras = 0;
         int contadorminutos = 0;
 
-        System.out.println("i h " + horainicio + " m " + mininicio);
-        System.out.println("f h " + horafin + " m " + minfin);
-
+        //Recorremos el array de botones
         for (int i = 0; i < 12; i++) {
-
             for (int j = 0; j < 8; j++) {
 
                 if (contadorminutos == 3) {
@@ -225,30 +219,7 @@ public class SeleccionarFechaController implements Initializable {
                 }
 
                 //Pintar y activar botones correctos dependiendo del horario del mecanico
-                //HACK No encuentro otra forma de hacer esto
-                if (
-                        //Si esta entre la hora inicial y final
-                        ((contadorhoras > horainicio)  && (contadorhoras < horafin))
-                        
-                        ||
-                        
-                        //Si es igual a la hora inicial / final tengo en cuenta los minutos
-                        (horainicio != horafin &&
-                        (((contadorhoras == horainicio)
-                        && ((contadorminutos * 15) >= mininicio))
-                        ||
-                        ((contadorhoras == horafin)   
-                        && ((contadorminutos * 15) <= minfin))))
-                        
-                        ||
-                        
-                        //Si la hora inicial es igual a la final solo tomo el lapso entre los minutos
-                        (horainicio == horafin &&
-                        (((contadorhoras == horainicio)
-                        && ((contadorminutos * 15) >= mininicio)
-                        && ((contadorminutos * 15) <= minfin))))
-                        
-                    )
+                if (correspondeHorario(contadorhoras, contadorminutos, horainicio, mininicio, horafin, minfin))
                 {
                     btnArray[contadorhoras][contadorminutos].setStyle("-fx-background-color: #ddf;");
                     btnArray[contadorhoras][contadorminutos].setTextFill(Color.BLACK);
@@ -268,7 +239,30 @@ public class SeleccionarFechaController implements Initializable {
 
     }
     
-    
+    private boolean correspondeHorario(int contadorhoras,int contadorminutos,int horainicio,int mininicio,int horafin,int minfin){
+                        return 
+                        //Si esta entre la hora inicial y final
+                        ((contadorhoras > horainicio)  && (contadorhoras < horafin))
+                        
+                        ||
+                        
+                        //Si es igual a la hora inicial / final tengo en cuenta los minutos
+                        (horainicio != horafin &&
+                        (((contadorhoras == horainicio)
+                        && ((contadorminutos * 15) >= mininicio))
+                        ||
+                        ((contadorhoras == horafin)   
+                        && ((contadorminutos * 15) <= minfin))))
+                        
+                        ||
+                        
+                        //Si la hora inicial es igual a la final solo tomo el lapso entre los minutos
+                        (horainicio == horafin &&
+                        (((contadorhoras == horainicio)
+                        && ((contadorminutos * 15) >= mininicio)
+                        && ((contadorminutos * 15) <= minfin))));
+    }
+     
     @FXML
     private void cancelar() throws IOException {
         //Cerrar esta ventana

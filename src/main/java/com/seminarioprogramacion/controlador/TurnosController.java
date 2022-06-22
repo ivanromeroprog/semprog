@@ -79,14 +79,15 @@ public class TurnosController implements Initializable {
             System.out.println(turno1.getHora_atencion());
             System.out.println(turno1.getAsistencia());
         }
-        
+        /*
         //codigo para probar turno por mecanico en consola
         List<TurnoDTO> lista2 = turno.listarPorMecanico(2); //id 2
         for(TurnoDTO turno2: lista2){
             System.out.print(turno2.getDia_atencion());
             System.out.println(turno2.getHora_atencion());
             System.out.println(turno2.getAsistencia());
-        }        
+        }   
+        */
     }   
     
     @FXML
