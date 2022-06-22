@@ -23,6 +23,7 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -86,14 +87,11 @@ public class SeleccionarFechaController implements Initializable {
         Horario horario = new Horario();
         this.mecanico.setHorarios(horario.listar(mecanico));
 
-        //Obtener el dia de la semana
-        String diasemana = diaSemana();
-
         //Cargar los botones
         botones();
 
-        //Establecer los colores en base a estos datos
-        actualizarBotones(diasemana);
+        //Establecer los colores en base a los datos
+        actualizarBotones();
 
         /*
         for(HorarioDTO h: listahorario){
@@ -177,74 +175,109 @@ public class SeleccionarFechaController implements Initializable {
             }
         }
     }
-
-    private void actualizarBotones(String diasemana) {
+    
+    @FXML
+    private void actualizarBotones() {
 
         //Obtener el horario del día correcto
         List<HorarioDTO> listahorario = this.mecanico.getHorarios();
-        HorarioDTO horariodia = null;
-
-        int horainicio = 0;
-        int mininicio = 0;
-        int horafin = 0;
-        int minfin = 0;
+        String diasemana = diaSemana();
+        int horainicio = -1;
+        int mininicio = -1;
+        int horafin = -1;
+        int minfin = -1;
 
         for (HorarioDTO h : listahorario) {
-            
-            if (h.getDia() == diasemana) {
-                horariodia = h;
-                horainicio = horariodia.getHora_inicio().getHour();
-                mininicio = horariodia.getHora_inicio().getMinute();
-                horafin = horariodia.getHora_fin().getHour();
-                minfin = horariodia.getHora_fin().getMinute();
-                
-                //System.out.println(h.getDia() + " - " + diasemana);
+            System.out.println(h.getDia().equals(diasemana));
+            if (h.getDia().equals(diasemana)) {
+                horainicio = h.getHora_inicio().getHour();
+                mininicio = h.getHora_inicio().getMinute();
+                horafin = h.getHora_fin().getHour();
+                minfin = h.getHora_fin().getMinute();
+
+                //System.out.println("ivan " + h.getDia() + " - " + diasemana);
                 break;
             }
         }
-        
-        //System.out.println(horariodia.toString());
 
+        //System.out.println(horainicio + "- " + mininicio);
         int contadorhoras = 0;
         int contadorminutos = 0;
 
-        if (horariodia == null) {
-            for (int i = 0; i < 12; i++) {
+        System.out.println("i h " + horainicio + " m " + mininicio);
+        System.out.println("f h " + horafin + " m " + minfin);
 
-                for (int j = 0; j < 8; j++) {
+        for (int i = 0; i < 12; i++) {
 
-                    if (contadorminutos == 3) {
-                        contadorminutos = 0;
+            for (int j = 0; j < 8; j++) {
 
-                        if (contadorhoras == 23) {
-                            contadorhoras = 0;
-                        } else {
-                            contadorhoras++;
-                        }
+                if (contadorminutos == 3) {
+                    contadorminutos = 0;
 
+                    if (contadorhoras == 23) {
+                        contadorhoras = 0;
                     } else {
-                        contadorminutos++;
+                        contadorhoras++;
                     }
 
-                    //TODO: solo para pantallas
-                    if (
-                        (contadorhoras >= horainicio && contadorminutos*15 >= mininicio) &&
-                        (contadorhoras < horafin && contadorminutos*15 < minfin)
-                       ) {
-                        btnArray[contadorhoras][contadorminutos].setStyle("-fx-background-color: #ddf;");
-                        btnArray[contadorhoras][contadorminutos].setOnAction(e -> {
-                            Button src = (Button) e.getSource();
-                            System.out.println(src.getText());
-                        });
-                    } /*else if (contadorhoras > 9 && contadorhoras < 12) {
+                } else {
+                    contadorminutos++;
+                }
+
+                //Pintar y activar botones correctos dependiendo del horario del mecanico
+                //HACK No encuentro otra forma de hacer esto
+                if (
+                        //Si esta entre la hora inicial y final
+                        ((contadorhoras > horainicio)  && (contadorhoras < horafin))
+                        
+                        ||
+                        
+                        //Si es igual a la hora inicial / final tengo en cuenta los minutos
+                        (horainicio != horafin &&
+                        (((contadorhoras == horainicio)
+                        && ((contadorminutos * 15) >= mininicio))
+                        ||
+                        ((contadorhoras == horafin)   
+                        && ((contadorminutos * 15) <= minfin))))
+                        
+                        ||
+                        
+                        //Si la hora inicial es igual a la final solo tomo el lapso entre los minutos
+                        (horainicio == horafin &&
+                        (((contadorhoras == horainicio)
+                        && ((contadorminutos * 15) >= mininicio)
+                        && ((contadorminutos * 15) <= minfin))))
+                        
+                    )
+                {
+                    btnArray[contadorhoras][contadorminutos].setStyle("-fx-background-color: #ddf;");
+                    btnArray[contadorhoras][contadorminutos].setTextFill(Color.BLACK);
+                    btnArray[contadorhoras][contadorminutos].setOnAction(e -> {
+                        Button src = (Button) e.getSource();
+                        System.out.println(src.getText());
+                    });
+                } /*else if (contadorhoras > 9 && contadorhoras < 12) {
                         btnArray[contadorhoras][contadorminutos].setStyle("-fx-background-color: #fdd;");
                     }*/ else {
-                        btnArray[contadorhoras][contadorminutos].setStyle("-fx-background-color: #ccc;");
-                        btnArray[contadorhoras][contadorminutos].setTextFill(Color.DARKGREY);
-                    }
-
+                    btnArray[contadorhoras][contadorminutos].setStyle("-fx-background-color: #ccc;");
+                    btnArray[contadorhoras][contadorminutos].setTextFill(Color.DARKGREY);
                 }
+
             }
         }
+
+    }
+    
+    
+    @FXML
+    private void cancelar() throws IOException {
+        //Cerrar esta ventana
+        ((Stage) btncancelar.getScene().getWindow()).close();
+    }
+
+    @FXML
+    private void aceptar() throws IOException {
+        //Cerrar esta ventana
+        ((Stage) btnaceptar.getScene().getWindow()).close();
     }
 }
