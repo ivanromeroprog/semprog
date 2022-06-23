@@ -34,7 +34,7 @@ public class ConexionSql { //Singleton
                 connection = DriverManager.getConnection("jdbc:sqlite:"+url);
                 
                 if (connection != null) {
-                    System.out.println("Conexión OK");
+                    System.out.println("DB: Conexión OK");
                 }
             } catch (SQLException e) {
                 System.out.println(e);
@@ -47,6 +47,8 @@ public class ConexionSql { //Singleton
     public static ConexionSql getInstancia() {
         if(instancia == null) {
             instancia = new ConexionSql();
+        }else{
+            System.out.println("DB: Ya estas conectado, devolviendo instancia.");
         }
         return instancia;
     }

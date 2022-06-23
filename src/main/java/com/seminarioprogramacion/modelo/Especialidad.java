@@ -55,10 +55,12 @@ public class Especialidad extends Modelo{
         return especialidadDao.borrar(id_especialidad);
     }
     
+    /*
     @Override
     protected void finalize() throws Throwable {
         especialidadDao.cerrarConexion();
     }
+    */
     
     
 }

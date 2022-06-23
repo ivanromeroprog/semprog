@@ -8,6 +8,7 @@ import com.seminarioprogramacion.dao.FabricaDAO;
 import com.seminarioprogramacion.dao.TurnoDAO;
 import com.seminarioprogramacion.dto.MecanicoDTO;
 import com.seminarioprogramacion.dto.TurnoDTO;
+import java.time.LocalDate;
 import java.util.Date;
 import java.time.LocalTime;
 import java.util.List;
@@ -40,6 +41,11 @@ public class Turno extends Modelo{
         List<TurnoDTO> listadoTurnos = turnoDao.listar(mecanico);
         return listadoTurnos;
     }
+    
+    public List<TurnoDTO> listar(MecanicoDTO mecanico, LocalDate fecha) {
+        List<TurnoDTO> listadoTurnos = turnoDao.listar(mecanico,fecha);
+        return listadoTurnos;
+    }
 
     public boolean insertar(Date dia_atencion, LocalTime hora_atencion, Boolean asistencia, int id_vehiculo, int id_servicio, int id_mecanico) {
         return turnoDao.insertar(dia_atencion, hora_atencion, asistencia, id_vehiculo, id_servicio, id_mecanico);
@@ -52,12 +58,12 @@ public class Turno extends Modelo{
     public boolean borrar(int id_turno) {
         return turnoDao.borrar(id_turno);
     }
-    
+    /*
     @Override
     protected void finalize() throws Throwable {
         turnoDao.cerrarConexion();
     }
-    
+    */
     
 }
 

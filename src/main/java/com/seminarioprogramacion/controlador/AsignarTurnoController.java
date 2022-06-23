@@ -84,7 +84,8 @@ public class AsignarTurnoController implements Initializable {
       
         //TODO: Buscar la forma de pasar datos a la nueva ventana abierta y recibir datos de ella
         MecanicoDTO mecanico = (MecanicoDTO) combobox_mecanicos.getSelectionModel().getSelectedItem();
-        if(mecanico != null){
+        ServicioDTO servicio = (ServicioDTO) combobox_servicios.getSelectionModel().getSelectedItem();
+        if(mecanico != null && servicio != null){
             //System.out.println(mecanico.toString());
 
             //Cargar vista en FXMLLoader
@@ -97,8 +98,11 @@ public class AsignarTurnoController implements Initializable {
                     false);
             
             //Acceder al controlador de la ventana modal para establecer el mecanico
+            // y el servicio
             SeleccionarFechaController seleccionarFechaController = ldr.getController();
             seleccionarFechaController.setMecanico(mecanico);
+            seleccionarFechaController.setServicio(servicio);
+            seleccionarFechaController.iniciar();
             
             //Mostrar la Ventana modal
             st.showAndWait();

@@ -6,6 +6,7 @@ package com.seminarioprogramacion.dao;
 
 import com.seminarioprogramacion.dto.MecanicoDTO;
 import com.seminarioprogramacion.dto.TurnoDTO;
+import java.time.LocalDate;
 import java.util.List;
 
 import java.time.LocalTime;
@@ -22,6 +23,8 @@ public interface TurnoDAO {
      List<TurnoDTO> listar();
      
      List<TurnoDTO> listar(MecanicoDTO mecanico);
+     
+     List<TurnoDTO> listar(MecanicoDTO mecanico, LocalDate fecha);
      
      boolean insertar(Date dia_atencion, LocalTime hora_atencion, Boolean asistencia, int id_vehiculo, int id_servicio, int id_mecanico);
      

@@ -61,9 +61,11 @@ public class Mecanico extends Modelo{
         return mecanicoDao.Borrar(idMecanico);
     }
     
+    /*
     @Override
     protected void finalize() throws Throwable {
-        mecanicoDao.cerrarConexion();
+        turnoDao.cerrarConexion();
     }
+    */
 
 }

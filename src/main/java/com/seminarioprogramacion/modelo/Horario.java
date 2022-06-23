@@ -58,10 +58,12 @@ public class Horario extends Modelo{
         return horarioDao.borrar(id_horario);
     }
     
+    /*
     @Override
     protected void finalize() throws Throwable {
-        horarioDao.cerrarConexion();
+        turnoDao.cerrarConexion();
     }
+    */
     
     
 }

@@ -56,10 +56,12 @@ public class Vehiculo extends Modelo{
         return vehiculoDao.borrar(id_vehiculo);
     }
     
+    /*
     @Override
     protected void finalize() throws Throwable {
-        vehiculoDao.cerrarConexion();
+        turnoDao.cerrarConexion();
     }
+    */
     
     
 }

@@ -50,10 +50,12 @@ public class Servicio extends Modelo{
         return servicioDao.borrar(id_servicio);
     }
     
+    /*
     @Override
     protected void finalize() throws Throwable {
-        servicioDao.cerrarConexion();
+        turnoDao.cerrarConexion();
     }
+    */
     
     
 }

@@ -13,6 +13,7 @@ import com.seminarioprogramacion.modelo.Mecanico;
 import com.seminarioprogramacion.modelo.Turno;
 import java.io.IOException;
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -69,16 +70,19 @@ public class TurnosController implements Initializable {
         combobox_mecanicos.getItems().addAll(mecanicos); 
         
         //codigo para probar turno en consola
+        /*
         Turno turno = new Turno();
-        List<TurnoDTO> lista1 = turno.listar(); //traigo todos
+        LocalDate fecha = LocalDate.now();
+        MecanicoDTO meca = mecanicos.get(0);
+        List<TurnoDTO> lista1 = turno.listar(meca,fecha);
+        
         for(TurnoDTO turno1: lista1){
             System.out.print(turno1.getDia_atencion());
             System.out.println(turno1.getHora_atencion());
             System.out.println(turno1.getAsistencia());
-             System.out.println(turno1.getMecanico());
-
+            System.out.println(turno1.getMecanico());
         }
-        /*
+        
         //codigo para probar turno por mecanico en consola
         List<TurnoDTO> lista2 = turno.listarPorMecanico(2); //id 2
         for(TurnoDTO turno2: lista2){

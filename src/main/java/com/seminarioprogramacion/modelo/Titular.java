@@ -53,10 +53,12 @@ public class Titular extends Modelo{
         return titularDao.borrar(id_titular);
     }
     
+    /*
     @Override
     protected void finalize() throws Throwable {
-        titularDao.cerrarConexion();
+        turnoDao.cerrarConexion();
     }
+    */
     
     
 }

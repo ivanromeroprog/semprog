@@ -15,9 +15,11 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -92,17 +94,22 @@ public class TurnoDAOSQL implements TurnoDAO {
     
     @Override
     public List<TurnoDTO> listar() {
-        return _listar(0);
+        return _listar(0,null);
     }
 
     @Override
     public List<TurnoDTO> listar(MecanicoDTO mecanico) {
-        return _listar(mecanico.getIdMecanico());
+        return _listar(mecanico.getIdMecanico(), null);
+    }
+
+    @Override
+    public List<TurnoDTO> listar(MecanicoDTO mecanico, LocalDate fecha) {
+        return _listar(mecanico.getIdMecanico(), fecha);
     }
     
     //Metodo de soporte para no repetir código
     //TODO cargar datos de objetos servicio, etc.
-    private List<TurnoDTO> _listar(int id_mecanico){
+    private List<TurnoDTO> _listar(int id_mecanico, LocalDate fecha){
         Connection con = null;
         PreparedStatement sentencia = null;
         ResultSet rs = null;
@@ -112,6 +119,8 @@ public class TurnoDAOSQL implements TurnoDAO {
         VehiculoDTO vehiculo = null;
         MecanicoDTO mecanico = null;
         TitularDTO titular = null;
+        
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-mm-dd");
         
         List<TurnoDTO> lista = new ArrayList<>();
         
@@ -123,7 +132,6 @@ public class TurnoDAOSQL implements TurnoDAO {
 "Servicio.nombre AS servicio_nombre, Servicio.descripcion AS servicio_descripcion," +
 "Vehiculo.id_aseguradora, Vehiculo.id_titular, Vehiculo.marca AS vehiculo_marca, Vehiculo.modelo as vehiculo_modelo," +
 "Vehiculo.nro_poliza AS vehiculo_nro_poliza, Vehiculo.patente AS vehiculo_patente," +
-"Mecanico.id_mecanico," +
 "Mecanico.apellido AS mecanico_apellido, Mecanico.nombre AS mecanico_nombre, Mecanico.carga_horaria AS mecanico_carga_horaria," +
 "Mecanico.legajo AS mecanico_legajo, Mecanico.nro_doc AS mecanico_nro_doc, Mecanico.tipo_doc AS mecanico_tipo_doc," +
 "Titular.apellido AS titular_apellido, Titular.nombre AS titular_nombre, Titular.id_titular, Titular.nro_doc as titular_nro_doc," +
@@ -137,14 +145,25 @@ public class TurnoDAOSQL implements TurnoDAO {
 "Vehiculo.id_titular = Titular.id_titular";
             
             if(id_mecanico > 0){
-                sql+= " WHERE id_mecanico = ? ";
+                sql+= " AND Mecanico.id_mecanico = ? ";
             }
+            if(fecha != null){
+                sql+= " AND Turno.dia_atencion = \"" + fecha.toString() + "\" ";
+            }
+            
             sql+= " order by id_turno DESC";
             
             sentencia = con.prepareStatement(sql);
             
             if(id_mecanico > 0){
-                sentencia.setInt(1, id_mecanico);
+                sentencia.setInt(1, id_mecanico);/*
+                if(fecha != null){
+                    String diat = fecha.toString();
+                    diat = diat + "";
+                    sentencia.setString(2, diat);
+                }
+            }else if(fecha != null){
+                sentencia.setString(1, fecha.format(formatter));*/
             }
             
             rs = sentencia.executeQuery();  //resultados de la consulta SQL

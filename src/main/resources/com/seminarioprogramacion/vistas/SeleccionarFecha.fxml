@@ -18,7 +18,7 @@
       <HBox alignment="CENTER" prefHeight="41.0" prefWidth="600.0">
          <children>
             <Button fx:id="btnprev" mnemonicParsing="false" onAction="#btnprev_click" text="&lt;" />
-            <DatePicker fx:id="dpfecha" onAction="#actualizarBotones" />
+            <DatePicker fx:id="dpfecha" onAction="#dpfecha_change" />
             <Button fx:id="btnnext" mnemonicParsing="false" onAction="#btnnext_click" text="&gt;" />
          </children>
       </HBox>
