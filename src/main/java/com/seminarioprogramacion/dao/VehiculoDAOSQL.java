@@ -45,18 +45,6 @@ public class VehiculoDAOSQL implements VehiculoDAO {
             sentencia.setString(1, patente); //reemplaza
 
             rs = sentencia.executeQuery(); //resultados de la consulta SQL
-
-            /*
-            CREATE TABLE "Vehiculo" (
-                "id_vehiculo"	INTEGER,
-                "id_titular"	INTEGER,
-                "id_aseguradora"	INTEGER,
-                "patente"	VARCHAR(10) NOT NULL UNIQUE,
-                "marca"	VARCHAR(200) NOT NULL,
-                "modelo"	VARCHAR(100) NOT NULL,
-                "nro_poliza"	VARCHAR(100) NOT NULL,
-
-            */
             
             //inicializo variables, para luego asignar valores de la DB
             int id_vehiculo_db;

@@ -26,6 +26,15 @@ public class TurnoDTO {
     private VehiculoDTO vehiculo;
     private ServicioDTO servicio;
     private TitularDTO titular;
+    private MecanicoDTO mecanico;
+
+    public MecanicoDTO getMecanico() {
+        return mecanico;
+    }
+
+    public void setMecanico(MecanicoDTO mecanico) {
+        this.mecanico = mecanico;
+    }
 
     public TurnoDTO(int id_turno, Date dia_atencion, LocalTime hora_atencion, Boolean asistencia, int id_vehiculo, int id_servicio, int id_mecanico) {
         this.id_turno = id_turno;

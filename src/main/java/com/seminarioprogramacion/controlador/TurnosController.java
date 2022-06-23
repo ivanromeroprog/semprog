@@ -67,9 +67,6 @@ public class TurnosController implements Initializable {
          Mecanico mecanico = new Mecanico();
         List<MecanicoDTO> mecanicos = mecanico.listar();
         combobox_mecanicos.getItems().addAll(mecanicos); 
-        //Modelo
-        //Lista
-        //combobox
         
         //codigo para probar turno en consola
         Turno turno = new Turno();
@@ -78,6 +75,8 @@ public class TurnosController implements Initializable {
             System.out.print(turno1.getDia_atencion());
             System.out.println(turno1.getHora_atencion());
             System.out.println(turno1.getAsistencia());
+             System.out.println(turno1.getMecanico());
+
         }
         /*
         //codigo para probar turno por mecanico en consola
