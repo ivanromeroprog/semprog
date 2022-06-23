@@ -15,6 +15,7 @@ import com.seminarioprogramacion.modelo.Servicio;
 import com.seminarioprogramacion.modelo.Vehiculo;
 import java.io.IOException;
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
@@ -22,6 +23,9 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.DatePicker;
+import javafx.scene.control.Spinner;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 /**
@@ -48,6 +52,12 @@ public class AsignarTurnoController implements Initializable {
     
     @FXML
     private Button btncancelar;
+    @FXML
+    private DatePicker dpdia_atencion;
+    @FXML
+    private TextField txthora_atencion;
+    @FXML
+    private TextField txtmin_atencion;
     
     /**
      * Initializes the controller class.
@@ -108,10 +118,12 @@ public class AsignarTurnoController implements Initializable {
             st.showAndWait();
             
             //Accerder al controlador luego de cerrarse la ventana para obtener los datos
-            /*
-            MecanicoDTO m = seleccionarFechaController.getMecanico();
-            System.out.println(m.toString());
-            */
+            LocalDate fs = seleccionarFechaController.getFechasel();
+            int hs = seleccionarFechaController.getHorasel();
+            int ms = seleccionarFechaController.getMinsel();
+            dpdia_atencion.setValue(fs);
+            txthora_atencion.setText(String.format("%02d", (hs)));
+            txtmin_atencion.setText(String.format("%02d", (ms)));
         }
     }
     

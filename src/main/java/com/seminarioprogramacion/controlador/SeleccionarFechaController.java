@@ -41,10 +41,13 @@ public class SeleccionarFechaController implements Initializable {
     private boolean dispArray[];
 
     private MecanicoDTO mecanico;
-    
     private ServicioDTO servicio;
-    
     private List<TurnoDTO> turnos;
+    
+    //Datos para devolver a la ventana principal
+    private LocalDate fechasel;
+    private int horasel;
+    private int minsel;
    
 
     @FXML
@@ -67,7 +70,10 @@ public class SeleccionarFechaController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
 
         dpfecha.setValue(LocalDate.now());
-        
+        fechasel = null;
+        horasel = -1;
+        minsel = -1;
+   
     }
 
     @FXML
@@ -80,6 +86,18 @@ public class SeleccionarFechaController implements Initializable {
     private void btnnext_click(ActionEvent event) throws IOException {
         LocalDate dv = dpfecha.getValue();
         dpfecha.setValue(dv.plusDays(1));
+    }
+
+    public LocalDate getFechasel() {
+        return fechasel;
+    }
+
+    public int getHorasel() {
+        return horasel;
+    }
+
+    public int getMinsel() {
+        return minsel;
     }
 
     public MecanicoDTO getMecanico() {
@@ -198,6 +216,10 @@ public class SeleccionarFechaController implements Initializable {
         //Turnos
         Turno turno = new Turno();
         turnos = turno.listar(this.mecanico, dpfecha.getValue());
+        
+        fechasel = null;
+        horasel = -1;
+        minsel = -1;
         
         actualizarBotones();
     }
@@ -358,6 +380,9 @@ public class SeleccionarFechaController implements Initializable {
 
     @FXML
     private void aceptar() throws IOException {
+        if(fechasel == null || horasel < 0 || minsel < 0)
+            return;
+        
         //Cerrar esta ventana
         ((Stage) btnaceptar.getScene().getWindow()).close();
     }
@@ -372,11 +397,11 @@ public class SeleccionarFechaController implements Initializable {
         for(int i = userData; i <= userData+cantidadBotones; i++ )
         {
             if(!dispArray[i]){
-                System.out.println("NOOOOO");
+                System.out.println("Horario Incorrecto");
                 return;
             }
         }
-        System.out.println("SIIIIIII"); 
+        System.out.println("Horario Seleccionado"); 
         
         actualizarBotones();
         for(int i = userData; i <= userData+cantidadBotones; i++ )
@@ -385,6 +410,10 @@ public class SeleccionarFechaController implements Initializable {
                     btnArray[i].setTextFill(Color.BLACK);
         }
         
-
+        //Guardar valores para devolver a ventana padre
+        fechasel = dpfecha.getValue();
+        String[] tmp = btnArray[userData].getText().split(":");
+        horasel = Integer.parseInt(tmp[0]);
+        minsel = Integer.parseInt(tmp[1]);
     }
 }

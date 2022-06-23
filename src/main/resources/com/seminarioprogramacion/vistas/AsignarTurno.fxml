@@ -5,7 +5,7 @@
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Spinner?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
@@ -88,19 +88,23 @@
                               <Insets />
                            </opaqueInsets>
                         </Label>
-                        <DatePicker disable="true" prefWidth="175.0" />
+                        <DatePicker fx:id="dpdia_atencion" disable="true" editable="false" prefWidth="175.0" />
                      </children>
                   </HBox>
                   <HBox alignment="CENTER">
                      <children>
-                        <Label prefWidth="75.0" text="Hora">
+                        <Label prefHeight="17.0" prefWidth="107.0" text="Hora">
                            <opaqueInsets>
                               <Insets />
                            </opaqueInsets>
                         </Label>
-                        <Spinner disable="true" prefHeight="25.0" prefWidth="80.0" />
+                        <TextField fx:id="txthora_atencion" alignment="CENTER" editable="false" prefHeight="25.0" prefWidth="52.0" />
                         <Label alignment="CENTER" contentDisplay="CENTER" prefWidth="15.0" text=" : " textAlignment="CENTER" />
-                        <Spinner disable="true" prefHeight="25.0" prefWidth="80.0" />
+                        <TextField fx:id="txtmin_atencion" alignment="CENTER" editable="false" prefHeight="25.0" prefWidth="49.0">
+                           <HBox.margin>
+                              <Insets right="25.0" />
+                           </HBox.margin>
+                        </TextField>
                      </children>
                   </HBox>
                </children>
