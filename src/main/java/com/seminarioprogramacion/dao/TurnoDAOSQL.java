@@ -127,7 +127,8 @@ public class TurnoDAOSQL implements TurnoDAO {
         try {
             con = conexion.getConnection(); //instancia de una conexion SQL (Java)
             String sql = "SELECT "+
-"Turno.*," +
+"Turnos.id_turno, Turnos.id_vehiculo, Turnos.id_mecanico, Turnos.id_servicio, Turnos.asistencia, Turnos.hora_atencion," +
+"datetime(substr(Turnos.dia_atencion, 7, 4) || '-' || substr(Turnos.dia_atencion, 4, 2) || '-' || substr(Turnos.dia_atencion, 1, 2)) AS dia_atencion,"+
 "Servicio.id_especialidad, Servicio.tiempo AS servicio_tiempo, " +
 "Servicio.nombre AS servicio_nombre, Servicio.descripcion AS servicio_descripcion," +
 "Vehiculo.id_aseguradora, Vehiculo.id_titular, Vehiculo.marca AS vehiculo_marca, Vehiculo.modelo as vehiculo_modelo," +
@@ -137,21 +138,21 @@ public class TurnoDAOSQL implements TurnoDAO {
 "Titular.apellido AS titular_apellido, Titular.nombre AS titular_nombre, Titular.id_titular, Titular.nro_doc as titular_nro_doc," +
 "Titular.tipo_doc AS titular_tipo_doc, Titular.telefono AS titular_telefono " +
 "FROM " +
-"Turno,Servicio,Vehiculo,Titular,Mecanico " +
+"Turnos,Servicio,Vehiculo,Titular,Mecanico " +
 "WHERE " +
-"Turno.id_servicio = Servicio.id_servicio AND  " +
-"Turno.id_mecanico = Mecanico.id_mecanico AND " +
-"Turno.id_vehiculo = Vehiculo.id_vehiculo AND " +
+"Turnos.id_servicio = Servicio.id_servicio AND  " +
+"Turnos.id_mecanico = Mecanico.id_mecanico AND " +
+"Turnos.id_vehiculo = Vehiculo.id_vehiculo AND " +
 "Vehiculo.id_titular = Titular.id_titular";
             
             if(id_mecanico > 0){
                 sql+= " AND Mecanico.id_mecanico = ? ";
             }
             if(fecha != null){
-                sql+= " AND Turno.dia_atencion = \"" + fecha.toString() + "\" ";
+                sql+= " AND Turnos.dia_atencion = \"" + fecha.toString() + "\" ";
             }
             
-            sql+= " order by id_turno DESC";
+            sql+= " order by Turnos.id_turno DESC";
             
             sentencia = con.prepareStatement(sql);
             
@@ -203,13 +204,15 @@ public class TurnoDAOSQL implements TurnoDAO {
             while (rs.next()) {
                 //Turno
                 id_turno_db = rs.getInt("id_turno"); //asigno valores
-                dia_atencion_db = new SimpleDateFormat("yyyy-MM-dd").parse(rs.getString("dia_atencion"));
+                //dia_atencion_db = new SimpleDateFormat("yyyy-MM-dd").parse(rs.getString("dia_atencion"));
+                dia_atencion_db = new Date();
                 hora_atencion_db = LocalTime.parse(rs.getString("hora_atencion"));
                 asistencia_db = rs.getBoolean("asistencia");
                 id_vehiculo_db = rs.getInt("id_vehiculo");
                 id_servicio_db = rs.getInt("id_servicio");
                 id_mecanico_db = rs.getInt("id_mecanico");
-                turno = new TurnoDTO(id_turno_db, dia_atencion_db, hora_atencion_db, asistencia_db, id_vehiculo_db, id_servicio_db, id_mecanico_db);
+                turno = new TurnoDTO(id_turno_db, dia_atencion_db, hora_atencion_db, asistencia_db
+                                   , id_vehiculo_db, id_servicio_db, id_mecanico_db);
                 
                 //Servicio
                 id_servicio_db = rs.getInt("id_servicio"); //asigno valores
@@ -259,12 +262,10 @@ public class TurnoDAOSQL implements TurnoDAO {
                         rs.getDouble("mecanico_carga_horaria")
                 );
                 turno.setMecanico(mecanico);
-
-                
                 lista.add(turno);
             }
 
-        } catch (SQLException | ParseException e) {
+        } catch (SQLException e){//| ParseException e) {
             System.err.println(e);
         } finally {
             try {
@@ -277,7 +278,6 @@ public class TurnoDAOSQL implements TurnoDAO {
             }
         }
         return lista;
-
     }
     
     @Override
