@@ -101,6 +101,12 @@ public class TurnoDAOSQL implements TurnoDAO {
     public List<TurnoDTO> listar(MecanicoDTO mecanico) {
         return _listar(mecanico.getIdMecanico(), null);
     }
+    
+    
+    @Override
+    public List<TurnoDTO> listar(LocalDate fecha) {
+        return _listar(0, fecha);
+    }
 
     @Override
     public List<TurnoDTO> listar(MecanicoDTO mecanico, LocalDate fecha) {
@@ -108,7 +114,6 @@ public class TurnoDAOSQL implements TurnoDAO {
     }
     
     //Metodo de soporte para no repetir código
-    //TODO cargar datos de objetos servicio, etc.
     private List<TurnoDTO> _listar(int id_mecanico, LocalDate fecha){
         Connection con = null;
         PreparedStatement sentencia = null;
@@ -120,7 +125,7 @@ public class TurnoDAOSQL implements TurnoDAO {
         MecanicoDTO mecanico = null;
         TitularDTO titular = null;
         
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-mm-dd");
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         
         List<TurnoDTO> lista = new ArrayList<>();
         
@@ -149,7 +154,7 @@ public class TurnoDAOSQL implements TurnoDAO {
                 sql+= " AND Mecanico.id_mecanico = ? ";
             }
             if(fecha != null){
-                sql+= " AND Turnos.dia_atencion = \"" + fecha.toString() + "\" ";
+                sql+= " AND Turnos.dia_atencion = \"" + formatter.format(fecha) + "\" ";
             }
             
             sql+= " order by Turnos.id_turno DESC";

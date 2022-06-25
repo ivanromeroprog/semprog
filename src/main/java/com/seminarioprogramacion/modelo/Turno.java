@@ -42,6 +42,11 @@ public class Turno extends Modelo{
         return listadoTurnos;
     }
     
+    public List<TurnoDTO> listar(LocalDate fecha) {
+        List<TurnoDTO> listadoTurnos = turnoDao.listar(fecha);
+        return listadoTurnos;
+    }
+    
     public List<TurnoDTO> listar(MecanicoDTO mecanico, LocalDate fecha) {
         List<TurnoDTO> listadoTurnos = turnoDao.listar(mecanico,fecha);
         return listadoTurnos;

@@ -24,6 +24,8 @@ public interface TurnoDAO {
      
      List<TurnoDTO> listar(MecanicoDTO mecanico);
      
+     List<TurnoDTO> listar(LocalDate fecha);
+     
      List<TurnoDTO> listar(MecanicoDTO mecanico, LocalDate fecha);
      
      boolean insertar(Date dia_atencion, LocalTime hora_atencion, Boolean asistencia, int id_vehiculo, int id_servicio, int id_mecanico);

@@ -52,8 +52,6 @@ public class TurnosController implements Initializable {
     @FXML
     private Button btnImprimirComprobante;
     @FXML
-    private Button btnImprimirFichaMecanica;
-    @FXML
     private Button bttnFiltrar;
     @FXML
     private ComboBox combobox_especialidades;
@@ -85,6 +83,8 @@ public class TurnosController implements Initializable {
 
     @FXML
     private DatePicker dtpFecha;
+    @FXML
+    private Button btnlimpiar;
         
     /**
      * Initializes the controller class.
@@ -102,6 +102,10 @@ public class TurnosController implements Initializable {
             List<MecanicoDTO> mecanicos = mecanico.listar();
             combobox_mecanicos.getItems().addAll(mecanicos);
 
+            //Listar valores
+            bttnFiltrar_OnClick();
+            
+            
             //codigo para probar turno en consola
             /*
         Turno turno = new Turno();
@@ -128,6 +132,15 @@ public class TurnosController implements Initializable {
             System.out.println(ex.getMessage());
         }
     }
+    
+    @FXML
+    private void btnlimpiar_OnClick() throws IOException {
+        dtpFecha.setValue(null);
+        combobox_mecanicos.setValue(null);
+        //combobox_especialidades.setValue(null);
+        bttnFiltrar_OnClick();
+                
+    }
 
     @FXML
     private void bttnFiltrar_OnClick() throws IOException {
@@ -135,7 +148,28 @@ public class TurnosController implements Initializable {
         MecanicoDTO mecanico = (MecanicoDTO) combobox_mecanicos.getSelectionModel().getSelectedItem();
         LocalDate fechaDtp = dtpFecha.getValue();
         Turno turno = new Turno(); //Modelo
-        List<TurnoDTO> turnos = turno.listar(mecanico, fechaDtp); //Listar mecanicos por especialidad 
+        List<TurnoDTO> turnos;
+        if(mecanico != null)
+        {
+            if(fechaDtp != null){
+                 turnos= turno.listar(mecanico, fechaDtp);
+            }
+            else
+            {
+                turnos = turno.listar(mecanico);  
+            }
+        }
+        else{
+            if(fechaDtp != null){
+                 turnos= turno.listar(fechaDtp);
+            }
+            else
+            {
+                turnos = turno.listar();  
+            }
+        }
+        
+        
         colFecha.setCellValueFactory(new PropertyValueFactory<>("dia_atencion"));
         colHorario.setCellValueFactory(new PropertyValueFactory<>("hora_atencion"));
         colAsistencia.setCellValueFactory(t -> {
@@ -149,7 +183,7 @@ public class TurnosController implements Initializable {
         colVehiculo.setCellValueFactory(new PropertyValueFactory<>("Vehiculo"));
         ObservableList<TurnoDTO> listObsevable = FXCollections.observableList(turnos);
         tbViewTurnos.setItems(listObsevable);  
-        dtpFecha.setValue(null);
+        //dtpFecha.setValue(null);
     }    
 
     @FXML

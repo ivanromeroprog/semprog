@@ -256,6 +256,7 @@ public class SeleccionarFechaController implements Initializable {
 
         
         for(TurnoDTO t: turnos){
+            System.out.println(t);
             horainicio = t.getHora_atencion().getHour();
             mininicio = t.getHora_atencion().getMinute();
             horafin = t.getHora_atencion().plusMinutes(t.getServicio().getTiempo()).getHour();
@@ -374,6 +375,11 @@ public class SeleccionarFechaController implements Initializable {
 
     @FXML
     private void cancelar() throws IOException {
+        
+        this.fechasel = null;
+        this.horasel = -1;
+        this.minsel = -1;
+        
         //Cerrar esta ventana
         ((Stage) btncancelar.getScene().getWindow()).close();
     }
