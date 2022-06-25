@@ -55,7 +55,7 @@ public class TurnoDAOSQL implements TurnoDAO {
             
             //inicializo variables, para luego asignar valores de la DB
             int id_turno_db;
-            Date dia_atencion_db;
+            String dia_atencion_db;
             LocalTime hora_atencion_db;
             Boolean asistencia_db;
             int id_vehiculo_db;
@@ -65,7 +65,7 @@ public class TurnoDAOSQL implements TurnoDAO {
 
             while (rs.next()) {
                 id_turno_db = rs.getInt("id_turno"); //asigno valores               
-                dia_atencion_db = new SimpleDateFormat("yyyy-MM-dd").parse(rs.getString("dia_atencion"));
+                dia_atencion_db = rs.getString("id_turno");//new SimpleDateFormat("yyyy-MM-dd").parse(rs.getString("dia_atencion"));
                 hora_atencion_db = LocalTime.parse(rs.getString("hora_atencion"));
                 asistencia_db = rs.getBoolean("asistencia");
                 id_vehiculo_db = rs.getInt("id_vehiculo");
@@ -76,7 +76,7 @@ public class TurnoDAOSQL implements TurnoDAO {
                                                
             }
 
-        } catch (SQLException | ParseException e) {
+        } catch (SQLException e){//| ParseException e) {
             System.err.println(e);
         } finally {
             try {
@@ -128,7 +128,7 @@ public class TurnoDAOSQL implements TurnoDAO {
             con = conexion.getConnection(); //instancia de una conexion SQL (Java)
             String sql = "SELECT "+
 "Turnos.id_turno, Turnos.id_vehiculo, Turnos.id_mecanico, Turnos.id_servicio, Turnos.asistencia, Turnos.hora_atencion," +
-"datetime(substr(Turnos.dia_atencion, 7, 4) || '-' || substr(Turnos.dia_atencion, 4, 2) || '-' || substr(Turnos.dia_atencion, 1, 2)) AS dia_atencion,"+
+"Turnos.dia_atencion,"+
 "Servicio.id_especialidad, Servicio.tiempo AS servicio_tiempo, " +
 "Servicio.nombre AS servicio_nombre, Servicio.descripcion AS servicio_descripcion," +
 "Vehiculo.id_aseguradora, Vehiculo.id_titular, Vehiculo.marca AS vehiculo_marca, Vehiculo.modelo as vehiculo_modelo," +
@@ -171,7 +171,7 @@ public class TurnoDAOSQL implements TurnoDAO {
                         
             //inicializo variables, para luego asignar valores de la DB
             int id_turno_db;
-            Date dia_atencion_db;
+            String dia_atencion_db;
             LocalTime hora_atencion_db;
             Boolean asistencia_db;
             int id_vehiculo_db;
@@ -205,7 +205,7 @@ public class TurnoDAOSQL implements TurnoDAO {
                 //Turno
                 id_turno_db = rs.getInt("id_turno"); //asigno valores
                 //dia_atencion_db = new SimpleDateFormat("yyyy-MM-dd").parse(rs.getString("dia_atencion"));
-                dia_atencion_db = new Date();
+                dia_atencion_db = rs.getString("dia_atencion");
                 hora_atencion_db = LocalTime.parse(rs.getString("hora_atencion"));
                 asistencia_db = rs.getBoolean("asistencia");
                 id_vehiculo_db = rs.getInt("id_vehiculo");

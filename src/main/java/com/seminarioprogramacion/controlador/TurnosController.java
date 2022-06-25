@@ -12,6 +12,7 @@ import com.seminarioprogramacion.modelo.Mecanico;
 import com.seminarioprogramacion.modelo.Turno;
 import java.io.IOException;
 import java.net.URL;
+import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.Date;
 import java.util.List;
@@ -26,6 +27,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.TableColumn;
 import javafx.stage.Stage;
 import javafx.scene.control.TableView;
@@ -81,6 +83,9 @@ public class TurnosController implements Initializable {
     @FXML
     private TableColumn<VehiculoDTO, String> colVehiculo;
 
+    @FXML
+    private DatePicker dtpFecha;
+        
     /**
      * Initializes the controller class.
      */
@@ -128,9 +133,9 @@ public class TurnosController implements Initializable {
     private void bttnFiltrar_OnClick() throws IOException {
         tbViewTurnos.getItems().clear(); //Limpia tableView  
         MecanicoDTO mecanico = (MecanicoDTO) combobox_mecanicos.getSelectionModel().getSelectedItem();
-
+        LocalDate fechaDtp = dtpFecha.getValue();
         Turno turno = new Turno(); //Modelo
-        List<TurnoDTO> turnos = turno.listar(mecanico); //Listar mecanicos por especialidad 
+        List<TurnoDTO> turnos = turno.listar(mecanico, fechaDtp); //Listar mecanicos por especialidad 
         colFecha.setCellValueFactory(new PropertyValueFactory<>("dia_atencion"));
         colHorario.setCellValueFactory(new PropertyValueFactory<>("hora_atencion"));
         colAsistencia.setCellValueFactory(t -> {
@@ -143,7 +148,8 @@ public class TurnosController implements Initializable {
         colTitular.setCellValueFactory(new PropertyValueFactory<>("Titular"));
         colVehiculo.setCellValueFactory(new PropertyValueFactory<>("Vehiculo"));
         ObservableList<TurnoDTO> listObsevable = FXCollections.observableList(turnos);
-        tbViewTurnos.setItems(listObsevable);      
+        tbViewTurnos.setItems(listObsevable);  
+        dtpFecha.setValue(null);
     }    
 
     @FXML

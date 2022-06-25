@@ -17,7 +17,7 @@ import java.util.Date;
 public class TurnoDTO {
     
     private int id_turno;
-    private Date dia_atencion;
+    private String dia_atencion;
     private LocalTime hora_atencion;
     private Boolean asistencia;
     private int id_vehiculo;
@@ -36,7 +36,7 @@ public class TurnoDTO {
         this.mecanico = mecanico;
     }
 
-    public TurnoDTO(int id_turno, Date dia_atencion, LocalTime hora_atencion, Boolean asistencia, int id_vehiculo, int id_servicio, int id_mecanico) {
+    public TurnoDTO(int id_turno, String dia_atencion, LocalTime hora_atencion, Boolean asistencia, int id_vehiculo, int id_servicio, int id_mecanico) {
         this.id_turno = id_turno;
         this.dia_atencion = dia_atencion;
         this.hora_atencion = hora_atencion;
@@ -79,11 +79,11 @@ public class TurnoDTO {
         this.id_turno = id_turno;
     }
 
-    public Date getDia_atencion() {
+    public String getDia_atencion() {
         return dia_atencion;
     }
 
-    public void setDia_atencion(Date dia_atencion) {
+    public void setDia_atencion(String dia_atencion) {
         this.dia_atencion = dia_atencion;
     }
 
