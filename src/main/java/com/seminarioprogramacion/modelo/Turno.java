@@ -52,7 +52,7 @@ public class Turno extends Modelo{
         return listadoTurnos;
     }
 
-    public boolean insertar(Date dia_atencion, LocalTime hora_atencion, Boolean asistencia, int id_vehiculo, int id_servicio, int id_mecanico) {
+    public boolean insertar(LocalDate dia_atencion, LocalTime hora_atencion, Boolean asistencia, int id_vehiculo, int id_servicio, int id_mecanico) {
         return turnoDao.insertar(dia_atencion, hora_atencion, asistencia, id_vehiculo, id_servicio, id_mecanico);
     }
 

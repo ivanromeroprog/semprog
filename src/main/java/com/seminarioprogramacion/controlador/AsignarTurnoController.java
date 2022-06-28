@@ -12,10 +12,12 @@ import com.seminarioprogramacion.main.App;
 import com.seminarioprogramacion.modelo.Mecanico;
 import com.seminarioprogramacion.modelo.Titular;
 import com.seminarioprogramacion.modelo.Servicio;
+import com.seminarioprogramacion.modelo.Turno;
 import com.seminarioprogramacion.modelo.Vehiculo;
 import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.List;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
@@ -85,7 +87,18 @@ public class AsignarTurnoController implements Initializable {
 
     @FXML
     private void guardar() throws IOException {
-        //Cerrar esta ventana
+        Turno turno = new Turno();
+        turno.insertar( dpdia_atencion.getValue(),
+                LocalTime.of(
+                        Integer.parseInt(txthora_atencion.getText()),
+                        Integer.parseInt(txthora_atencion.getText())
+                ),
+                false,
+                (int)combobox_vehiculos.getValue(),
+                (int)combobox_servicios.getValue(),
+                (int)combobox_titulares.getValue()
+                );
+        
         ((Stage) btnguardar.getScene().getWindow()).close();
     }
 
