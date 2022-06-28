@@ -60,6 +60,10 @@ public class Turno extends Modelo{
         return turnoDao.modificar(id_turno, dia_atencion, hora_atencion, asistencia, id_vehiculo, id_servicio, id_mecanico);
     }
 
+    public boolean modificarAsistencia(int id_turno, Boolean asistencia) {
+        return turnoDao.modificarAsistencia(id_turno, asistencia);
+    }
+    
     public boolean borrar(int id_turno) {
         return turnoDao.borrar(id_turno);
     }

@@ -32,6 +32,8 @@ public interface TurnoDAO {
      
      boolean modificar(int id_turno, Date dia_atencion, LocalTime hora_atencion, Boolean asistencia, int id_vehiculo, int id_servicio, int id_mecanico);
      
+     boolean modificarAsistencia(int id_turno, Boolean asistencia);
+     
      boolean borrar(int id_turno);
      
      void cerrarConexion();

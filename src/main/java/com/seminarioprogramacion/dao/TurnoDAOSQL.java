@@ -292,6 +292,8 @@ public class TurnoDAOSQL implements TurnoDAO {
         PreparedStatement sentencia = null;
         int resultado = 0;
         try {
+            conexion.desconectar();
+            conexion = ConexionSql.getInstancia();
             con = conexion.getConnection();
             String sql = "insert into turnos"
                     + " (dia_atencion, hora_atencion, asistencia, id_vehiculo, id_servicio, id_mecanico)"
@@ -307,6 +309,7 @@ public class TurnoDAOSQL implements TurnoDAO {
             sentencia.setInt(6, id_mecanico);
 
             resultado = sentencia.executeUpdate();
+            con.commit();
             conexion.desconectar();
             conexion = ConexionSql.getInstancia();
             
@@ -357,6 +360,38 @@ public class TurnoDAOSQL implements TurnoDAO {
     }
 
     @Override
+    public boolean modificarAsistencia(int id_turno, Boolean asistencia) {
+        
+        Connection con = null;
+        PreparedStatement sentencia = null;
+
+        try {
+            con = conexion.getConnection();
+            String sql = "update turnos set asistencia=? where id_turno=?";
+            sentencia = con.prepareStatement(sql);
+            sentencia.setInt(1, (asistencia ? 1 : 0));
+            sentencia.setInt(2, id_turno);
+
+            int resultado = sentencia.executeUpdate();
+            con.commit();
+            conexion.desconectar();
+            conexion = ConexionSql.getInstancia();
+            
+            return (resultado > 0);
+        } catch (SQLException e) {
+            System.err.println(e);
+            return false;
+        } finally {
+            try {
+                sentencia.close();
+            } catch (SQLException ex) {
+                System.err.println(ex);
+            }
+        }
+    }
+
+    
+    @Override
     public boolean borrar(int id_turno) {
         
         Connection con = null;
@@ -369,7 +404,10 @@ public class TurnoDAOSQL implements TurnoDAO {
             sentencia.setInt(1, id_turno);
 
             int resultado = sentencia.executeUpdate();
-
+            con.commit();
+            conexion.desconectar();
+            conexion = ConexionSql.getInstancia();
+            
             return (resultado > 0);
         } catch (SQLException e) {
             System.err.println(e);

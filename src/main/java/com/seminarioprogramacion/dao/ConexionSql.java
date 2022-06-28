@@ -33,7 +33,7 @@ public class ConexionSql { //Singleton
                 String url = getClass().getResource("SuperCharger.db").toURI().toString();
                 //String url = "file:/C:/Users/ikukl/Desktop/SuperCharger.db";
                 connection = DriverManager.getConnection("jdbc:sqlite:"+url);
-                //connection.setAutoCommit(false);
+                connection.setAutoCommit(false);
                 
                 if (connection != null) {
                     System.out.println("DB: Conexión OK");

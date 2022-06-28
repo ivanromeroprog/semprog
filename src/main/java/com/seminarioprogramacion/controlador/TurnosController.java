@@ -17,6 +17,8 @@ import java.time.LocalTime;
 import java.util.Date;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.beans.property.ReadOnlyStringWrapper;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -24,11 +26,13 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TableColumn;
+import javafx.scene.control.TablePosition;
 import javafx.stage.Stage;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.CheckBoxTableCell;
@@ -85,7 +89,7 @@ public class TurnosController implements Initializable {
     private DatePicker dtpFecha;
     @FXML
     private Button btnlimpiar;
-        
+
     /**
      * Initializes the controller class.
      */
@@ -104,8 +108,7 @@ public class TurnosController implements Initializable {
 
             //Listar valores
             bttnFiltrar_OnClick();
-            
-            
+
             //codigo para probar turno en consola
             /*
         Turno turno = new Turno();
@@ -132,14 +135,14 @@ public class TurnosController implements Initializable {
             System.out.println(ex.getMessage());
         }
     }
-    
+
     @FXML
     private void btnlimpiar_OnClick() throws IOException {
         dtpFecha.setValue(null);
         combobox_mecanicos.setValue(null);
         //combobox_especialidades.setValue(null);
         bttnFiltrar_OnClick();
-                
+
     }
 
     @FXML
@@ -147,30 +150,23 @@ public class TurnosController implements Initializable {
         tbViewTurnos.getItems().clear(); //Limpia tableView  
         MecanicoDTO mecanico = (MecanicoDTO) combobox_mecanicos.getSelectionModel().getSelectedItem();
         LocalDate fechaDtp = dtpFecha.getValue();
-        
+
         Turno turno = new Turno(); //Modelo
         List<TurnoDTO> turnos;
-        if(mecanico != null)
-        {
-            if(fechaDtp != null){
-                 turnos= turno.listar(mecanico, fechaDtp);
+        if (mecanico != null) {
+            if (fechaDtp != null) {
+                turnos = turno.listar(mecanico, fechaDtp);
+            } else {
+                turnos = turno.listar(mecanico);
             }
-            else
-            {
-                turnos = turno.listar(mecanico);  
-            }
-        }
-        else{
-            if(fechaDtp != null){
-                 turnos= turno.listar(fechaDtp);
-            }
-            else
-            {
-                turnos = turno.listar();  
+        } else {
+            if (fechaDtp != null) {
+                turnos = turno.listar(fechaDtp);
+            } else {
+                turnos = turno.listar();
             }
         }
-        
-        
+
         colFecha.setCellValueFactory(new PropertyValueFactory<>("dia_atencion"));
         colHorario.setCellValueFactory(new PropertyValueFactory<>("hora_atencion"));
         colAsistencia.setCellValueFactory(t -> {
@@ -183,9 +179,9 @@ public class TurnosController implements Initializable {
         colTitular.setCellValueFactory(new PropertyValueFactory<>("Titular"));
         colVehiculo.setCellValueFactory(new PropertyValueFactory<>("Vehiculo"));
         ObservableList<TurnoDTO> listObsevable = FXCollections.observableList(turnos);
-        tbViewTurnos.setItems(listObsevable);  
+        tbViewTurnos.setItems(listObsevable);
         //dtpFecha.setValue(null);
-    }    
+    }
 
     @FXML
     private void combobox_especialidad_change() throws IOException {
@@ -205,26 +201,89 @@ public class TurnosController implements Initializable {
         //Cerrar esta ventana
         //((Stage) menup.getScene().getWindow()).close();
         Stage wd = (Stage) btnlimpiar.getScene().getWindow();
-        //wd.close();
-        App.newWindow("AsignarTurno", ((Stage) btnAsignarTurno.getScene().getWindow()), "Asignar Turno");
-        //App.newWindow("AsignarTurno", "Asignar Turno");
 
-        //wd.show();
+        App.newWindow("AsignarTurno", ((Stage) btnAsignarTurno.getScene().getWindow()), "Asignar Turno");
+
+        wd.close();
+        wd.show();
         btnlimpiar_OnClick();
     }
 
     @FXML
     private void eliminarTurno(ActionEvent event) {
+
         String mensaje = "¿Está seguro que quiere eliminar este Turno?";
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION, mensaje, ButtonType.YES, ButtonType.NO);
-        alert.showAndWait();
+        alert.showAndWait().ifPresent(response -> {
+            if (response == ButtonType.YES) {
+                Turno turno = new Turno();
+
+                TablePosition pos = tbViewTurnos.getSelectionModel().getSelectedCells().get(0);
+                int row = pos.getRow();
+
+                // Item here is the table view type:
+                TurnoDTO item = tbViewTurnos.getItems().get(row);
+
+                if (item != null) {
+                    if (!turno.borrar(item.getId_turno())) {
+
+                        Alert alert2 = new Alert(AlertType.ERROR);
+                        alert2.setTitle("Error");
+                        alert2.setHeaderText("Error al eliminar");
+                        alert2.setContentText("Ocurrio un error al eliminar.");
+                        alert2.showAndWait();
+
+                    } else {
+                        try {
+                            bttnFiltrar_OnClick();
+                        } catch (IOException ex) {
+                            Logger.getLogger(TurnosController.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+                    }
+                }
+
+            }
+        });
     }
 
     @FXML
     private void confirmarAsistencia(ActionEvent event) {
         String mensaje = "¿El titular asistió al turno seleccionado?";
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION, mensaje, ButtonType.YES, ButtonType.NO, ButtonType.CANCEL);
-        alert.showAndWait();
+        alert.showAndWait().ifPresent(response -> {
+            if (response != ButtonType.CANCEL) {
+                
+                boolean asistencia = (response == ButtonType.YES);
+                
+                Turno turno = new Turno();
+
+                TablePosition pos = tbViewTurnos.getSelectionModel().getSelectedCells().get(0);
+                int row = pos.getRow();
+
+                // Item here is the table view type:
+                TurnoDTO item = tbViewTurnos.getItems().get(row);
+
+                if (item != null) {
+                    if (!turno.modificarAsistencia(item.getId_turno(),asistencia)) {
+
+                        Alert alert2 = new Alert(AlertType.ERROR);
+                        alert2.setTitle("Error");
+                        alert2.setHeaderText("Error al actualizar");
+                        alert2.setContentText("Ocurrio un error al actualizar.");
+                        alert2.showAndWait();
+
+                    } else {
+                        try {
+                            bttnFiltrar_OnClick();
+                        } catch (IOException ex) {
+                            Logger.getLogger(TurnosController.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+                    }
+                }
+
+            }
+        }
+        );
     }
 
     @FXML
