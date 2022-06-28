@@ -23,7 +23,9 @@ import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Spinner;
@@ -87,19 +89,70 @@ public class AsignarTurnoController implements Initializable {
 
     @FXML
     private void guardar() throws IOException {
+
         Turno turno = new Turno();
-        turno.insertar( dpdia_atencion.getValue(),
-                LocalTime.of(
-                        Integer.parseInt(txthora_atencion.getText()),
-                        Integer.parseInt(txthora_atencion.getText())
-                ),
-                false,
-                (int)combobox_vehiculos.getValue(),
-                (int)combobox_servicios.getValue(),
-                (int)combobox_titulares.getValue()
-                );
-        
-        ((Stage) btnguardar.getScene().getWindow()).close();
+        String tit = "Error";
+        String msj = "";
+        Alert.AlertType alt = Alert.AlertType.ERROR;
+        boolean error = false;
+
+        //Control de campos
+        if (combobox_titulares.getValue() == null) {
+            msj += "Seleccione un Titular\n";
+        }
+        if (combobox_servicios.getValue() == null) {
+            msj += "Seleccione un Servicio\n";
+        }
+        if (combobox_vehiculos.getValue() == null) {
+            msj += "Seleccione un Vehículo\n";
+        }
+        if (combobox_mecanicos.getValue() == null) {
+            msj += "Seleccione un Mecánico\n";
+        }
+        if (dpdia_atencion.getValue() == null) {
+            msj += "Debe seleccionar la fecha y hora para el turno.\n";
+        }
+
+        //Si no hay error, intento insertar
+        if (msj.equals("")) {
+
+            VehiculoDTO vehiculo = (VehiculoDTO) combobox_vehiculos.getValue();
+            ServicioDTO servicio = (ServicioDTO) combobox_servicios.getValue();
+            TitularDTO titular   = (TitularDTO)  combobox_titulares.getValue();
+
+            error = !turno.insertar(
+                    dpdia_atencion.getValue(),
+                    LocalTime.of(
+                            Integer.parseInt(txthora_atencion.getText()),
+                            Integer.parseInt(txtmin_atencion.getText())
+                    ),
+                    false,
+                    vehiculo.getId_vehiculo(),
+                    servicio.getId_servicio(),
+                    titular.getId_titular()
+            );
+
+            if (error) {
+                tit = "Error al Asignar Turno";
+                msj = "Ocurrio un error al asignar el turno";
+                alt = Alert.AlertType.ERROR;
+            } else {
+                tit = "Asignar Turno";
+                msj = "Se asigno el turno correctamente.";
+                alt = Alert.AlertType.INFORMATION;
+            }
+        } else {
+            error = true;
+        }
+
+        Alert a = new Alert(alt, msj, ButtonType.OK);
+        a.setTitle(tit);
+        a.setHeaderText(tit);
+        a.showAndWait();
+
+        if (!error) {
+            ((Stage) btnguardar.getScene().getWindow()).close();
+        }
     }
 
     @FXML

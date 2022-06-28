@@ -1,19 +1,36 @@
 package com.seminarioprogramacion.controlador;
 
+import com.seminarioprogramacion.dto.ServicioDTO;
+import com.seminarioprogramacion.dto.TitularDTO;
 import com.seminarioprogramacion.main.App;
+import com.seminarioprogramacion.modelo.Servicio;
+import com.seminarioprogramacion.modelo.Titular;
+import com.seminarioprogramacion.modelo.Turno;
 import java.io.IOException;
+import java.net.URL;
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.util.List;
+import java.util.ResourceBundle;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.MenuBar;
 import javafx.stage.Stage;
 
-public class MainController {
+public class MainController implements Initializable {
 
     @FXML
     private MenuBar menup;
+    
+        @Override
+    public void initialize(URL url, ResourceBundle rb) {
+
+
+    }
     
     @FXML
     private void CloseApp() throws IOException {
@@ -40,7 +57,11 @@ public class MainController {
     @FXML
     private void switchToTurnos() throws IOException {
         //App.setRoot("Mecanicos",400,600);
-
+        /*
+        //Para la lista de titulares
+        Turno turno = new Turno(); //Modelo
+        turno.insertar(LocalDate.now(), LocalTime.now(), false, 1, 1, 1);
+*/
         //Cerrar esta ventana
         //((Stage) menup.getScene().getWindow()).close();
         App.newWindow("Turnos", ((Stage) menup.getScene().getWindow()), "Turnos");

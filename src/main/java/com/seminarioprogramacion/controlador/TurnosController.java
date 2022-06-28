@@ -147,6 +147,7 @@ public class TurnosController implements Initializable {
         tbViewTurnos.getItems().clear(); //Limpia tableView  
         MecanicoDTO mecanico = (MecanicoDTO) combobox_mecanicos.getSelectionModel().getSelectedItem();
         LocalDate fechaDtp = dtpFecha.getValue();
+        
         Turno turno = new Turno(); //Modelo
         List<TurnoDTO> turnos;
         if(mecanico != null)
@@ -203,7 +204,13 @@ public class TurnosController implements Initializable {
 
         //Cerrar esta ventana
         //((Stage) menup.getScene().getWindow()).close();
+        Stage wd = (Stage) btnlimpiar.getScene().getWindow();
+        //wd.close();
         App.newWindow("AsignarTurno", ((Stage) btnAsignarTurno.getScene().getWindow()), "Asignar Turno");
+        //App.newWindow("AsignarTurno", "Asignar Turno");
+
+        //wd.show();
+        btnlimpiar_OnClick();
     }
 
     @FXML

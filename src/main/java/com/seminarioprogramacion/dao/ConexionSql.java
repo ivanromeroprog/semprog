@@ -29,9 +29,11 @@ public class ConexionSql { //Singleton
         if (connection == null) {
             try {
                 
-                //connection = DriverManager.getConnection("jdbc:sqlite:C:/sqlite/SuperCharger.db");
+                //connection = DriverManager.getConnection("jdbc:sqlite:C:/Users/ikukl/SuperCharger.db");
                 String url = getClass().getResource("SuperCharger.db").toURI().toString();
+                //String url = "file:/C:/Users/ikukl/Desktop/SuperCharger.db";
                 connection = DriverManager.getConnection("jdbc:sqlite:"+url);
+                //connection.setAutoCommit(false);
                 
                 if (connection != null) {
                     System.out.println("DB: Conexión OK");
@@ -63,6 +65,7 @@ public class ConexionSql { //Singleton
         } catch (SQLException ex) {
             System.out.println(ex);
         }
+        instancia = null;
         connection = null;
     }
     

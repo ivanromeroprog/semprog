@@ -290,22 +290,26 @@ public class TurnoDAOSQL implements TurnoDAO {
         
         Connection con = null;
         PreparedStatement sentencia = null;
-
+        int resultado = 0;
         try {
             con = conexion.getConnection();
-            String sql = "insert into turnos (dia_atencion, hora_atencion, asistencia, id_vehiculo, id_servicio, id_mecanico) "
-                    + "values(?,?,?,?,?,?)";
+            String sql = "insert into turnos"
+                    + " (dia_atencion, hora_atencion, asistencia, id_vehiculo, id_servicio, id_mecanico)"
+                    + " values (?,?,?,?,?,?)";
+            
             sentencia = con.prepareStatement(sql);
             
-            sentencia.setString(1, new SimpleDateFormat("yyyy-MM-dd").format(dia_atencion));
-            sentencia.setString (2, new SimpleDateFormat("hh:mm:ss").format(hora_atencion));
-            sentencia.setInt(3, id_vehiculo);
-            sentencia.setInt(4, id_servicio);
-            sentencia.setInt(5, id_mecanico);
+            sentencia.setString(1, dia_atencion.format(DateTimeFormatter.ofPattern("dd/MM/yyyy")));
+            sentencia.setString(2, hora_atencion.format(DateTimeFormatter.ofPattern("hh:mm:ss")));
+            sentencia.setInt(3, (asistencia ? 1 : 0));
+            sentencia.setInt(4, id_vehiculo);
+            sentencia.setInt(5, id_servicio);
+            sentencia.setInt(6, id_mecanico);
 
-            int resultado = sentencia.executeUpdate();
-
-            return (resultado > 0);
+            resultado = sentencia.executeUpdate();
+            conexion.desconectar();
+            conexion = ConexionSql.getInstancia();
+            
         } catch (SQLException e) {
             System.err.println(e);
             return false;
@@ -316,6 +320,8 @@ public class TurnoDAOSQL implements TurnoDAO {
                 System.err.println(ex);
             }
         }
+        
+        return (resultado > 0);
     }
 
     @Override
