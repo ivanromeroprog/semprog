@@ -241,7 +241,6 @@ public class TurnosController implements Initializable {
                         }
                     }
                 }
-
             }
         });
     }
@@ -288,9 +287,37 @@ public class TurnosController implements Initializable {
 
     @FXML
     private void imprimirComprobante(ActionEvent event) throws IOException {
-        String mensaje = "¿Desea imprimir el comprobante?";
+        String mensaje = "¿Desea imprimir el comprobante?1";
         Alert alert = new Alert(Alert.AlertType.INFORMATION, mensaje, ButtonType.OK, ButtonType.CANCEL);
-        alert.showAndWait();
+        alert.showAndWait().ifPresent(response -> {
+            if (response == ButtonType.OK) {
+                
+                //obtiene posición de la columna seleccionada en la tabla (interfaz)
+                TablePosition pos = tbViewTurnos.getSelectionModel().getSelectedCells().get(0);
+                int row = pos.getRow();
+
+                //obtiene el objeto turno de la tabla (interfaz) 
+                TurnoDTO item = tbViewTurnos.getItems().get(row);
+                
+                if(item != null)
+                {
+                    System.out.print(item.getVehiculo());
+                    System.out.print(item.getMecanico());
+                    System.out.print(item.getDia_atencion());
+                    System.out.println(item.getHora_atencion());
+                    System.out.println(item.getAsistencia());
+                }
+                else
+                {
+                    //mostrar mensaje de error
+                    Alert alertTurnoNoEncontrado = new Alert(AlertType.ERROR);
+                    alertTurnoNoEncontrado.setTitle("Error");
+                    alertTurnoNoEncontrado.setHeaderText("Error turno no encontrado");
+                    alertTurnoNoEncontrado.setContentText("Ocurrio un error turno no encontrado.");
+                    alertTurnoNoEncontrado.showAndWait();
+                }
+            }
+        });
     }
 
     @FXML
