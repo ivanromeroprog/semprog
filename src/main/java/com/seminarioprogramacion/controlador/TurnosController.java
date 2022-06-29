@@ -10,6 +10,7 @@ import com.seminarioprogramacion.main.App;
 import com.seminarioprogramacion.modelo.Especialidad;
 import com.seminarioprogramacion.modelo.Mecanico;
 import com.seminarioprogramacion.modelo.Turno;
+import java.awt.Font;
 import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
@@ -37,6 +38,13 @@ import javafx.stage.Stage;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.CheckBoxTableCell;
 import javafx.scene.control.cell.PropertyValueFactory;
+
+import org.apache.pdfbox.pdmodel.PDDocument;
+import org.apache.pdfbox.pdmodel.PDPage;
+import org.apache.pdfbox.pdmodel.PDPageContentStream;	
+import org.apache.pdfbox.pdmodel.font.PDFont;
+import org.apache.pdfbox.pdmodel.font.PDType1Font;
+import org.apache.pdfbox.pdmodel.font.Standard14Fonts.FontName;
 
 /**
  * FXML Controller class
@@ -216,8 +224,19 @@ public class TurnosController implements Initializable {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION, mensaje, ButtonType.YES, ButtonType.NO);
         alert.showAndWait().ifPresent(response -> {
             if (response == ButtonType.YES) {
-                Turno turno = new Turno();
+                                
+                if(tbViewTurnos.getSelectionModel().getSelectedCells().isEmpty()) //si no selecciono ninguna fila en la tabla (interfaz)
+                {
+                    Alert alertTurnoNoEncontrado = new Alert(AlertType.ERROR);
+                    alertTurnoNoEncontrado.setTitle("Error");
+                    alertTurnoNoEncontrado.setHeaderText("Error");
+                    alertTurnoNoEncontrado.setContentText("No se seleccionó ningún turno.");
+                    alertTurnoNoEncontrado.showAndWait();
 
+                    return; //cierra dialogo 
+                }
+                
+                Turno turno = new Turno();
                 TablePosition pos = tbViewTurnos.getSelectionModel().getSelectedCells().get(0);
                 int row = pos.getRow();
 
@@ -251,6 +270,17 @@ public class TurnosController implements Initializable {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION, mensaje, ButtonType.YES, ButtonType.NO, ButtonType.CANCEL);
         alert.showAndWait().ifPresent(response -> {
             if (response != ButtonType.CANCEL) {
+                
+                if(tbViewTurnos.getSelectionModel().getSelectedCells().isEmpty()) //si no selecciono ninguna fila en la tabla (interfaz)
+                {
+                    Alert alertTurnoNoEncontrado = new Alert(AlertType.ERROR);
+                    alertTurnoNoEncontrado.setTitle("Error");
+                    alertTurnoNoEncontrado.setHeaderText("Error");
+                    alertTurnoNoEncontrado.setContentText("No se seleccionó ningún turno.");
+                    alertTurnoNoEncontrado.showAndWait();
+
+                    return; //cierra dialogo 
+                }
                 
                 boolean asistencia = (response == ButtonType.YES);
                 
@@ -287,37 +317,94 @@ public class TurnosController implements Initializable {
 
     @FXML
     private void imprimirComprobante(ActionEvent event) throws IOException {
-        String mensaje = "¿Desea imprimir el comprobante?1";
+        String mensaje = "¿Desea imprimir el comprobante?";
         Alert alert = new Alert(Alert.AlertType.INFORMATION, mensaje, ButtonType.OK, ButtonType.CANCEL);
-        alert.showAndWait().ifPresent(response -> {
-            if (response == ButtonType.OK) {
-                
-                //obtiene posición de la columna seleccionada en la tabla (interfaz)
-                TablePosition pos = tbViewTurnos.getSelectionModel().getSelectedCells().get(0);
-                int row = pos.getRow();
+        
+        alert.showAndWait();
+        if (alert.getResult() != ButtonType.OK) { //boton distinto de OK (cancelar)
+            return; //cierra dialogo 
+        }
 
-                //obtiene el objeto turno de la tabla (interfaz) 
-                TurnoDTO item = tbViewTurnos.getItems().get(row);
-                
-                if(item != null)
+        //obtiene posición de la fila seleccionada en la tabla (interfaz)
+        if(tbViewTurnos.getSelectionModel().getSelectedCells().isEmpty()) //si no selecciono ninguna fila
+        {
+            Alert alertTurnoNoEncontrado = new Alert(AlertType.ERROR);
+            alertTurnoNoEncontrado.setTitle("Error");
+            alertTurnoNoEncontrado.setHeaderText("Error");
+            alertTurnoNoEncontrado.setContentText("No se seleccionó ningún turno.");
+            alertTurnoNoEncontrado.showAndWait();
+            
+            return; //cierra dialogo 
+        }
+        
+        TablePosition pos = tbViewTurnos.getSelectionModel().getSelectedCells().get(0); //en row guardo la posicion 
+        int row = pos.getRow();
+        
+        //obtiene el objeto turno de la tabla (interfaz) 
+        TurnoDTO item = tbViewTurnos.getItems().get(row);
+        
+        //Generar PDF
+        String misDocumentos = "C:\\"; //ruta a "mis documentos", guardo el pdf en el disco C
+        String rutaArchivo = misDocumentos + "\\ComprobanteTurno_" + item.getId_turno() + ".pdf"; //nombre del arhcivo
+
+        //genero pdf vacio
+        try (PDDocument doc = new PDDocument())
+        {
+            
+            PDPage page = new PDPage();
+            doc.addPage(page);
+
+            float fontSize = 25;
+            float leading = 1.5f * fontSize;//desplazamiento pdf
+
+            float margin = 72; //margenes del pdf
+            float startX = page.getMediaBox().getLowerLeftX() + margin;
+            float startY = page.getMediaBox().getUpperRightY() - margin;
+
+
+            try (PDPageContentStream contents = new PDPageContentStream(doc, page))
+            {
+                contents.beginText();
+                contents.setFont(PDType1Font.TIMES_ROMAN, fontSize); //fuente del pdf
+                contents.newLineAtOffset(startX, startY);
+
+                //va insertando los valores del turno en el pdf
+                contents.showText("Fecha: " + item.getDia_atencion());
+                contents.newLineAtOffset(0, -leading);
+
+                contents.showText("Hora: " + item.getHora_atencion());
+                contents.newLineAtOffset(0, -leading);
+
+                if(item.getAsistencia() == false)
                 {
-                    System.out.print(item.getVehiculo());
-                    System.out.print(item.getMecanico());
-                    System.out.print(item.getDia_atencion());
-                    System.out.println(item.getHora_atencion());
-                    System.out.println(item.getAsistencia());
+                    contents.showText("Asistencia: " + "No");
+                }else{
+                    contents.showText("Asistencia: " + "Si");                            
                 }
-                else
-                {
-                    //mostrar mensaje de error
-                    Alert alertTurnoNoEncontrado = new Alert(AlertType.ERROR);
-                    alertTurnoNoEncontrado.setTitle("Error");
-                    alertTurnoNoEncontrado.setHeaderText("Error turno no encontrado");
-                    alertTurnoNoEncontrado.setContentText("Ocurrio un error turno no encontrado.");
-                    alertTurnoNoEncontrado.showAndWait();
-                }
+                contents.newLineAtOffset(0, -leading);
+
+
+                contents.showText("Titular: " + item.getTitular());
+                contents.newLineAtOffset(0, -leading);
+
+                contents.showText("Vehículo: " + item.getVehiculo());
+                contents.newLineAtOffset(0, -leading);  
+
+                contents.showText("Servicio: " + item.getServicio());
+                contents.newLineAtOffset(0, -leading);
+
+                contents.showText("Mecánico: " + item.getMecanico());
+                contents.newLineAtOffset(0, -leading);
+
+                contents.endText(); 
+                contents.close();
             }
-        });
+            
+            doc.save(rutaArchivo); //guarda los datos
+        }        
+        catch (Exception ex) {
+            Logger.getLogger(TurnosController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     @FXML
