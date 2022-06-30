@@ -10,7 +10,9 @@ import com.seminarioprogramacion.main.App;
 import com.seminarioprogramacion.modelo.Especialidad;
 import com.seminarioprogramacion.modelo.Mecanico;
 import com.seminarioprogramacion.modelo.Turno;
+import java.awt.Desktop;
 import java.awt.Font;
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
@@ -41,10 +43,8 @@ import javafx.scene.control.cell.PropertyValueFactory;
 
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.pdmodel.PDPage;
-import org.apache.pdfbox.pdmodel.PDPageContentStream;	
-import org.apache.pdfbox.pdmodel.font.PDFont;
+import org.apache.pdfbox.pdmodel.PDPageContentStream;
 import org.apache.pdfbox.pdmodel.font.PDType1Font;
-import org.apache.pdfbox.pdmodel.font.Standard14Fonts.FontName;
 
 /**
  * FXML Controller class
@@ -224,8 +224,8 @@ public class TurnosController implements Initializable {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION, mensaje, ButtonType.YES, ButtonType.NO);
         alert.showAndWait().ifPresent(response -> {
             if (response == ButtonType.YES) {
-                                
-                if(tbViewTurnos.getSelectionModel().getSelectedCells().isEmpty()) //si no selecciono ninguna fila en la tabla (interfaz)
+
+                if (tbViewTurnos.getSelectionModel().getSelectedCells().isEmpty()) //si no selecciono ninguna fila en la tabla (interfaz)
                 {
                     Alert alertTurnoNoEncontrado = new Alert(AlertType.ERROR);
                     alertTurnoNoEncontrado.setTitle("Error");
@@ -235,7 +235,7 @@ public class TurnosController implements Initializable {
 
                     return; //cierra dialogo 
                 }
-                
+
                 Turno turno = new Turno();
                 TablePosition pos = tbViewTurnos.getSelectionModel().getSelectedCells().get(0);
                 int row = pos.getRow();
@@ -270,8 +270,8 @@ public class TurnosController implements Initializable {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION, mensaje, ButtonType.YES, ButtonType.NO, ButtonType.CANCEL);
         alert.showAndWait().ifPresent(response -> {
             if (response != ButtonType.CANCEL) {
-                
-                if(tbViewTurnos.getSelectionModel().getSelectedCells().isEmpty()) //si no selecciono ninguna fila en la tabla (interfaz)
+
+                if (tbViewTurnos.getSelectionModel().getSelectedCells().isEmpty()) //si no selecciono ninguna fila en la tabla (interfaz)
                 {
                     Alert alertTurnoNoEncontrado = new Alert(AlertType.ERROR);
                     alertTurnoNoEncontrado.setTitle("Error");
@@ -281,9 +281,9 @@ public class TurnosController implements Initializable {
 
                     return; //cierra dialogo 
                 }
-                
+
                 boolean asistencia = (response == ButtonType.YES);
-                
+
                 Turno turno = new Turno();
 
                 TablePosition pos = tbViewTurnos.getSelectionModel().getSelectedCells().get(0);
@@ -293,7 +293,7 @@ public class TurnosController implements Initializable {
                 TurnoDTO item = tbViewTurnos.getItems().get(row);
 
                 if (item != null) {
-                    if (!turno.modificarAsistencia(item.getId_turno(),asistencia)) {
+                    if (!turno.modificarAsistencia(item.getId_turno(), asistencia)) {
 
                         Alert alert2 = new Alert(AlertType.ERROR);
                         alert2.setTitle("Error");
@@ -319,38 +319,38 @@ public class TurnosController implements Initializable {
     private void imprimirComprobante(ActionEvent event) throws IOException {
         String mensaje = "¿Desea imprimir el comprobante?";
         Alert alert = new Alert(Alert.AlertType.INFORMATION, mensaje, ButtonType.OK, ButtonType.CANCEL);
-        
+
         alert.showAndWait();
         if (alert.getResult() != ButtonType.OK) { //boton distinto de OK (cancelar)
             return; //cierra dialogo 
         }
 
         //obtiene posición de la fila seleccionada en la tabla (interfaz)
-        if(tbViewTurnos.getSelectionModel().getSelectedCells().isEmpty()) //si no selecciono ninguna fila
+        if (tbViewTurnos.getSelectionModel().getSelectedCells().isEmpty()) //si no selecciono ninguna fila
         {
             Alert alertTurnoNoEncontrado = new Alert(AlertType.ERROR);
             alertTurnoNoEncontrado.setTitle("Error");
             alertTurnoNoEncontrado.setHeaderText("Error");
             alertTurnoNoEncontrado.setContentText("No se seleccionó ningún turno.");
             alertTurnoNoEncontrado.showAndWait();
-            
+
             return; //cierra dialogo 
         }
-        
+
         TablePosition pos = tbViewTurnos.getSelectionModel().getSelectedCells().get(0); //en row guardo la posicion 
         int row = pos.getRow();
-        
+
         //obtiene el objeto turno de la tabla (interfaz) 
         TurnoDTO item = tbViewTurnos.getItems().get(row);
-        
+
         //Generar PDF
-        String misDocumentos = "C:\\"; //ruta a "mis documentos", guardo el pdf en el disco C
-        String rutaArchivo = misDocumentos + "\\ComprobanteTurno_" + item.getId_turno() + ".pdf"; //nombre del arhcivo
+        //String misDocumentos = "C:\\"; //ruta a "mis documentos", guardo el pdf en el disco C
+        String misDocumentos = System.getProperty("java.io.tmpdir"); //ruta a "mis documentos", guardo el pdf en el disco C
+        String rutaArchivo = misDocumentos + "ComprobanteTurno_" + item.getId_turno() + ".pdf"; //nombre del arhcivo
 
         //genero pdf vacio
-        try (PDDocument doc = new PDDocument())
-        {
-            
+        try ( PDDocument doc = new PDDocument()) {
+
             PDPage page = new PDPage();
             doc.addPage(page);
 
@@ -361,9 +361,7 @@ public class TurnosController implements Initializable {
             float startX = page.getMediaBox().getLowerLeftX() + margin;
             float startY = page.getMediaBox().getUpperRightY() - margin;
 
-
-            try (PDPageContentStream contents = new PDPageContentStream(doc, page))
-            {
+            try ( PDPageContentStream contents = new PDPageContentStream(doc, page)) {
                 contents.beginText();
                 contents.setFont(PDType1Font.TIMES_ROMAN, fontSize); //fuente del pdf
                 contents.newLineAtOffset(startX, startY);
@@ -375,20 +373,18 @@ public class TurnosController implements Initializable {
                 contents.showText("Hora: " + item.getHora_atencion());
                 contents.newLineAtOffset(0, -leading);
 
-                if(item.getAsistencia() == false)
-                {
+                if (item.getAsistencia() == false) {
                     contents.showText("Asistencia: " + "No");
-                }else{
-                    contents.showText("Asistencia: " + "Si");                            
+                } else {
+                    contents.showText("Asistencia: " + "Si");
                 }
                 contents.newLineAtOffset(0, -leading);
-
 
                 contents.showText("Titular: " + item.getTitular());
                 contents.newLineAtOffset(0, -leading);
 
                 contents.showText("Vehículo: " + item.getVehiculo());
-                contents.newLineAtOffset(0, -leading);  
+                contents.newLineAtOffset(0, -leading);
 
                 contents.showText("Servicio: " + item.getServicio());
                 contents.newLineAtOffset(0, -leading);
@@ -396,13 +392,30 @@ public class TurnosController implements Initializable {
                 contents.showText("Mecánico: " + item.getMecanico());
                 contents.newLineAtOffset(0, -leading);
 
-                contents.endText(); 
+                contents.endText();
                 contents.close();
             }
-            
+
             doc.save(rutaArchivo); //guarda los datos
-        }        
-        catch (Exception ex) {
+
+            try {
+                //constructor of file class having file as argument  
+                File file = new File(rutaArchivo);
+                if (!Desktop.isDesktopSupported())//check if Desktop is supported by Platform or not  
+                {
+                    System.out.println("not supported");
+                    return;
+                }
+                Desktop desktop = Desktop.getDesktop();
+                if (file.exists()) //checks file exists or not  
+                {
+                    desktop.open(file);//opens the specified file  
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+        } catch (Exception ex) {
             Logger.getLogger(TurnosController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
