@@ -354,7 +354,7 @@ public class TurnosController implements Initializable {
             PDPage page = new PDPage();
             doc.addPage(page);
 
-            float fontSize = 25;
+            float fontSize = 20;
             float leading = 1.5f * fontSize;//desplazamiento pdf
 
             float margin = 72; //margenes del pdf
@@ -411,6 +411,12 @@ public class TurnosController implements Initializable {
                 {
                     desktop.open(file);//opens the specified file  
                 }
+            } catch (IOException e) {
+                Alert alertTurnoNoEncontrado = new Alert(AlertType.ERROR);
+                alertTurnoNoEncontrado.setTitle("Error");
+                alertTurnoNoEncontrado.setHeaderText("Error");
+                alertTurnoNoEncontrado.setContentText("Error al acceder al archivo PDF.");
+                alertTurnoNoEncontrado.showAndWait();
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -424,6 +430,118 @@ public class TurnosController implements Initializable {
     private void imprimirFichaMecanica(ActionEvent event) throws IOException {
         String mensaje = "¿Desea imprimir la ficha mecánica?";
         Alert alert = new Alert(Alert.AlertType.INFORMATION, mensaje, ButtonType.OK, ButtonType.CANCEL);
+
         alert.showAndWait();
+        if (alert.getResult() != ButtonType.OK) { //boton distinto de OK (cancelar)
+            return; //cierra dialogo 
+        }
+
+        //obtiene posición de la fila seleccionada en la tabla (interfaz)
+        if (tbViewTurnos.getSelectionModel().getSelectedCells().isEmpty()) //si no selecciono ninguna fila
+        {
+            Alert alertTurnoNoEncontrado = new Alert(AlertType.ERROR);
+            alertTurnoNoEncontrado.setTitle("Error");
+            alertTurnoNoEncontrado.setHeaderText("Error");
+            alertTurnoNoEncontrado.setContentText("No se seleccionó ningún turno.");
+            alertTurnoNoEncontrado.showAndWait();
+
+            return; //cierra dialogo 
+        }
+
+        TablePosition pos = tbViewTurnos.getSelectionModel().getSelectedCells().get(0); //en row guardo la posicion 
+        int row = pos.getRow();
+
+        //obtiene el objeto turno de la tabla (interfaz) 
+        TurnoDTO item = tbViewTurnos.getItems().get(row);
+
+        //Generar PDF
+        //String misDocumentos = "C:\\"; //ruta a "mis documentos", guardo el pdf en el disco C
+        String misDocumentos = System.getProperty("java.io.tmpdir"); //ruta a "mis documentos", guardo el pdf en el disco C
+        String rutaArchivo = misDocumentos + "FichaMecanica_" + item.getId_turno() + ".pdf"; //nombre del arhcivo
+        
+        
+
+        //genero pdf vacio
+        try {
+
+            PDDocument doc = PDDocument.load(
+                    new File(getClass().getResource(
+            "/com/seminarioprogramacion/vistas/fic.pdf"
+            ).toURI()
+                    ));
+            
+            PDPage page = (PDPage) doc.getDocumentCatalog().getPages().get(0);
+
+            float fontSize = 11;
+            float leading = 1.15f * fontSize;//desplazamiento pdf
+
+            float margin = 95; //margenes del pdf
+            float startX = page.getMediaBox().getLowerLeftX() + margin;
+            float startY = page.getMediaBox().getUpperRightY() - margin;
+
+            try ( PDPageContentStream contents = new PDPageContentStream(doc, page, PDPageContentStream.AppendMode.APPEND, true)) {
+                contents.beginText();
+                contents.setFont(PDType1Font.HELVETICA, fontSize); //fuente del pdf
+                contents.newLineAtOffset(startX, startY);
+
+                //va insertando los valores del turno en el pdf
+                contents.showText("Fecha: " + item.getDia_atencion());
+                contents.newLineAtOffset(0, -leading);
+
+                contents.showText("Hora: " + item.getHora_atencion());
+                contents.newLineAtOffset(0, -leading);
+/*
+                if (item.getAsistencia() == false) {
+                    contents.showText("Asistencia: " + "No");
+                } else {
+                    contents.showText("Asistencia: " + "Si");
+                }
+                contents.newLineAtOffset(0, -leading);
+*/
+                contents.showText("Titular: " + item.getTitular());
+                contents.newLineAtOffset(0, -leading);
+
+                contents.showText("Vehículo: " + item.getVehiculo());
+                contents.newLineAtOffset(0, -leading);
+
+                contents.showText("Servicio: " + item.getServicio());
+                contents.newLineAtOffset(0, -leading);
+
+                contents.showText("Mecánico: " + item.getMecanico());
+                contents.newLineAtOffset(0, -leading);
+
+                contents.endText();
+                contents.close();
+            }
+
+            doc.save(rutaArchivo); //guarda los datos
+
+            try {
+                //constructor of file class having file as argument  
+                File file = new File(rutaArchivo);
+                if (!Desktop.isDesktopSupported())//check if Desktop is supported by Platform or not  
+                {
+                    System.out.println("not supported");
+                    return;
+                }
+                Desktop desktop = Desktop.getDesktop();
+                if (file.exists()) //checks file exists or not  
+                {
+                    desktop.open(file);//opens the specified file  
+                }
+            } catch (IOException e) {
+                Alert alertTurnoNoEncontrado = new Alert(AlertType.ERROR);
+                alertTurnoNoEncontrado.setTitle("Error");
+                alertTurnoNoEncontrado.setHeaderText("Error");
+                alertTurnoNoEncontrado.setContentText("Error al acceder al archivo PDF.");
+                alertTurnoNoEncontrado.showAndWait();
+            }
+            catch (Exception e) {
+                e.printStackTrace();
+            }
+
+        } catch (Exception ex) {
+            Logger.getLogger(TurnosController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 }
