@@ -424,7 +424,7 @@ public class TurnosController implements Initializable {
         } catch (Exception ex) {
             Logger.getLogger(TurnosController.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }
+    } 
 
     @FXML
     private void imprimirFichaMecanica(ActionEvent event) throws IOException {
