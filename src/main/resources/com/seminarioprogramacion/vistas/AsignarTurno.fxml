@@ -18,16 +18,11 @@
                   <Insets />
                </opaqueInsets>
             </Label>
-            <ComboBox fx:id="combobox_titulares" onAction="#combobox_titulares_change" prefWidth="225.0">
+            <ComboBox fx:id="combobox_titulares" onAction="#combobox_titulares_change" prefWidth="275.0">
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>
             </ComboBox>
-            <Button mnemonicParsing="false" prefWidth="30.0" text="+">
-               <HBox.margin>
-                  <Insets left="10.0" right="10.0" />
-               </HBox.margin>
-            </Button>
          </children>
       </HBox>
       <HBox alignment="CENTER" prefHeight="44.0" prefWidth="395.0">
@@ -37,16 +32,11 @@
                   <Insets />
                </opaqueInsets>
             </Label>
-            <ComboBox fx:id="combobox_vehiculos" prefWidth="225.0">
+            <ComboBox fx:id="combobox_vehiculos" prefWidth="275.0">
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>
             </ComboBox>
-            <Button mnemonicParsing="false" prefWidth="30.0" text="+">
-               <HBox.margin>
-                  <Insets left="10.0" right="10.0" />
-               </HBox.margin>
-            </Button>
          </children>
       </HBox>
       <HBox alignment="CENTER" prefHeight="44.0" prefWidth="395.0">

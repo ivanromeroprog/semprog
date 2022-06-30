@@ -39,7 +39,7 @@
                </FlowPane.margin></TextField>
          </children>
       </FlowPane>
-      <Button fx:id="btningreso" onAction="#switchToMain" text="Ingresar" />
+      <Button fx:id="btningreso" defaultButton="true" onAction="#switchToMain" text="Ingresar" />
    </children>
    <padding>
       <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
