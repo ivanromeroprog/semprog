@@ -9,9 +9,9 @@
    <children>
       <MenuBar fx:id="menup">
         <menus>
-          <Menu mnemonicParsing="false" text="Turnos">
+          <Menu fx:id="mturnos" mnemonicParsing="false" text="Turnos">
             <items>
-                  <MenuItem mnemonicParsing="false" onAction="#switchToTurnos" text="Gestión de Turnos" />
+                  <MenuItem fx:id="smgestionturnos" mnemonicParsing="false" onAction="#switchToTurnos" text="Gestión de Turnos" />
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Prestaciones">

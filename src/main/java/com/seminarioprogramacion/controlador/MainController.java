@@ -18,13 +18,19 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
+import javafx.scene.control.MenuItem;
 import javafx.stage.Stage;
 
 public class MainController implements Initializable {
 
     @FXML
     private MenuBar menup;
+    @FXML
+    private Menu mturnos;
+    @FXML
+    private MenuItem smgestionturnos;
     
         @Override
     public void initialize(URL url, ResourceBundle rb) {
