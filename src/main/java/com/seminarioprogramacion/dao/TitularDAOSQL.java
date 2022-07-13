@@ -178,12 +178,12 @@ public class TitularDAOSQL implements TitularDAO {
     }
 
     @Override
-    public boolean insertar(String nombre, String apellido, String tipo_dic, String nro_doc, String telefono) {
+    public boolean insertar(String nombre, String apellido, String tipo_doc, String nro_doc, String telefono) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @Override
-    public boolean modificar(int id_titular, String nombre, String apellido, String tipo_dic, String nro_doc, String telefono) {
+    public boolean modificar(int id_titular, String nombre, String apellido, String tipo_doc, String nro_doc, String telefono) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 

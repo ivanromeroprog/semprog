@@ -61,7 +61,7 @@ public class TurnoDAOSQLTest {
         assertTrue(!titular.getApellido().isEmpty());
         assertTrue(!titular.getTelefono().isEmpty());
         assertTrue(!titular.getNombre().isEmpty());
-        assertTrue(!titular.getTipo_dic().isEmpty());
+        assertTrue(!titular.getTipo_doc().isEmpty());
         assertTrue(!titular.getNro_doc().isEmpty());
 
         ///Testea las propiedades del objeto VehiculoDto
