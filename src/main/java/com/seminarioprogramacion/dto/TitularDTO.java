@@ -3,32 +3,53 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package com.seminarioprogramacion.dto;
+        
+import com.j256.ormlite.field.DatabaseField;
+import com.j256.ormlite.table.DatabaseTable;
 
 /**
  *
  * @author ikukl
  */
+
+@DatabaseTable(tableName = "Titular")
 public class TitularDTO {
+    
+    @DatabaseField(id = true)
     private int id_titular;
+    
+    @DatabaseField
     private String nombre;
+    
+    @DatabaseField
     private String apellido;
-    private String tipo_dic;
+    
+    @DatabaseField
+    private String tipo_doc;
+    
+    @DatabaseField
     private String nro_doc;
+    
+    @DatabaseField
     private String telefono;
 
-    public TitularDTO(String nombre, String apellido, String tipo_dic, String nro_doc, String telefono) {
+    public TitularDTO() {
+        // ORMLite needs a no-arg constructor 
+    }
+    
+    public TitularDTO(String nombre, String apellido, String tipo_doc, String nro_doc, String telefono) {
         this.nombre = nombre;
         this.apellido = apellido;
-        this.tipo_dic = tipo_dic;
+        this.tipo_doc = tipo_doc;
         this.nro_doc = nro_doc;
         this.telefono = telefono;
     }
 
-    public TitularDTO(int id_titular, String nombre, String apellido, String tipo_dic, String nro_doc, String telefono) {
+    public TitularDTO(int id_titular, String nombre, String apellido, String tipo_doc, String nro_doc, String telefono) {
         this.id_titular = id_titular;
         this.nombre = nombre;
         this.apellido = apellido;
-        this.tipo_dic = tipo_dic;
+        this.tipo_doc = tipo_doc;
         this.nro_doc = nro_doc;
         this.telefono = telefono;
     }
@@ -57,12 +78,12 @@ public class TitularDTO {
         this.apellido = apellido;
     }
 
-    public String getTipo_dic() {
-        return tipo_dic;
+    public String getTipo_doc() {
+        return tipo_doc;
     }
 
-    public void setTipo_dic(String tipo_dic) {
-        this.tipo_dic = tipo_dic;
+    public void setTipo_doc(String tipo_doc) {
+        this.tipo_doc = tipo_doc;
     }
 
     public String getNro_doc() {

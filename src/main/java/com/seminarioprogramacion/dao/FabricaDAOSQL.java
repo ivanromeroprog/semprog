@@ -18,7 +18,8 @@ public class FabricaDAOSQL extends FabricaDAO {
 
     @Override
     public TitularDAO getTitularDao() {
-        return new TitularDAOSQL();
+        //return new TitularDAOSQL();
+        return new TitularDAOORM(); //Usa el Dao Orm
     }
     
     @Override
