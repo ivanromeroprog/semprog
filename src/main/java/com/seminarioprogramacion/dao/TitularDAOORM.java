@@ -33,7 +33,8 @@ public class TitularDAOORM implements TitularDAO {
 
         } catch (SQLException e) {
             System.err.println(e);
-        }  
+        }
+        
     }
 
     @Override

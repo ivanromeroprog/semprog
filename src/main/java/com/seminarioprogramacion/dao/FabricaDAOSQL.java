@@ -13,7 +13,8 @@ public class FabricaDAOSQL extends FabricaDAO {
 
     @Override
     public VehiculoDAO getVehiculoDao() {
-        return new VehiculoDAOSQL();
+        //return new VehiculoDAOSQL();
+        return new VehiculoDAOORM(); // Usar el Dao ORM
     }
 
     @Override
