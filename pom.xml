@@ -150,12 +150,12 @@
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>1</groupId>
+            <groupId>com.j256.ormlite</groupId>
             <artifactId>ormlite-core</artifactId>
             <version>6.1</version>
         </dependency>
         <dependency>
-            <groupId>1</groupId>
+            <groupId>com.j256.ormlite</groupId>
             <artifactId>ormlite-jdbc</artifactId>
             <version>6.1</version>
         </dependency>
