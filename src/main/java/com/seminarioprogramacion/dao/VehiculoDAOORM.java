@@ -24,6 +24,7 @@ public class VehiculoDAOORM implements VehiculoDAO {
 
     public VehiculoDAOORM() {
         try {
+            
              //Url (ubicación de la DB)
             String databaseUrl = new ConexionOrm().GetConexion();
             ConnectionSource connectionSource = new JdbcConnectionSource(databaseUrl);
