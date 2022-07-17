@@ -40,7 +40,7 @@ public class PrestacionesController implements Initializable {
 
     @FXML
     private void switchToCargarFichaMecanica(ActionEvent event) throws IOException{
-        App.newWindow("Cargar_Ficha_Mecanica",((Stage) btnCargarFichaMecanica.getScene().getWindow()),"Cargar Ficha Mecánica");
+        App.newWindow("CargarFichaMecanica",((Stage) btnCargarFichaMecanica.getScene().getWindow()),"Cargar Ficha Mecánica");
     }
 
     @FXML

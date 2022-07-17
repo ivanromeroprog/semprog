@@ -30,7 +30,8 @@ public class EspecialidadController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }
+    }   
+     
 
     @FXML
     private void guardar(ActionEvent event) {
@@ -43,5 +44,7 @@ public class EspecialidadController implements Initializable {
     private void cancelar(ActionEvent event) {
         ((Stage) btncancelar.getScene().getWindow()).close();
     }
+    
+  
 
 }

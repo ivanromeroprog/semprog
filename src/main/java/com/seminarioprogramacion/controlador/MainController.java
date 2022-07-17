@@ -48,7 +48,7 @@ public class MainController implements Initializable {
         //App.setRoot("Mecanicos",400,600);
         //Cerrar esta ventana
         //((Stage) menup.getScene().getWindow()).close();
-        App.newWindow("Mecanicos_listado", (Stage) menup.getScene().getWindow(), "Gestionar Mecánicos");
+        App.newWindow("MecanicosListado", (Stage) menup.getScene().getWindow(), "Gestionar Mecánicos");
     }
 
     @FXML
@@ -94,19 +94,19 @@ public class MainController implements Initializable {
     @FXML
     private void switchToPrestacionesListado() throws IOException {
 
-        App.newWindow("Prestaciones_Listado", ((Stage) menup.getScene().getWindow()), "Listado de Prestaciones");
+        App.newWindow("PrestacionesListado", ((Stage) menup.getScene().getWindow()), "Listado de Prestaciones");
     }
 
     @FXML
     private void switchToTitularesListado() throws IOException {
 
-        App.newWindow("Titulares_listado", ((Stage) menup.getScene().getWindow()), "Gestionar Titulares");
+        App.newWindow("TitularesListado", ((Stage) menup.getScene().getWindow()), "Gestionar Titulares");
     }
  
     @FXML
     private void switchToVehiculosListado() throws IOException {
 
-        App.newWindow("Vehiculos_listado", ((Stage) menup.getScene().getWindow()), "Gestionar Vehiculos");
+        App.newWindow("VehiculosListado", ((Stage) menup.getScene().getWindow()), "Gestionar Vehiculos");
     }   
     
     @FXML

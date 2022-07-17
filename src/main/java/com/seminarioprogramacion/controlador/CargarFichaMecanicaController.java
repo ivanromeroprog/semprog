@@ -17,7 +17,7 @@ import javafx.stage.Stage;
  *
  * @author Esther
  */
-public class Cargar_Ficha_MecanicaController implements Initializable {
+public class CargarFichaMecanicaController implements Initializable {
 
     @FXML
     private Button btnGuardar;

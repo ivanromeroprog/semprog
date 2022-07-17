@@ -31,11 +31,13 @@ public class GestionEspecialidadController implements Initializable {
     /**
      * Initializes the controller class.
      */
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }    
+    } 
     
+        
     @FXML
     private void NuevoEspecialidad(ActionEvent event) throws IOException {
          App.newWindow("Especialidad",((Stage) btnNuevo.getScene().getWindow()),"Nueva Especialidad");
