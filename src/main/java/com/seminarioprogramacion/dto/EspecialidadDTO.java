@@ -4,17 +4,32 @@
  */
 package com.seminarioprogramacion.dto;
 
+import com.j256.ormlite.field.DatabaseField;
+import com.j256.ormlite.table.DatabaseTable;
 import java.util.List;
 
 /**
  *
  * @author Esther
  */
+@DatabaseTable(tableName = "Especialidad")
 public class EspecialidadDTO {
+
+    @DatabaseField(id = true)
     private int id_especialidad;
+
+    @DatabaseField
     private String nombre;
+
+    @DatabaseField
     private String descripcion;
+
+    //Esta propiedad está al pedo, ya que no se usa y no se va a mapear al ORM.
     private List<ServicioDTO> servicios;
+
+    public EspecialidadDTO() {
+        // ORMLite needs a no-arg constructor 
+    }
 
     public EspecialidadDTO(int id_especialidad, String nombre, String descripcion) {
         this.id_especialidad = id_especialidad;
@@ -54,10 +69,8 @@ public class EspecialidadDTO {
         this.descripcion = descripcion;
     }
 
-      
     @Override
     public String toString() {
         return this.nombre;
-    }    
+    }
 }
-

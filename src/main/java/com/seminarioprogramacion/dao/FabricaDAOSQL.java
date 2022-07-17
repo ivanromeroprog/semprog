@@ -25,12 +25,12 @@ public class FabricaDAOSQL extends FabricaDAO {
     
     @Override
     public EspecialidadDAO getEspecialidadDao() {
-        return new EspecialidadDAOSQL();
+        return new EspecialidadDAOORM();
     }
     
     @Override
     public ServicioDAO getServicioDao() {
-        return new ServicioDAOSQL();
+        return new ServicioDAOORM();
     }
 
     @Override
